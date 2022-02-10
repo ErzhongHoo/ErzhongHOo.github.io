@@ -20,30 +20,32 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="花开时节|花自开">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ezhonghu&#39;s blog">
-<meta property="og:url" content="https://example.com/index.html">
+  <meta name="description" content="本文要完成的效果：安装archlinux,暂无图形界面,与window10系统共存 本次安装使用：硬件：16G的U盘一个(启动盘）、500G的固态硬盘一个(安装盘)、电脑支持UEFI启动软件：windows下使用rufus(linux用dd命令) 镜像准备： 进入清华arch的镜像网站https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;archlinux&#x2F;iso&#x2F;latest">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ArchLinux基本系统的安装">
+<meta property="og:url" content="https://example.com/2022/02/10/arch_install/index.html">
 <meta property="og:site_name" content="ezhonghu&#39;s blog">
-<meta property="og:description" content="花开时节|花自开">
+<meta property="og:description" content="本文要完成的效果：安装archlinux,暂无图形界面,与window10系统共存 本次安装使用：硬件：16G的U盘一个(启动盘）、500G的固态硬盘一个(安装盘)、电脑支持UEFI启动软件：windows下使用rufus(linux用dd命令) 镜像准备： 进入清华arch的镜像网站https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;archlinux&#x2F;iso&#x2F;latest">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-02-10T14:12:58.345Z">
+<meta property="article:modified_time" content="2022-02-10T14:12:58.345Z">
 <meta property="article:author" content="ezhonghu">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://example.com/">
+<link rel="canonical" href="https://example.com/2022/02/10/arch_install/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'en'
   };
 </script>
 
-  <title>ezhonghu's blog</title>
+  <title>ArchLinux基本系统的安装 | ezhonghu's blog</title>
   
 
 
@@ -141,9 +143,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
@@ -159,10 +162,9 @@
       <meta itemprop="name" content="ezhonghu's blog">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/10/arch_install/" class="post-title-link" itemprop="url">ArchLinux基本系统的安装</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          ArchLinux基本系统的安装
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -185,7 +187,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>本文要完成的效果：安装archlinux,暂无图形界面,与window10系统共存</p>
+        <p>本文要完成的效果：安装archlinux,暂无图形界面,与window10系统共存</p>
 <h2 id="本次安装使用："><a href="#本次安装使用：" class="headerlink" title="本次安装使用："></a>本次安装使用：</h2><p>硬件：16G的U盘一个(启动盘）、500G的固态硬盘一个(安装盘)、电脑支持UEFI启动<br>软件：windows下使用rufus(linux用dd命令)</p>
 <p>镜像准备：</p>
 <p>进入清华arch的镜像网站<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/archlinux/iso/latest/">https://mirrors.tuna.tsinghua.edu.cn/archlinux/iso/latest/</a>选择最新的ISO文件下载（600多Mib的那个）</p>
@@ -246,259 +248,30 @@
 <h2 id="重启"><a href="#重启" class="headerlink" title="重启:"></a>重启:</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reboot</span><br></pre></td></tr></table></figure>
 <p><strong>恭喜成功安装ArchLinux！</strong></p>
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://example.com/2022/02/10/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">
+        
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/ezhonghuAvatar.JPG">
-      <meta itemprop="name" content="ezhonghu">
-      <meta itemprop="description" content="花开时节|花自开">
-    </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ezhonghu's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/10/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">hexo搭建博客步骤</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-02-10 11:02:20" itemprop="dateCreated datePublished" datetime="2022-02-10T11:02:20+08:00">2022-02-10</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="1-搭建环境"><a href="#1-搭建环境" class="headerlink" title="1.搭建环境"></a>1.搭建环境</h3><p>1.在<a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">nodejs官网</a>查看最新的nodejs包。</p>
-<p>2.下载Linux Binaries (x64) 的二进制包。（以下包为写下这篇博客时最新的包，当你看到的时候应该已经不是最新的了，请自行替换成上一步你所看到的最新的包）。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://nodejs.org/dist/v16.13.2/node-v16.13.2-linux-x64.tar.xz </span><br></pre></td></tr></table></figure>
-<p>3.解压包</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -Jxvf node-v16.13.2-linux-x64.tar.xz /opt/</span><br></pre></td></tr></table></figure>
-<p>4.在个人用户的shell配置文件加入环境变量（我的shell使用zsh，所以这里是.zshrc）</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvim .zshrc</span><br></pre></td></tr></table></figure>
-<p>在末尾加入(请自行替换成实际解压的文件夹名)</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PATH=/opt/node-v16.13.2-linux-x64/bin:$PATH</span><br></pre></td></tr></table></figure>
-<p>5.验证node安装成功</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
-<p>6.安装hexo(全局位置)</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-<h3 id="2-创建文件夹并初始化"><a href="#2-创建文件夹并初始化" class="headerlink" title="2.创建文件夹并初始化"></a>2.创建文件夹并初始化</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir hexo_blog</span><br><span class="line">hexo init hexo_blog/</span><br></pre></td></tr></table></figure>
-<p><img src="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/image-20220207095231195.png" alt="image-20220207095231195"></p>
-<h3 id="3-生成静态文件"><a href="#3-生成静态文件" class="headerlink" title="3.生成静态文件"></a>3.生成静态文件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd hexo</span><br><span class="line">hexo generate</span><br></pre></td></tr></table></figure>
-<h3 id="4-启动服务"><a href="#4-启动服务" class="headerlink" title="4.启动服务"></a>4.启动服务</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">heso server</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>默认端口为4000</p>
-</blockquote>
-<h3 id="5-浏览器查看"><a href="#5-浏览器查看" class="headerlink" title="5.浏览器查看"></a>5.浏览器查看</h3><p><img src="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/image-20220207103724320.png" alt="image-20220207103724320"></p>
-<blockquote>
-<p>以上为默认的模板文件</p>
-</blockquote>
-<hr>
-<h1 id="写文章"><a href="#写文章" class="headerlink" title="写文章"></a>写文章</h1><p>1.生成文章</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;第一篇博客&quot;</span><br></pre></td></tr></table></figure>
-<p>此时会在~/hexo_blog/source/_posts/下生成对应名称，后缀为md的文件。</p>
-<hr>
-<h1 id="部署到github-page上"><a href="#部署到github-page上" class="headerlink" title="部署到github page上"></a>部署到github page上</h1><h3 id="1-安装插件"><a href="#1-安装插件" class="headerlink" title="1.安装插件"></a>1.安装插件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-<h3 id="2-在github创建repository"><a href="#2-在github创建repository" class="headerlink" title="2.在github创建repository"></a>2.在github创建repository</h3><blockquote>
-<p>名称要与用户名一致,后面跟上.github.io</p>
-<p><img src="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/image-20220208091729049.png" alt="image-20220208091729049"></p>
-</blockquote>
-<h3 id="3-修改-config-yml文件"><a href="#3-修改-config-yml文件" class="headerlink" title="3.修改_config.yml文件"></a>3.修改_config.yml文件</h3><p>添加以下内容(repo替换上一步创建的repository)</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/ErzhongHoo/ErzhongHoo.github.io.git</span><br><span class="line">  branch: gh-pages</span><br></pre></td></tr></table></figure>
-<hr>
-<h1 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h1><h4 id="1-更换next主题"><a href="#1-更换next主题" class="headerlink" title="1.更换next主题"></a>1.更换next主题</h4><p><a target="_blank" rel="noopener" href="https://github.com/theme-next/hexo-theme-next/blob/master/docs/INSTALLATION.md">next官方安装文档</a></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd hexo_blog/</span><br><span class="line">git clone https://github.com/theme-next/hexo-theme-next themes/next</span><br><span class="line">nvim ~/hexo_blog/_config.yml</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p> 找到theme，将landscape替换为next</p>
-</blockquote>
-<h4 id="2-支持渲染latex公式"><a href="#2-支持渲染latex公式" class="headerlink" title="2.支持渲染latex公式"></a>2.支持渲染latex公式</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvim ~/hexo_blog/source/themes/next/_config.yml</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>找到mathjax，改成：</p>
-<blockquote>
-<p>enable : true</p>
-</blockquote>
-</blockquote>
-<p>在blog文件夹下:<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked</span><br><span class="line">npm install hexo-renderer-kramed</span><br></pre></td></tr></table></figure></p>
-<p>渲染<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g</span><br></pre></td></tr></table></figure></p>
-
-      
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/02/10/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/" rel="prev" title="hexo搭建博客步骤">
+      <i class="fa fa-chevron-left"></i> hexo搭建博客步骤
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://example.com/2022/02/10/math/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/ezhonghuAvatar.JPG">
-      <meta itemprop="name" content="ezhonghu">
-      <meta itemprop="description" content="花开时节|花自开">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ezhonghu's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/10/math/" class="post-title-link" itemprop="url">math</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-02-10 08:31:38 / Modified: 08:32:29" itemprop="dateCreated datePublished" datetime="2022-02-10T08:31:38+08:00">2022-02-10</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <script type="math/tex; mode=display">\begin{equation}\label{eq2}
-\begin{aligned}
-a &= b + c \\
-  &= d + e + f + g \\
-  &= h + i
-\end{aligned}
-\end{equation}</script>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://example.com/2022/02/10/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/ezhonghuAvatar.JPG">
-      <meta itemprop="name" content="ezhonghu">
-      <meta itemprop="description" content="花开时节|花自开">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ezhonghu's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/10/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-02-10 07:35:54" itemprop="dateCreated datePublished" datetime="2022-02-10T07:35:54+08:00">2022-02-10</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
   
 
 
@@ -551,6 +324,7 @@ a &= b + c \\
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AC%E6%AC%A1%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">本次安装使用：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E7%BD%91%E7%BB%9C%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">连接网络：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5%E6%97%B6%E9%97%B4%EF%BC%9A"><span class="nav-number">3.</span> <span class="nav-text">同步时间：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%99%E7%A1%AC%E7%9B%98%E5%88%86%E5%8C%BA%E5%8F%8A%E6%A0%BC%E5%BC%8F%E5%8C%96-UEFI%E6%96%B9%E5%BC%8F-%EF%BC%9A"><span class="nav-number">4.</span> <span class="nav-text">给硬盘分区及格式化(UEFI方式)：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%8A%E5%88%B6%E4%BD%9C%E5%A5%BD%E7%9A%84%E7%A1%AC%E7%9B%98%E6%8C%82%E5%9C%A8%E5%88%B0%E8%BF%99%E4%B8%AAU%E7%9B%98%E7%9A%84%E7%B3%BB%E7%BB%9F-Live-CD-%E6%9D%A5%E8%BF%9B%E8%A1%8C%E6%93%8D%E4%BD%9C%EF%BC%9A"><span class="nav-number">5.</span> <span class="nav-text">把制作好的硬盘挂在到这个U盘的系统(Live CD)来进行操作：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEPacman%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7%E7%9A%84%E9%95%9C%E5%83%8F"><span class="nav-number">6.</span> <span class="nav-text">配置Pacman包管理工具的镜像:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%9F%BA%E6%9C%AC%E7%9A%84%E5%8C%85%EF%BC%9A"><span class="nav-number">7.</span> <span class="nav-text">安装基本的包：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEfstab%EF%BC%9A"><span class="nav-number">8.</span> <span class="nav-text">配置fstab：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%8A%E4%BA%A4%E4%BA%92%E8%80%85%E6%9B%B4%E6%8D%A2%E4%B8%BA%E6%88%91%E4%BB%AC%E7%9A%84%E6%96%B0%E7%B3%BB%E7%BB%9F%EF%BC%9A"><span class="nav-number">9.</span> <span class="nav-text">把交互者更换为我们的新系统：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%90%E5%89%8D%E5%AE%89%E8%A3%85%E5%BF%85%E8%A6%81%E7%9A%84%E8%BD%AF%E4%BB%B6"><span class="nav-number">10.</span> <span class="nav-text">提前安装必要的软件:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E8%AF%AD%E8%A8%80%EF%BC%9A"><span class="nav-number">11.</span> <span class="nav-text">配置语言：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Intel-ucode-AMD%E5%A4%84%E7%90%86%E5%99%A8%E5%AE%89%E8%A3%85AMD-ucode"><span class="nav-number">12.</span> <span class="nav-text">安装Intel-ucode(AMD处理器安装AMD-ucode):</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%80%E5%87%BAchroot%E6%A8%A1%E5%BC%8F%EF%BC%9A"><span class="nav-number">13.</span> <span class="nav-text">退出chroot模式：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E6%8C%82"><span class="nav-number">14.</span> <span class="nav-text">解挂:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8D%E5%90%AF"><span class="nav-number">15.</span> <span class="nav-text">重启:</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -712,59 +486,6 @@ window.addEventListener('pjax:success', () => {
   
 
   
-      
-
-<script>
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      loader: {
-        source: {
-          '[tex]/amsCd': '[tex]/amscd',
-          '[tex]/AMScd': '[tex]/amscd'
-        }
-      },
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-        tags: 'ams'
-      },
-      options: {
-        renderActions: {
-          findScript: [10, doc => {
-            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-              const display = !!node.type.match(/; *mode=display/);
-              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-              const text = document.createTextNode('');
-              node.parentNode.replaceChild(text, node);
-              math.start = {node: text, delim: '', n: 0};
-              math.end = {node: text, delim: '', n: 0};
-              doc.math.push(math);
-            });
-          }, '', false],
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              let target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
-      }
-    };
-    (function () {
-      var script = document.createElement('script');
-      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
-      script.defer = true;
-      document.head.appendChild(script);
-    })();
-  } else {
-    MathJax.startup.document.state(0);
-    MathJax.texReset();
-    MathJax.typeset();
-  }
-</script>
-
-    
 
   
 
