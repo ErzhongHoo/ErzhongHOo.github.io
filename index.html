@@ -174,7 +174,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/vim%E4%BD%BF%E7%94%A8latex%E6%8F%92%E4%BB%B6/">
+    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/Movement_detect/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
@@ -188,7 +188,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/02/12/vim%E4%BD%BF%E7%94%A8latex%E6%8F%92%E4%BB%B6/" class="post-title-link" itemprop="url">vim的latex插件</a>
+            <a href="/2022/02/12/Movement_detect/" class="post-title-link" itemprop="url">基于树莓的派动态监控</a>
         </h2>
 
         <div class="post-meta">
@@ -197,8 +197,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2022-02-12 20:10:32" itemprop="dateCreated datePublished" datetime="2022-02-12T20:10:32+08:00">2022-02-12</time>
+              <time title="Created: 2022-02-12 21:57:37 / Modified: 15:30:02" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -221,214 +222,19 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="首先下载"><a href="#首先下载" class="headerlink" title="首先下载"></a>首先下载</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S texlive-core texlive-langchinese </span><br></pre></td></tr></table></figure>
-<h3 id="在vimrc里面配置如下"><a href="#在vimrc里面配置如下" class="headerlink" title="在vimrc里面配置如下"></a>在vimrc里面配置如下</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Plug &#x27;lervag/vimtex&#x27;</span><br><span class="line">let g:tex_flavor=&#x27;latex&#x27;</span><br><span class="line"></span><br><span class="line">&quot; 阅读器相关的配置 包含正反向查找功能 仅供参考</span><br><span class="line">let g:vimtex_view_general_viewer = &#x27;zathura&#x27;</span><br><span class="line">let g:vimtex_view_general_options_latexmk = &#x27;-reuse-instance&#x27;</span><br><span class="line">let g:vimtex_view_general_options</span><br><span class="line">\ = &#x27;-reuse-instance -forward-search @tex @line @pdf&#x27;</span><br><span class="line">\ . &#x27; -inverse-search &quot;&#x27; . exepath(v:progpath)</span><br><span class="line">\ . &#x27; --servername &#x27; . v:servername</span><br><span class="line">\ . &#x27; --remote-send \&quot;^&lt;C-\^&gt;^&lt;C-n^&gt;&#x27;</span><br><span class="line">\ . &#x27;:execute &#x27;&#x27;drop &#x27;&#x27; . fnameescape(&#x27;&#x27;\%f&#x27;&#x27;)^&lt;CR^&gt;&#x27;</span><br><span class="line">\ . &#x27;:\%l^&lt;CR^&gt;:normal\! zzzv^&lt;CR^&gt;&#x27;</span><br><span class="line">\ . &#x27;:call remote_foreground(&#x27;&#x27;&#x27;.v:servername.&#x27;&#x27;&#x27;)^&lt;CR^&gt;^&lt;CR^&gt;\&quot;&quot;&#x27;</span><br><span class="line"></span><br><span class="line">set conceallevel=1</span><br><span class="line">let g:tex_conceal=&#x27;abdmg&#x27;</span><br></pre></td></tr></table></figure>
-<h3 id="在编辑好的-tex格式文件用vim打开-可以通过一下命令编译操作"><a href="#在编辑好的-tex格式文件用vim打开-可以通过一下命令编译操作" class="headerlink" title="在编辑好的.tex格式文件用vim打开,可以通过一下命令编译操作"></a>在编辑好的.tex格式文件用vim打开,可以通过一下命令编译操作</h3><div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">LHS</th>
-<th style="text-align:center">RHS</th>
-<th style="text-align:center">MODE</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><code>&lt;leader&gt;</code>li</td>
-<td style="text-align:center"><plug>(vimtex-info)</td>
-<td style="text-align:center"><code>n</code></td>
-</tr>
-<tr>
-<td style="text-align:center"><code>&lt;leader&gt;</code>lt</td>
-<td style="text-align:center"><plug>(vimtex-toc-open)</td>
-<td style="text-align:center"><code>n</code></td>
-</tr>
-<tr>
-<td style="text-align:center"><code>&lt;leader&gt;</code>lT</td>
-<td style="text-align:center"><plug>(vimtex-toc-toggle)</td>
-<td style="text-align:center"><code>n</code></td>
-</tr>
-<tr>
-<td style="text-align:center"><code>&lt;leader&gt;</code>lv</td>
-<td style="text-align:center"><plug>(vimtex-view)</td>
-<td style="text-align:center"><code>n</code></td>
-</tr>
-<tr>
-<td style="text-align:center"><code>&lt;leader&gt;</code>ll</td>
-<td style="text-align:center"><plug>(vimtex-compile)</td>
-<td style="text-align:center"><code>n</code></td>
-</tr>
-<tr>
-<td style="text-align:center"><code>&lt;leader&gt;</code>lo</td>
-<td style="text-align:center"><plug>(vimtex-compile-output)</td>
-<td style="text-align:center"><code>n</code></td>
-</tr>
-<tr>
-<td style="text-align:center"><code>&lt;leader&gt;</code>lg</td>
-<td style="text-align:center"><plug>(vimtex-status)</td>
-<td style="text-align:center"><code>n</code></td>
-</tr>
-<tr>
-<td style="text-align:center"><code>&lt;leader&gt;</code>lG</td>
-<td style="text-align:center"><plug>(vimtex-status-all)</td>
-<td style="text-align:center"><code>n</code></td>
-</tr>
-<tr>
-<td style="text-align:center"><code>&lt;leader&gt;</code>lc</td>
-<td style="text-align:center"><plug>(vimtex-clean)</td>
-<td style="text-align:center"><code>n</code></td>
-</tr>
-<tr>
-<td style="text-align:center"><code>&lt;leader&gt;</code>lC</td>
-<td style="text-align:center"><plug>(vimtex-clean-full)</td>
-<td style="text-align:center"><code>n</code></td>
-</tr>
-<tr>
-<td style="text-align:center">dse</td>
-<td style="text-align:center"><plug>(vimtex-env-delete)</td>
-<td style="text-align:center"><code>n</code></td>
-</tr>
-<tr>
-<td style="text-align:center">dsc</td>
-<td style="text-align:center"><plug>(vimtex-cmd-delete)</td>
-<td style="text-align:center"><code>n</code></td>
-</tr>
-<tr>
-<td style="text-align:center">cse</td>
-<td style="text-align:center"><plug>(vimtex-env-change)</td>
-<td style="text-align:center"><code>n</code></td>
-</tr>
-<tr>
-<td style="text-align:center">csc</td>
-<td style="text-align:center"><plug>(vimtex-cmd-change)</td>
-<td style="text-align:center"><code>n</code></td>
-</tr>
-<tr>
-<td style="text-align:center"><kbd>F7</kbd></td>
-<td style="text-align:center"><plug>(vimtex-cmd-create)</td>
-<td style="text-align:center"><code>nxi</code></td>
-</tr>
-<tr>
-<td style="text-align:center">]]</td>
-<td style="text-align:center"><plug>(vimtex-delim-close)</td>
-<td style="text-align:center"><code>i</code></td>
-</tr>
-</tbody>
-</table>
-</div>
-<blockquote>
-<p><code>&lt;leader&gt;</code>键设置为默认的<kbd>\</kbd>键</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/%E5%AE%89%E8%A3%85%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E5%90%8E%E8%A6%81%E5%81%9A%E7%9A%84%E4%BA%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
-      <meta itemprop="name" content="ezhonghu">
-      <meta itemprop="description" content="花开时节|花自开">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ezhonghu's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/12/%E5%AE%89%E8%A3%85%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E5%90%8E%E8%A6%81%E5%81%9A%E7%9A%84%E4%BA%8B/" class="post-title-link" itemprop="url">树莓派安装系统后要做的事</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-02-12 16:58:38" itemprop="dateCreated datePublished" datetime="2022-02-12T16:58:38+08:00">2022-02-12</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li><p>树梅派官网下载树梅派系统的镜像。</p>
-</li>
-<li><p>ArchLinux的AUR上搜rpi-imager,烧录用。(windows系统可以在系统找到raspberry Pi imager)</p>
-</li>
+          <p>当有人移动时，捕获下照片（可用于监控）</p>
+<h2 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h2><ul>
+<li>树莓派</li>
+<li>camera</li>
+<li>人体接近传感器</li>
 </ul>
-<h4 id="1-使用rpi-mager-把系统烧录到SD卡"><a href="#1-使用rpi-mager-把系统烧录到SD卡" class="headerlink" title="1.使用rpi-mager,把系统烧录到SD卡"></a>1.使用rpi-mager,把系统烧录到SD卡</h4><p>SSH默认是不开启的,所以在烧录之后,在boot盘新建一个名为SSH的文件夹(就默认打开SSH了)</p>
-<h4 id="2-SD卡插入树梅派-插好网线和电源"><a href="#2-SD卡插入树梅派-插好网线和电源" class="headerlink" title="2.SD卡插入树梅派,插好网线和电源"></a>2.SD卡插入树梅派,插好网线和电源</h4><h4 id="3-登陆进入树梅派"><a href="#3-登陆进入树梅派" class="headerlink" title="3.登陆进入树梅派"></a>3.登陆进入树梅派</h4><p>默认SSH帐号密码:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">帐号:pi</span><br><span class="line">密码:raspberry</span><br></pre></td></tr></table></figure></p>
-<h4 id="4-更新密码"><a href="#4-更新密码" class="headerlink" title="4.更新密码"></a>4.更新密码</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd</span><br></pre></td></tr></table></figure>
-<p>(sudo账户同理)</p>
-<h4 id="5-更改镜像源"><a href="#5-更改镜像源" class="headerlink" title="5.更改镜像源"></a>5.更改镜像源</h4><p>用编辑器修改/etc/apt/source.list<br>用#号注释原文内容,替换成以下:(其他源也可以,距离地理位置近即可)<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ stretch main contrib non-free rpi</span><br><span class="line">deb-src http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ stretch main contrib non-free rpi</span><br></pre></td></tr></table></figure><br>用编辑器修改/etc/apt/sources.list.d/raspi.list文件:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/raspberrypi/ stretch main ui</span><br><span class="line">deb-src http://mirrors.tuna.tsinghua.edu.cn/raspberrypi/ stretch main ui</span><br></pre></td></tr></table></figure></p>
-<p>更新源:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure></p>
-<h4 id="6-安装最新版本的Python3-因为用docker-所以这一步遗弃了"><a href="#6-安装最新版本的Python3-因为用docker-所以这一步遗弃了" class="headerlink" title="6.安装最新版本的Python3(因为用docker,所以这一步遗弃了)"></a>6.安装最新版本的Python3(因为用docker,所以这一步遗弃了)</h4><p>提前安装好后面要用的依赖,常用的链接包链接进去</p>
-<p>在官网找到源码,并下载<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://www.python.org/ftp/python/3.9.6/Python-3.9.6.tar.xz</span><br></pre></td></tr></table></figure><br>解压<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar xvJf Python-3.9.6.tar.xz</span><br></pre></td></tr></table></figure><br>编译<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ./configure --prefix=/usr/local/Python-3.9.6 --enable-optimizations</span><br></pre></td></tr></table></figure><br>安装(如果提示无权限创建/usr/local/Python-3.9.6就su成root)<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo make &amp;&amp; make install</span><br></pre></td></tr></table></figure><br>软链接,方便使用<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ln -s /usr/local/Python-3.9.6/bin/python3.9 /usr/bin/python396</span><br><span class="line">ln -s /usr/local/Python-3.9.6/bin/pip3 /usr/bin/pip396</span><br></pre></td></tr></table></figure><br>这样就可以同时存在两个python了！一个是原装的python3.7,另一个是自己编译安装的python3.9.6!</p>
-<hr>
-<h2 id="个性化"><a href="#个性化" class="headerlink" title="个性化"></a>个性化</h2><h4 id="1-把bash改成zsh"><a href="#1-把bash改成zsh" class="headerlink" title="1.把bash改成zsh"></a>1.把bash改成zsh</h4><p>安装zsh<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install zsh</span><br></pre></td></tr></table></figure></p>
-<p>修改/etc/passwd,找到Pi用户所在行,将/usr/bin/bash改为/usr/bin/zsh</p>
-<h4 id="2-正确上网"><a href="#2-正确上网" class="headerlink" title="2.正确上网"></a>2.正确上网</h4><p>在<a target="_blank" rel="noopener" href="https://github.com/v2fly/v2ray-core/releases找到32位arm架构的linux版本,下载,使用">https://github.com/v2fly/v2ray-core/releases找到32位arm架构的linux版本,下载,使用</a><br>先从其他可以上网的电脑下载,复制到树梅派中<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/v2fly/v2ray-core/releases/download/v4.41.1/v2ray-linux-arm32-v7a.zip</span><br></pre></td></tr></table></figure><br>准备好配置文件。</p>
-<p>通过screen在后台运行:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">screen ./v2ray -c xxxx.json</span><br></pre></td></tr></table></figure><br>终端代理:(端口和代理类型要和json文件里指定的一致)<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export http_proxy=&quot;http://127.0.0.1:xxxx&quot;</span><br></pre></td></tr></table></figure></p>
-<h4 id="3-ohmyzsh"><a href="#3-ohmyzsh" class="headerlink" title="3.ohmyzsh"></a>3.ohmyzsh</h4><p>就算挂了代理也访问不了raw.github,所以官方安装方法使用不了。</p>
-<p>克隆这个项目到本地的~/.oh-my-zsh<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/ohmyzsh/ohmyzsh ~/.oh-my-zsh</span><br></pre></td></tr></table></figure><br>把.oh-my-zsh/templates/里面的文件复制到~/.zshrc配置文件中</p>
-<p>把.zshrc里面的ZSH_THEME改为”agnoster”(个人爱好)</p>
-<p>然后source .zshrc,</p>
-<h4 id="4-frp"><a href="#4-frp" class="headerlink" title="4.frp"></a>4.frp</h4><p>在<a target="_blank" rel="noopener" href="https://github.com/fatedier/frp/releases/tag/v0.37.1找到对应的版本(arm架构32位)下载">https://github.com/fatedier/frp/releases/tag/v0.37.1找到对应的版本(arm架构32位)下载</a></p>
-<p>frpc.ini配置文件:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line">server_addr = 120.79.229.218</span><br><span class="line">server_port = 7000</span><br><span class="line"></span><br><span class="line">[ssh]</span><br><span class="line">type = tcp</span><br><span class="line">local_ip = 127.0.0.1</span><br><span class="line">local_port = 22</span><br><span class="line">remote_port = 6000</span><br><span class="line"></span><br><span class="line">[web]</span><br><span class="line">type = http</span><br><span class="line">local_port = 80</span><br><span class="line">custom_domains = www.ezhonghu.top</span><br><span class="line"></span><br><span class="line">[web2]</span><br><span class="line">type = http</span><br><span class="line">local_port = 80</span><br><span class="line">custom_domains = www.ezhonghu.cn</span><br></pre></td></tr></table></figure></p>
-<h4 id="5-samba"><a href="#5-samba" class="headerlink" title="5.samba"></a>5.samba</h4><p>1.安装samba<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install samba</span><br></pre></td></tr></table></figure><br>弹出 Modify smb.conf to use WINS settings from DHCP?选择NO</p>
-<p>2.备份配置文件<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.back</span><br></pre></td></tr></table></figure></p>
-<p>3.配置conf文件<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/samba/smb.conf    </span><br></pre></td></tr></table></figure><br>4.加入以下内容<br><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[ezhonghuNAS]  # 显示被分享文件的名称    </span><br><span class="line">    comment = NAS Storage    # 说明信息    </span><br><span class="line">    valid users = pi,root    # 可以访问的用户    </span><br><span class="line">    path = /media/pi/    # 共享文件的路径    </span><br><span class="line">    browseable = yes    # 可被其他人看到资源名称（非内容）    </span><br><span class="line">    writable = yes    # 可写    </span><br><span class="line">    create mask = 0664    # 新建文件的权限为 664    </span><br><span class="line">    directory mask = 0775    # 新建目录的权限为 775    </span><br></pre></td></tr></table></figure></p>
-<p>5.重启samba<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/smbd restart</span><br></pre></td></tr></table></figure></p>
-<h4 id="6-neovim"><a href="#6-neovim" class="headerlink" title="6.neovim"></a>6.neovim</h4><blockquote>
-<p>因为想用最新的neovim,所以这里编译安装neovim<br>从github克隆neovim源码<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/neovim/neovim.git</span><br></pre></td></tr></table></figure><br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo make &amp;&amp; make install</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<h4 id="7-安装docker"><a href="#7-安装docker" class="headerlink" title="7.安装docker"></a>7.<a target="_blank" rel="noopener" href="https://phoenixnap.com/kb/docker-on-raspberry-pi">安装docker</a></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://get.docker.com -o get-docker.sh</span><br></pre></td></tr></table></figure>
-<p>执行<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo sh get-docker.sh</span><br></pre></td></tr></table></figure><br>把pi用户添加到docker group中,让其在非root状态下也能运行docker<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -aG docker pi</span><br></pre></td></tr></table></figure><br>重启后生效。</p>
-<p>测试docker<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run hello-world</span><br></pre></td></tr></table></figure></p>
-<h4 id="8-homeassistant-安装在docker里"><a href="#8-homeassistant-安装在docker里" class="headerlink" title="8.homeassistant(安装在docker里)"></a>8.homeassistant(安装在docker里)</h4><p>安装homeassistant,/PATH_TO_YOUR_CONFIG为配置存放位置,看个人爱好放指定位置。<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">  --name homeassistant \</span><br><span class="line">  --privileged \</span><br><span class="line">  --restart=unless-stopped \</span><br><span class="line">  -e TZ=MY_TIME_ZONE \</span><br><span class="line">  -v /PATH_TO_YOUR_CONFIG:/home/pi/.config/homeassistant/config \</span><br><span class="line">  --network=host \</span><br><span class="line">  ghcr.io/home-assistant/raspberrypi4-homeassistant:stable</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
-<p>等待安装结束,就可以通过<a href="http://127.0.0.1:8123登陆进入homeassistant">http://127.0.0.1:8123登陆进入homeassistant</a></p>
-<h4 id="9-mosquitto"><a href="#9-mosquitto" class="headerlink" title="9.mosquitto"></a>9.<a target="_blank" rel="noopener" href="https://mosquitto.org/blog/2013/01/mosquitto-debian-repository/">mosquitto</a></h4><p>为树莓派提供新库<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://repo.mosquitto.org/debian/mosquitto-repo.gpg.key</span><br></pre></td></tr></table></figure><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-key add mosquitto-repo.gpg.key</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /etc/apt/sources.list.d/</span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo wget http://repo.mosquitto.org/debian/mosquitto-jessie.list</span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo wget http://repo.mosquitto.org/debian/mosquitto-stretch.list</span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo wget http://repo.mosquitto.org/debian/mosquitto-buster.list</span><br></pre></td></tr></table></figure>
-<p>更新<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure><br>查包<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-cache search mosquitto</span><br></pre></td></tr></table></figure></p>
-<p>安装<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install mosquitto</span><br></pre></td></tr></table></figure></p>
+<h2 id="接线方式"><a href="#接线方式" class="headerlink" title="接线方式"></a>接线方式</h2><p>可以在树莓派终端查看各个引脚的作用</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pinout</span><br></pre></td></tr></table></figure>
+<p><img src="https://ezhonghupictures.oss-cn-shenzhen.aliyuncs.com/typora/pir-motion-sensor-with-raspberry-pi.jpg" alt="pir-motion-sensor-with-raspberry-pi"></p>
+<p><strong>开关的作用</strong>：<br>按下后退出程序。</p>
+<h2 id="烧录文件"><a href="#烧录文件" class="headerlink" title="烧录文件"></a>烧录文件</h2><p>创建一个.py文件，并拷贝以下代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Project 13 - Burglar Detector With Photo Capture</span></span><br><span class="line"><span class="comment">#latest code updates available at: https://github.com/RuiSantosdotme/RaspberryPiProject</span></span><br><span class="line"><span class="comment">#project updates at: https://nostarch.com/RaspberryPiProject</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#import the necessary packages</span></span><br><span class="line"><span class="keyword">from</span> gpiozero <span class="keyword">import</span> Button, MotionSensor</span><br><span class="line"><span class="keyword">from</span> picamera <span class="keyword">import</span> PiCamera</span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> sleep</span><br><span class="line"><span class="keyword">from</span> signal <span class="keyword">import</span> pause</span><br><span class="line"></span><br><span class="line"><span class="comment">#create objects that refer to a button,</span></span><br><span class="line"><span class="comment">#a motion sensor and the PiCamera</span></span><br><span class="line">button = Button(<span class="number">2</span>)</span><br><span class="line">pir = MotionSensor(<span class="number">4</span>)</span><br><span class="line">camera = PiCamera()</span><br><span class="line"></span><br><span class="line"><span class="comment">#start the camera</span></span><br><span class="line">camera.start_preview()</span><br><span class="line"></span><br><span class="line"><span class="comment">#image image names</span></span><br><span class="line">i = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#stop the camera when the pushbutton is pressed</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">stop_camera</span>():</span><br><span class="line">    camera.stop_preview()</span><br><span class="line">    <span class="comment">#exit the program</span></span><br><span class="line">    exit()</span><br><span class="line"></span><br><span class="line"><span class="comment">#take photo when motion is detected</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">take_photo</span>():</span><br><span class="line">    <span class="keyword">global</span> i</span><br><span class="line">    i = i + <span class="number">1</span></span><br><span class="line">    <span class="comment"># 自己选择拍照后要安装的位置</span></span><br><span class="line">    camera.capture(<span class="string">&#x27;/home/pi/Desktop/image_%s.jpg&#x27;</span> % i)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;A photo has been taken&#x27;</span>)</span><br><span class="line">    sleep(<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#assign a function that runs when the button is pressed</span></span><br><span class="line">button.when_pressed = stop_camera</span><br><span class="line"><span class="comment">#assign a function that runs when motion is detected</span></span><br><span class="line">pir.when_motion = take_photo</span><br><span class="line"></span><br><span class="line">pause()</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://randomnerdtutorials.com/raspberry-pi-motion-detector-photo-capture/">参考文章</a></p>
 
       
     </div>
@@ -471,8 +277,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2022-02-12 16:23:48" itemprop="dateCreated datePublished" datetime="2022-02-12T16:23:48+08:00">2022-02-12</time>
+              <time title="Created: 2022-02-12 21:57:37 / Modified: 16:23:48" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -520,7 +327,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/%E7%BD%91%E6%98%93%E4%BA%91mp3%E4%B8%8B%E8%BD%BD/">
+    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/archlinux_light_greeter/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
@@ -534,7 +341,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/02/12/%E7%BD%91%E6%98%93%E4%BA%91mp3%E4%B8%8B%E8%BD%BD/" class="post-title-link" itemprop="url">网易云音乐mp3下载</a>
+            <a href="/2022/02/12/archlinux_light_greeter/" class="post-title-link" itemprop="url">archlinux light greeter error</a>
         </h2>
 
         <div class="post-meta">
@@ -543,8 +350,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2022-02-12 16:17:17" itemprop="dateCreated datePublished" datetime="2022-02-12T16:17:17+08:00">2022-02-12</time>
+              <time title="Created: 2022-02-12 21:57:37 / Modified: 15:24:06" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -567,13 +375,23 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <blockquote>
-<p>前提:非vip音乐    </p>
-</blockquote>
-<h3 id="1-网址模板"><a href="#1-网址模板" class="headerlink" title="1.网址模板"></a>1.网址模板</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://music.163.com/song/media/outer/url?id=863706084.mp3    </span><br></pre></td></tr></table></figure>
-<h3 id="2-在网页找到要下载的音乐ID"><a href="#2-在网页找到要下载的音乐ID" class="headerlink" title="2.在网页找到要下载的音乐ID"></a>2.在网页找到要下载的音乐ID</h3><p><img src="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/image-20220212160555014.png" alt="音乐id"></p>
-<h3 id="3-把想要下载的音乐ID替换上述id-mp3之间"><a href="#3-把想要下载的音乐ID替换上述id-mp3之间" class="headerlink" title="3.把想要下载的音乐ID替换上述id=    .mp3之间"></a>3.把想要下载的音乐ID替换上述id=    .mp3之间</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://music.163.com/song/media/outer/url?id=1901371647.mp3</span><br></pre></td></tr></table></figure>
-<h3 id="4-下载"><a href="#4-下载" class="headerlink" title="4.下载"></a>4.下载</h3><p><img src="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/image-20220212160950599.png" alt="下载"></p>
+          <h2 id="A-problem"><a href="#A-problem" class="headerlink" title="A_problem:"></a>A_problem:</h2><p>I can’t start lightdm after i do fo this</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -Rns deepin plasma</span><br></pre></td></tr></table></figure>
+<p>that i can’t start my windows_manager’s manager!</p>
+<h2 id="Reason"><a href="#Reason" class="headerlink" title="Reason"></a>Reason</h2><p>Because something reliable be uninstalled, like deepin-dm, kde-dm, gnome-dm, plasma-dm etc.</p>
+<p>display-manager be uninstall !</p>
+<p>Other reason:/etc/systemd/system/display-manager already exist an cannot be rewrite.</p>
+<p>such as sudo systemctl enable lightdm.</p>
+<p>return: File /etc/systemc/system/display-manager.service already exists and is a symlink to /usr/lib/systemd/system/sddm.service</p>
+<h2 id="Sole"><a href="#Sole" class="headerlink" title="Sole"></a>Sole</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rm /etc/systemc/system/display-manager.service</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl enable lightdm</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ls -1 /usr/share/xgreeters/</span><br></pre></td></tr></table></figure>
+<p>if it not exist, please install a lightdm-greeter first.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S lightdm-deepin-greeter</span><br></pre></td></tr></table></figure>
+<p>Last step:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nvim /etc/lightdm/lightdm.conf</span><br></pre></td></tr></table></figure>
+<p>change to :<br>greeter-session = lightdm-deepin-greeter</p>
+<p>Done!</p>
 
       
     </div>
@@ -593,7 +411,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/2.4GHZ_Bluetooth_Wifi_conflict/">
+    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/arch_install/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
@@ -607,7 +425,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/02/12/2.4GHZ_Bluetooth_Wifi_conflict/" class="post-title-link" itemprop="url">Wifi and bluetooth radio frequency conflict</a>
+            <a href="/2022/02/12/arch_install/" class="post-title-link" itemprop="url">ArchLinux基本系统的安装</a>
         </h2>
 
         <div class="post-meta">
@@ -617,7 +435,141 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2022-02-12 15:45:43" itemprop="dateCreated datePublished" datetime="2022-02-12T15:45:43+08:00">2022-02-12</time>
+              <time title="Created: 2022-02-12 21:57:37" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-02-11 16:58:49" itemprop="dateModified" datetime="2022-02-11T16:58:49+08:00">2022-02-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>本文要完成的效果：安装archlinux,暂无图形界面,与window10系统共存</p>
+<h2 id="本次安装使用："><a href="#本次安装使用：" class="headerlink" title="本次安装使用："></a>本次安装使用：</h2><p>硬件：16G的U盘一个(启动盘）、500G的固态硬盘一个(安装盘)、电脑支持UEFI启动<br>软件：windows下使用rufus(linux用dd命令)</p>
+<p>镜像准备：</p>
+<p>进入清华arch的镜像网站<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/archlinux/iso/latest/">https://mirrors.tuna.tsinghua.edu.cn/archlinux/iso/latest/</a>选择最新的ISO文件下载（600多Mib的那个）</p>
+<p>使用rufus将.ISO文件刻录到16GU盘中。</p>
+<p>插入固态硬盘，重启电脑进入bios界面（微星GE为开机后按.号进入,有些笔记本为F2），把安全启动关闭，启动方式为UEFI启动，将启动顺序设置为 U盘启动优先于硬盘启动，保存后重启。</p>
+<p>进入电脑后选择archlinux进入（如果Ultra录入U盘正确，全为绿色OK，若出现Fail自行查询archl wiki）完成后有红色的root登录界面。</p>
+<h2 id="连接网络："><a href="#连接网络：" class="headerlink" title="连接网络："></a>连接网络：</h2><p>方法1.(如果当前的网络为自家的wifi)：</p>
+<p>查看当前有哪些wifi：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wifi-menu</span><br></pre></td></tr></table></figure><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">选择wifi并输入密码</span><br></pre></td></tr></table></figure><br>自动分配ip地址：(否则连上也不能ping通)<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dhcpcd</span><br></pre></td></tr></table></figure><br>ping下百度：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping www.baidu.com</span><br></pre></td></tr></table></figure><br>退出ping：<br><kbd>Ctrl</kbd>+<kbd>C</kbd> </p>
+<p>方法2.(使用企业级网络，比如校园网):</p>
+<p>查看当前可以连接的wifi设备(网卡)<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip link</span><br></pre></td></tr></table></figure><br>启动wlan0网卡<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip link set wlan0 up</span><br></pre></td></tr></table></figure><br>确认ip link 的wlan0的网卡是否成功打开<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip link</span><br></pre></td></tr></table></figure><br>显示现有的wifi<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iwlist wlan0 scan | grep ESSID</span><br></pre></td></tr></table></figure><br>将账号密码储存起来(帐号密码可修改)<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wpa_passphrase 网络名 密码 &gt; internet.conf </span><br></pre></td></tr></table></figure><br>用wlan0的网卡设备连接刚才储存起来的网络(&amp;为后台挂起)<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wpa_supplicant -c internet.conf -i wlan0 &amp;</span><br></pre></td></tr></table></figure><br>动态分配IP地址<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dhcpcd</span><br></pre></td></tr></table></figure></p>
+<h2 id="同步时间："><a href="#同步时间：" class="headerlink" title="同步时间："></a>同步时间：</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">timedatectl set-ntp true</span><br></pre></td></tr></table></figure>
+<h2 id="给硬盘分区及格式化-UEFI方式-："><a href="#给硬盘分区及格式化-UEFI方式-：" class="headerlink" title="给硬盘分区及格式化(UEFI方式)："></a>给硬盘分区及格式化(UEFI方式)：</h2><p>查看硬盘和分区：(本文中的500G硬盘为/dev/sdc)<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fdisk -l</span><br></pre></td></tr></table></figure><br>使用本U盘安装盘自带了分区的工具给硬盘分区：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fdisk /dev/sdc</span><br></pre></td></tr></table></figure><br>现在进入了 fdisk 分区环境，输入<kbd>g</kbd>来创建新gpt的分区表</p>
+<p>1、分512M的UEFI的启动分区</p>
+<p>输入<kbd>n</kbd>创建新的分区</p>
+<p>分区号码设置为1,输入<kbd>Enter</kbd>选择默认的1号</p>
+<p>分区开头为默认,输入<kbd>Enter</kbd>应该是2048</p>
+<p>分区结尾可以输入需要的大小,输入<kbd>+512M</kbd></p>
+<p>2、分250G的根分区</p>
+<p>分区号码设置为2,输入<kbd>2</kbd></p>
+<p>分区开头为默认,输入<kbd>Enter</kbd></p>
+<p>分区结尾250G,输入<kbd>+250G</kbd></p>
+<p>完成后可以输入<kbd>p</kbd>来查看刚才分的怎么样</p>
+<p>3、修改分区类型</p>
+<p>输入<kbd>t</kbd>选择/dev/sdc1（刚刚分的UEFI分区）</p>
+<p>输入<kbd>l</kbd>查看可以修改的类型，找到Linux UEFI对应的数字输入。</p>
+<p>输入<kbd>t</kbd>选择/dev/sdc2（刚刚分的根分区）</p>
+<p>输入<kbd>l</kbd>查看可以修改的类型，找到ext4对应的数字输入。</p>
+<p>查看刚刚的操作如何，输入<kbd>p</kbd></p>
+<p>觉得满意，保存！输入<kbd>w</kbd></p>
+<p>不满意，返回步骤1重来<br>格式化UEFI分区：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkfs.fat -F32 /dev/sdc1</span><br></pre></td></tr></table></figure><br>格式化根分区：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkfs.ext4 /dev/sdc2</span><br></pre></td></tr></table></figure></p>
+<h2 id="把制作好的硬盘挂在到这个U盘的系统-Live-CD-来进行操作："><a href="#把制作好的硬盘挂在到这个U盘的系统-Live-CD-来进行操作：" class="headerlink" title="把制作好的硬盘挂在到这个U盘的系统(Live CD)来进行操作："></a>把制作好的硬盘挂在到这个U盘的系统(Live CD)来进行操作：</h2><p>挂载根分区到/mnt上：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount /dev/sdc2 /mnt</span><br></pre></td></tr></table></figure>
+<p>在Live CD的/mnt中创建/boot目录：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir /boot</span><br></pre></td></tr></table></figure><br>挂在UEFI启动分区到/mnt/boot上：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount /dev/sdc1 /mnt/boot</span><br></pre></td></tr></table></figure></p>
+<h2 id="配置Pacman包管理工具的镜像"><a href="#配置Pacman包管理工具的镜像" class="headerlink" title="配置Pacman包管理工具的镜像:"></a>配置Pacman包管理工具的镜像:</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/pacman.d/mirrorlist</span><br></pre></td></tr></table></figure>
+<p>找到标有China的镜像源，选择几个距离本地比较近的镜像位置，放到开头<br>推荐浙江大学和清华大学的镜像</p>
+<h2 id="安装基本的包："><a href="#安装基本的包：" class="headerlink" title="安装基本的包："></a>安装基本的包：</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacstrap /mnt base base-devel linux linux-firmware dhcpcd</span><br></pre></td></tr></table></figure>
+<p>如果在上一部配置镜像正确的话应该不会慢的。</p>
+<h2 id="配置fstab："><a href="#配置fstab：" class="headerlink" title="配置fstab："></a>配置fstab：</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">genfstab -L /mnt &gt;&gt; /mnt/etc/fstab</span><br></pre></td></tr></table></figure>
+<p>检查下配置好了没<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /mnt/etc/fstab</span><br></pre></td></tr></table></figure></p>
+<p>可以看到/dev/sdc1 挂在到了 /boot分区，/dev/sdc2 挂载到了/根分区</p>
+<h2 id="把交互者更换为我们的新系统："><a href="#把交互者更换为我们的新系统：" class="headerlink" title="把交互者更换为我们的新系统："></a>把交互者更换为我们的新系统：</h2><p>接下来所有的操作路径前面都会有一个看不见的/mnt！<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arch-chroot /mnt</span><br></pre></td></tr></table></figure><br>如果系统被玩坏了，可以将根分区挂载到/mnt，启动分区挂载到/mnt/boot上，然后arch-chroot来修复系统。</p>
+<p>设置时区：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</span><br></pre></td></tr></table></figure><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hwclock --systohc</span><br></pre></td></tr></table></figure></p>
+<h2 id="提前安装必要的软件"><a href="#提前安装必要的软件" class="headerlink" title="提前安装必要的软件:"></a>提前安装必要的软件:</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S vim dialog wpa_supplicant ntfs-3g networkmanager netctl</span><br></pre></td></tr></table></figure>
+<h2 id="配置语言："><a href="#配置语言：" class="headerlink" title="配置语言："></a>配置语言：</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/locale.gen</span><br></pre></td></tr></table></figure>
+<p>去掉zh_CN.UTF—8,zh_HK.UTF-8,zh_TW.UTF-8.en_US.UTF-8前面的#号,保存并退出</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">locale-gen</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/locale.conf</span><br></pre></td></tr></table></figure>
+<p>在第一行加入：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LANG=en_US.UTF-8</span><br></pre></td></tr></table></figure><br>保存并退出</p>
+<p>设置主机名称：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/hostname</span><br></pre></td></tr></table></figure><br>自己设定一个myhostname(记住名称，等会用到)<br>这里我设置<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ArchLinux</span><br></pre></td></tr></table></figure><br>保存并退出<br>编辑/etc/hosts<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/hosts</span><br></pre></td></tr></table></figure><br>到达文件末尾，加入如下内容：(ArchLinux替换为刚才设置myhostname的名称)<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1 localhost</span><br><span class="line">::1 localhost</span><br><span class="line">127.0.1.1 ArchLinux.localdomain ArchLinux</span><br></pre></td></tr></table></figure><br>保存并退出</p>
+<p>设置Root的密码：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd</span><br></pre></td></tr></table></figure></p>
+<h2 id="安装Intel-ucode-AMD处理器安装AMD-ucode"><a href="#安装Intel-ucode-AMD处理器安装AMD-ucode" class="headerlink" title="安装Intel-ucode(AMD处理器安装AMD-ucode):"></a>安装Intel-ucode(AMD处理器安装AMD-ucode):</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S intel-ucode</span><br></pre></td></tr></table></figure>
+<p>安装启动引导Bootloader：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S os-prober ntfs-3g</span><br></pre></td></tr></table></figure><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S grub efibootmgr</span><br></pre></td></tr></table></figure><br>部署grub:<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub```</span><br><span class="line"></span><br><span class="line">ps:如果安装在U盘(移动硬盘上),应把上面那条改为:</span><br><span class="line">​```shell</span><br><span class="line">grub-install --terget=x86_64-efi --efi-directory=/boot --removable --recheck</span><br></pre></td></tr></table></figure></p>
+<p>生成配置文件:<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grub-mkconfig -o /boot/grub/grub.cfg</span><br></pre></td></tr></table></figure></p>
+<p>检查下是否成功生成系统的引导入口:<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /boot/grub/grub.cfg</span><br></pre></td></tr></table></figure><br>看看末尾menuentry是否有Archlinux系统。</p>
+<h2 id="退出chroot模式："><a href="#退出chroot模式：" class="headerlink" title="退出chroot模式："></a>退出chroot模式：</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exit</span><br></pre></td></tr></table></figure>
+<h2 id="解挂"><a href="#解挂" class="headerlink" title="解挂:"></a>解挂:</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">umount /mnt/boot</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">umount /mnt</span><br></pre></td></tr></table></figure>
+<h2 id="重启"><a href="#重启" class="headerlink" title="重启:"></a>重启:</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reboot</span><br></pre></td></tr></table></figure>
+<p><strong>恭喜成功安装ArchLinux！</strong></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/learn_git/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
+      <meta itemprop="name" content="ezhonghu">
+      <meta itemprop="description" content="花开时节|花自开">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ezhonghu's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/12/learn_git/" class="post-title-link" itemprop="url">learn git</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-02-12 21:57:37 / Modified: 15:26:56" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -640,173 +592,45 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="problem"><a href="#problem" class="headerlink" title="problem"></a>problem</h2><p>When I connected to my logic K480 bluetooth keyboard, the Network speed became obliously slow!</p>
-<h2 id="reason"><a href="#reason" class="headerlink" title="reason"></a>reason</h2><p>After refer a title about bluetooth and wifi signal would be conflicted, I realize they are in same frequency at 2.4GHz!</p>
-<h2 id="solve"><a href="#solve" class="headerlink" title="solve"></a>solve</h2><p>Login Router Administration according local IP address.</p>
-<p>Find out frequency setting.</p>
-<p>Turn 40M to 20M.</p>
-<p>(while turn it down, the Network speed would be slow than before, but more stable)</p>
-<p><em>Done!</em></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/%E7%BB%88%E7%AB%AF%E8%B0%83%E6%95%B4%E8%A7%A6%E6%8E%A7%E6%9D%BF/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
-      <meta itemprop="name" content="ezhonghu">
-      <meta itemprop="description" content="花开时节|花自开">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ezhonghu's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/12/%E7%BB%88%E7%AB%AF%E8%B0%83%E6%95%B4%E8%A7%A6%E6%8E%A7%E6%9D%BF/" class="post-title-link" itemprop="url">笔记本电脑触控板配置</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-02-12 15:35:10" itemprop="dateCreated datePublished" datetime="2022-02-12T15:35:10+08:00">2022-02-12</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="1-查看设备的编号-id"><a href="#1-查看设备的编号-id" class="headerlink" title="1.查看设备的编号(id)"></a>1.查看设备的编号(id)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xinput list</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p> 此处以触控板为例</p>
-</blockquote>
-<p><img src="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/image-20220211160511697.png" alt="image-20220211160511697"></p>
-<h3 id="2-查看该设备支持哪些配置"><a href="#2-查看该设备支持哪些配置" class="headerlink" title="2.查看该设备支持哪些配置"></a>2.查看该设备支持哪些配置</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xinput list-props 15</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>触控板的id为15</p>
-</blockquote>
-<p><img src="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/image-20220211160724277.png" alt="image-20220211160724277"></p>
-<h3 id="3-修改"><a href="#3-修改" class="headerlink" title="3.修改"></a>3.修改</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xinput set-prop 15 162 0</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>把触控板禁用</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/%E5%8D%95%E4%BD%8D%E6%8D%A2%E7%AE%97/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
-      <meta itemprop="name" content="ezhonghu">
-      <meta itemprop="description" content="花开时节|花自开">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ezhonghu's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/12/%E5%8D%95%E4%BD%8D%E6%8D%A2%E7%AE%97/" class="post-title-link" itemprop="url">单位换算</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-02-12 15:31:36" itemprop="dateCreated datePublished" datetime="2022-02-12T15:31:36+08:00">2022-02-12</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%94%9F%E6%B4%BB/" itemprop="url" rel="index"><span itemprop="name">生活</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="消毒液配比问题"><a href="#消毒液配比问题" class="headerlink" title="消毒液配比问题"></a>消毒液配比问题</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><ul>
-<li>1颗消毒药的质量为1g</li>
-<li>1g药配1kg水</li>
+          <p>让当前目录可以git<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure></p>
+<p>提交到stage<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add xxx</span><br></pre></td></tr></table></figure></p>
+<p>提交并且附上说明<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &quot;xxxxxxxx&quot;</span><br></pre></td></tr></table></figure></p>
+<p>查看git状态:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure></p>
+<p>查看git日志<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log</span><br></pre></td></tr></table></figure></p>
+<p>查看git详细日志<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reflog</span><br></pre></td></tr></table></figure></p>
+<p>用图示的方式查看git日志<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --graph</span><br></pre></td></tr></table></figure></p>
+<p>回到没提交add之前的版本<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -- xxx</span><br></pre></td></tr></table></figure></p>
+<p>从add后的版本返回到file<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset HEAD xxx</span><br></pre></td></tr></table></figure></p>
+<p>删除文件:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rm xxx</span><br><span class="line">git rm xxx</span><br><span class="line">git commit -m &quot;xxxx&quot;</span><br></pre></td></tr></table></figure></p>
+<p>remote repository:</p>
+<p>1.生成ssh-key,到~/.ssh/id_rsa 和 ~/.ssh/id_rsa.pub<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;1942218829@qq.com&quot;</span><br></pre></td></tr></table></figure></p>
+<p>2.把id_rsa.pub复制到github页面中的ssh-key中</p>
+<p>3.master branch 变成 main branch</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -M main</span><br></pre></td></tr></table></figure>
+<p>4.把远程的仓库添加本地,让本地的朋友认识认识<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add repository_name main</span><br></pre></td></tr></table></figure></p>
+<p>5.本地的朋友送东西去给远程仓库的朋友<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push repository_name main</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>切换分支:(老版本通过git checkout xxx来切换分支,并且git checkout -b xxx来创建并切换分支)<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git switch xxx</span><br></pre></td></tr></table></figure></p>
+<p>创建分支并且切换分支:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git switch -c xxx</span><br></pre></td></tr></table></figure></p>
+<p>删除分支:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d xxx</span><br></pre></td></tr></table></figure></p>
+<p>查看有哪些分支:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></table></figure></p>
+<p>把两个分支合并(开发者提交到dev可用):<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge dev</span><br></pre></td></tr></table></figure></p>
+<p>注意事项:</p>
+<ul>
+<li>main branch 用于发布稳定的产品</li>
+<li>dev branch 用于开发版本</li>
+<li>ezhonghu branch 用于开发者提交开发版本内容到dev branch </li>
 </ul>
-<h1 id="1500ml水要放几颗药？"><a href="#1500ml水要放几颗药？" class="headerlink" title="1500ml水要放几颗药？"></a>1500ml水要放几颗药？</h1><blockquote>
-<p>水的密度:$1g/cm^3$</p>
-</blockquote>
-<p>1500ml水的质量:</p>
-<script type="math/tex; mode=display">\begin{align}
-m_水 &= \rho \times v_水 \\
-     &= 1g/cm^3 \times 1500ml \\
-     &= 1g/ml \times 1500ml \\
-     &= 1500g
-\end{align}</script><p>根据1g药配1000g水,1500g水要放1.5颗药。</p>
+<p>添加标签:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag v1.0</span><br></pre></td></tr></table></figure></p>
+<p>查看标签内容:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag v1.0</span><br></pre></td></tr></table></figure></p>
+<p>删除标签:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag -d v1.0</span><br></pre></td></tr></table></figure></p>
+<p>把当前commit提交标签到远程仓库:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push repository_name v1.0</span><br></pre></td></tr></table></figure></p>
+<h4 id="git版本回退"><a href="#git版本回退" class="headerlink" title="git版本回退"></a>git版本回退</h4><p>查看日志(复制下版本号)<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard &lt;版本号&gt;</span><br></pre></td></tr></table></figure>
+<p>要用-f参数才能提交(因为现在这个版本比远程仓库的版本老)<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -f &lt;original&gt; &lt;main&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="HEAD"><a href="#HEAD" class="headerlink" title="HEAD"></a>HEAD</h3><p>转换到main的HEAD<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git switch c4</span><br></pre></td></tr></table></figure></p>
+<p>转换到HEAD的父节点(退一步好用)<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git switch HEAD^</span><br></pre></td></tr></table></figure></p>
+<p>从现在的HEAD开始,向后退4步(退好几步好用)(相对引用)<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git switch HEAD~4</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -826,7 +650,7 @@ m_水 &= \rho \times v_水 \\
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/VLOOKUP/">
+    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/linux%E7%9A%84fhs%E8%A7%84%E8%8C%83/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
@@ -840,7 +664,7 @@ m_水 &= \rho \times v_水 \\
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/02/12/VLOOKUP/" class="post-title-link" itemprop="url">Excel VLOOPUP 函数 使用</a>
+            <a href="/2022/02/12/linux%E7%9A%84fhs%E8%A7%84%E8%8C%83/" class="post-title-link" itemprop="url">linux fhs 规范</a>
         </h2>
 
         <div class="post-meta">
@@ -849,8 +673,9 @@ m_水 &= \rho \times v_水 \\
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2022-02-12 15:31:07" itemprop="dateCreated datePublished" datetime="2022-02-12T15:31:07+08:00">2022-02-12</time>
+              <time title="Created: 2022-02-12 21:57:37 / Modified: 15:27:04" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -873,709 +698,636 @@ m_水 &= \rho \times v_水 \\
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>作用:从已知的一个表格匹配另一个表格对应的数据,并返回它的其他属性</p>
-<p>A表如下(已知)</p>
-<div class="table-container">
+          <p>linux文件路径和windows不太一样，windows有CDEFG各种盘，但是Linux一切由/而生。</p>
+<h3 id="常见的位置："><a href="#常见的位置：" class="headerlink" title="常见的位置："></a>常见的位置：</h3><div class="table-container">
 <table>
 <thead>
 <tr>
-<th></th>
-<th>A</th>
-<th>B</th>
+<th>位置</th>
+<th>作用</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>1</td>
-<td>姓名</td>
-<td>排名</td>
+<td>/</td>
+<td>又叫根路径(root)，代表了整个系统。以下所有的路径都是他的子路径</td>
 </tr>
 <tr>
-<td>2</td>
-<td>小明</td>
-<td>1</td>
+<td>/boot/</td>
+<td>放系统启动所需的东西</td>
 </tr>
 <tr>
-<td>3</td>
-<td>小张</td>
-<td>2</td>
+<td>/usr</td>
+<td>放可运行的程序</td>
 </tr>
 <tr>
-<td>4</td>
-<td>小王</td>
-<td>3</td>
+<td>/usr/bin/</td>
+<td>放一些基本指令</td>
+</tr>
+<tr>
+<td>/usr/local/</td>
+<td>相当于给其他用户可以放想放程序的一个路径，里面也有/bin，/etc/等等子路径</td>
+</tr>
+<tr>
+<td>/usr/include/</td>
+<td>放c和c++的头文件</td>
+</tr>
+<tr>
+<td>/usr/lib</td>
+<td>放可供所有架构调用的二进制库文件、放守护进程类型的程序</td>
+</tr>
+<tr>
+<td>/usr/share</td>
+<td>放可供各种可以一起使用的一些东西，比如帮助文档、字体等等</td>
+</tr>
+<tr>
+<td>/usr/share/doc</td>
+<td>放程序使用的帮助文档</td>
+</tr>
+<tr>
+<td>/etc</td>
+<td>装程序的配置文件</td>
+</tr>
+<tr>
+<td>/homt</td>
+<td>普通用户的家</td>
+</tr>
+<tr>
+<td>/root/</td>
+<td>超级管理员的家</td>
+</tr>
+<tr>
+<td>/srv/</td>
+<td>装载服务（一般可以装看不见的一些进程）</td>
+</tr>
+<tr>
+<td>/tmp</td>
+<td>临时文件存放处</td>
+</tr>
+<tr>
+<td>/var/</td>
+<td>放一些永久的变量（值会经常变，但是变量不变）</td>
+</tr>
+<tr>
+<td>/dev/</td>
+<td>插入的设备都会以文件的方式呈现出来（很好去Linux下一切皆文件的思想）</td>
+</tr>
+<tr>
+<td>/proc/</td>
+<td>存放这台电脑的软件信息</td>
+</tr>
+<tr>
+<td>/sys/</td>
+<td>存放这台电脑的硬件信息（以文件的方式存放）</td>
+</tr>
+<tr>
+<td>/bin/</td>
+<td>开机直接挂载（指向/usr/bin/）</td>
+</tr>
+<tr>
+<td>/sbin/</td>
+<td>开机直接被挂载（指向/usr/sbin/）</td>
+</tr>
+<tr>
+<td>/usr/sbin/</td>
+<td>放root的基本指令</td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>B表如下(排名要求)</p>
-<div class="table-container">
+<h3 id="家的位置（-home-lt-用户名-gt-）"><a href="#家的位置（-home-lt-用户名-gt-）" class="headerlink" title="家的位置（/home/&lt;用户名&gt;/）"></a>家的位置（/home/&lt;用户名&gt;/）</h3><div class="table-container">
 <table>
 <thead>
 <tr>
-<th></th>
-<th>A</th>
-<th>B</th>
-<th>C</th>
+<th style="text-align:center">位置</th>
+<th style="text-align:center">作用</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>1</td>
-<td>姓名</td>
-<td>班级</td>
-<td>排名</td>
+<td style="text-align:center">~/.config</td>
+<td style="text-align:center">放本用户的个人配置文件</td>
 </tr>
 <tr>
-<td>2</td>
-<td>小明</td>
-<td>一班</td>
-<td></td>
+<td style="text-align:center">~/.local/bin</td>
+<td style="text-align:center">放用户自行安装的可执行程序文件</td>
 </tr>
 <tr>
-<td>3</td>
-<td>小王</td>
-<td>五班</td>
-<td></td>
+<td style="text-align:center">~/.local/lib</td>
+<td style="text-align:center">放用户自行安装的库文件</td>
 </tr>
 <tr>
-<td>4</td>
-<td>小张</td>
-<td>三班</td>
-<td></td>
+<td style="text-align:center">~/.local/share</td>
+<td style="text-align:center">程序之间共享的资源</td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>如何通过B表的姓名,知道其个人的排名？</p>
-<div class="table-container">
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/markdownTex/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
+      <meta itemprop="name" content="ezhonghu">
+      <meta itemprop="description" content="花开时节|花自开">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ezhonghu's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/12/markdownTex/" class="post-title-link" itemprop="url">markdown 公式</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-02-12 21:57:37 / Modified: 15:27:15" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="分为行内公式和行间公式"><a href="#分为行内公式和行间公式" class="headerlink" title="分为行内公式和行间公式"></a>分为行内公式和行间公式</h2><h4 id="行内公式-左右一个"><a href="#行内公式-左右一个" class="headerlink" title="行内公式:(左右一个$)"></a>行内公式:(左右一个$)</h4><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$\Gamma(z) = \int<span class="emphasis">_0^\infty t^&#123;z-1&#125;e^&#123;-t&#125;dt\,.$</span></span><br></pre></td></tr></table></figure>
+<p>效果：$\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.$</p>
+<h4 id="行间公式-左右两个"><a href="#行间公式-左右两个" class="headerlink" title="行间公式:(左右两个$$)"></a>行间公式:(左右两个$$)</h4><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$$\Gamma(z) = \int<span class="emphasis">_0^\infty t^&#123;z-1&#125;e^&#123;-t&#125;dt\,.$$</span></span><br></pre></td></tr></table></figure>
+<p>效果：<script type="math/tex">\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.</script></p>
+<h2 id="希腊字母（code写在公式之间）"><a href="#希腊字母（code写在公式之间）" class="headerlink" title="希腊字母（code写在公式之间）"></a>希腊字母（code写在公式之间）</h2><div class="table-container">
 <table>
 <thead>
 <tr>
-<th></th>
-<th>A</th>
-<th>B</th>
-<th>C</th>
+<th>名称</th>
+<th>大写</th>
+<th>code</th>
+<th>小写</th>
+<th>code</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>1</td>
-<td>姓名</td>
-<td>班级</td>
-<td>排名</td>
+<td>alpha</td>
+<td>$A$</td>
+<td>A</td>
+<td>$\alpha$</td>
+<td>\alpha</td>
 </tr>
 <tr>
-<td>2</td>
-<td>小明</td>
-<td>一班</td>
-<td>=VLOOPUP(A3,A表$A,$B,3,FALSE)</td>
+<td>beta</td>
+<td>$B$</td>
+<td>B</td>
+<td>$\beta$</td>
+<td>\beta</td>
 </tr>
 <tr>
-<td>3</td>
-<td>小王</td>
-<td>五班</td>
-<td>=VLOOPUP(A3,A表$A,$B,3,FALSE)</td>
+<td>gamma</td>
+<td>$\Gamma$</td>
+<td>\Gamma</td>
+<td>$\gamma$</td>
+<td>\gamma</td>
 </tr>
 <tr>
-<td>4</td>
-<td>小张</td>
-<td>三班</td>
-<td>=VLOOPUP(A3,A表$A,$B,3,FALSE)</td>
+<td>delta</td>
+<td>$\Delta$</td>
+<td>\Delta</td>
+<td>$\delta$</td>
+<td>\delta</td>
+</tr>
+<tr>
+<td>epsilon</td>
+<td>$E$</td>
+<td>E</td>
+<td>$\epsilon$</td>
+<td>\epsilon</td>
+</tr>
+<tr>
+<td>zeta</td>
+<td>$Z$</td>
+<td>Z</td>
+<td>$\zeta$</td>
+<td>\zeta</td>
+</tr>
+<tr>
+<td>eta</td>
+<td>$H$</td>
+<td>H</td>
+<td>$\eta$</td>
+<td>\eta</td>
+</tr>
+<tr>
+<td>theta</td>
+<td>$\Theta$</td>
+<td>\Theta</td>
+<td>$\theta$</td>
+<td>\theta</td>
+</tr>
+<tr>
+<td>iota</td>
+<td>$\iota$</td>
+<td>\l</td>
+<td>$\iota$</td>
+<td>\iota</td>
+</tr>
+<tr>
+<td>kappa</td>
+<td>$K$</td>
+<td>\K</td>
+<td>$\kappa$</td>
+<td>\kappa</td>
+</tr>
+<tr>
+<td>lambda</td>
+<td>$\Lambda$</td>
+<td>\Lambda</td>
+<td>$\lambda$</td>
+<td>\lambda</td>
+</tr>
+<tr>
+<td>mu</td>
+<td>$M$</td>
+<td>M</td>
+<td>$\mu$</td>
+<td>\mu</td>
+</tr>
+<tr>
+<td>nu</td>
+<td>$N$</td>
+<td>N</td>
+<td>$\nu$</td>
+<td>\nu</td>
+</tr>
+<tr>
+<td>xi</td>
+<td>$\Xi$</td>
+<td>\Xi</td>
+<td>$\xi$</td>
+<td>\xi</td>
+</tr>
+<tr>
+<td>omicron</td>
+<td>$O$</td>
+<td>O</td>
+<td>$\omicron$</td>
+<td>\omicron</td>
+</tr>
+<tr>
+<td>pi</td>
+<td>$\Pi$</td>
+<td>\Pi</td>
+<td>$\pi$</td>
+<td>\pi</td>
+</tr>
+<tr>
+<td>rho</td>
+<td>$P$</td>
+<td>P</td>
+<td>$\rho$</td>
+<td>\rho</td>
+</tr>
+<tr>
+<td>sigma</td>
+<td>$\Sigma$</td>
+<td>\Sigma</td>
+<td>$\sigma$</td>
+<td>\sigma</td>
+</tr>
+<tr>
+<td>tau</td>
+<td>$T$</td>
+<td>T</td>
+<td>$\tau$</td>
+<td>\tau</td>
+</tr>
+<tr>
+<td>upsilon</td>
+<td>$\Upsilon$</td>
+<td>\Upsilon</td>
+<td>$\upsilon$</td>
+<td>\upsilons</td>
+</tr>
+<tr>
+<td>phi</td>
+<td>$\Phi$</td>
+<td>\Phi</td>
+<td>$\phi$</td>
+<td>\phi</td>
+</tr>
+<tr>
+<td>chi</td>
+<td>$X$</td>
+<td>X</td>
+<td>$\chi$</td>
+<td>\chi</td>
+</tr>
+<tr>
+<td>psi</td>
+<td>$\Psi$</td>
+<td>\Psi</td>
+<td>$\psi$</td>
+<td>\psi</td>
+</tr>
+<tr>
+<td>omega</td>
+<td>$\Omega$</td>
+<td>\Omega</td>
+<td>$\omega$</td>
+<td>\omega</td>
 </tr>
 </tbody>
 </table>
 </div>
+<h2 id="上下标"><a href="#上下标" class="headerlink" title="上下标"></a>上下标</h2><p>上标用^,下标用_</p>
+<p>如:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$x_1^2$ </span><br></pre></td></tr></table></figure>
+<p>效果：$x_1^2$</p>
+<p>也可以用花括号括起来,如:  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$x_&#123;11&#125;^&#123;22&#125;$</span><br></pre></td></tr></table></figure>
+<p>$x_{11}^{22}$</p>
+<h2 id="括号"><a href="#括号" class="headerlink" title="括号"></a>括号</h2><h4 id="带分母的括号："><a href="#带分母的括号：" class="headerlink" title="带分母的括号："></a>带分母的括号：</h4><p>法一：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(\frac&#123;x&#125;&#123;y&#125;)$</span><br></pre></td></tr></table></figure>
+<p>效果：$(\frac{x}{y})$</p>
+<p>法二：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$\left(\frac&#123;x&#125;&#123;y&#125;\right)$</span><br></pre></td></tr></table></figure>
+<p>效果：$\left(\frac{x}{y}\right)$</p>
+<h4 id="上下标-括号"><a href="#上下标-括号" class="headerlink" title="上下标+括号"></a>上下标+括号</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;(\frac&#123;x&#125;&#123;y&#125;&#125;)_&#123;11&#125;^&#123;22&#125;$</span><br></pre></td></tr></table></figure>
+<p>${(\frac{x}{y}})_{11}^{22}$</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/mosquitto_mqtt_broker/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
+      <meta itemprop="name" content="ezhonghu">
+      <meta itemprop="description" content="花开时节|花自开">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ezhonghu's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/12/mosquitto_mqtt_broker/" class="post-title-link" itemprop="url">使用mosquitto来搭建自己的mqtt服务器</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-02-12 21:57:37 / Modified: 15:29:47" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>1.安装</p>
+<p>2.在/etc/mosquitto/mosquitto.conf配置文件<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">bind_address 192.168.25.2</span><br><span class="line"></span><br><span class="line">port 1883</span><br><span class="line"></span><br><span class="line">allow_anonymous true</span><br><span class="line"></span><br><span class="line">#最大连接数没有限制</span><br><span class="line">max_connections -1</span><br></pre></td></tr></table></figure><br>此时192.168.25.2作为mqtt服务器</p>
+<p>3.重启服务<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart mosquitto.service</span><br></pre></td></tr></table></figure><br>此时服务器已经搭建完成,并且默认使用1883端口</p>
+<p>所有的机器可以是subcriber,也可以是publisher</p>
+<p>4.测试:</p>
+<p>手机A:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mosquitto_sub -h 192.168.25.2 -t &quot;Test&quot; </span><br></pre></td></tr></table></figure></p>
+<p>手机B:<br>```<br>mosquitto_pub -h 192.168.25.2 -t “Test” -m “Hello World!”</p>
+<p>反之也可以。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/samba/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
+      <meta itemprop="name" content="ezhonghu">
+      <meta itemprop="description" content="花开时节|花自开">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ezhonghu's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/12/samba/" class="post-title-link" itemprop="url">Respberry pi NAS</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-02-12 21:57:37 / Modified: 15:30:23" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>1.安装samba</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install samba</span><br></pre></td></tr></table></figure>
+<p>弹出 Modify smb.conf to use WINS settings from DHCP?选择NO</p>
+<p>2.备份配置文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.back</span><br></pre></td></tr></table></figure>
+<p>3.配置conf文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/samba/smb.conf</span><br></pre></td></tr></table></figure>
+<p>4.加入如下语句</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[ezhonghuNAS]  # 显示被分享文件的名称</span><br><span class="line">    comment = NAS Storage    # 说明信息</span><br><span class="line">    valid users = pi,root    # 可以访问的用户</span><br><span class="line">    path = /media/pi/    # 共享文件的路径</span><br><span class="line">    browseable = yes    # 可被其他人看到资源名称（非内容）</span><br><span class="line">    writable = yes    # 可写</span><br><span class="line">    create mask = 0664    # 新建文件的权限为 664</span><br><span class="line">    directory mask = 0775    # 新建目录的权限为 775</span><br></pre></td></tr></table></figure>
+<p>5.重启samba</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/smbd restart</span><br></pre></td></tr></table></figure>
+<p>6.没启动的话启动samba</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo samba</span><br></pre></td></tr></table></figure>
+<p>7.添加Pi用户作为登陆<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo smbpasswd -a pi</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/ssh%E5%85%8D%E5%AF%86%E7%99%BB%E9%99%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
+      <meta itemprop="name" content="ezhonghu">
+      <meta itemprop="description" content="花开时节|花自开">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ezhonghu's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/12/ssh%E5%85%8D%E5%AF%86%E7%99%BB%E9%99%86/" class="post-title-link" itemprop="url">ssh免密登陆</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-02-12 21:57:37 / Modified: 15:30:28" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="1-本地生成密钥对"><a href="#1-本地生成密钥对" class="headerlink" title="1.本地生成密钥对:"></a>1.本地生成密钥对:</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen</span><br></pre></td></tr></table></figure>
+<p>默认在~/.ssh/ 的目录默认生成名为id_rsa的两个文件</p>
 <blockquote>
-<p>A3表示所需要匹配的数据</p>
-<p>选择A表的所有列(从A列到B列)</p>
-<p>返回能和A3匹配的那一行对应的列(第三列)</p>
-<p>FALSE表示精确查找,TRUE表示模糊查找</p>
+<p>私钥rd_rsa<br>公钥id_rsa.pub</p>
 </blockquote>
-<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><div class="table-container">
-<table>
-<thead>
-<tr>
-<th></th>
-<th>A</th>
-<th>B</th>
-<th>C</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>姓名</td>
-<td>班级</td>
-<td>排名</td>
-</tr>
-<tr>
-<td>2</td>
-<td>小明</td>
-<td>一班</td>
-<td>1</td>
-</tr>
-<tr>
-<td>3</td>
-<td>小王</td>
-<td>五班</td>
-<td>3</td>
-</tr>
-<tr>
-<td>4</td>
-<td>小张</td>
-<td>三班</td>
-<td>2</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/use_vimplug/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
-      <meta itemprop="name" content="ezhonghu">
-      <meta itemprop="description" content="花开时节|花自开">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ezhonghu's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/12/use_vimplug/" class="post-title-link" itemprop="url">使用vimplug来安装vim插件：</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-02-12 15:30:58" itemprop="dateCreated datePublished" datetime="2022-02-12T15:30:58+08:00">2022-02-12</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="从github上获取vim-plug："><a href="#从github上获取vim-plug：" class="headerlink" title="从github上获取vim-plug："></a>从github上获取vim-plug：</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/junegunn/vim-plug</span><br></pre></td></tr></table></figure>
-<h2 id="把获取的vim-plug文件里面的plug-vim文件放到-vim-autoload-目录下："><a href="#把获取的vim-plug文件里面的plug-vim文件放到-vim-autoload-目录下：" class="headerlink" title="把获取的vim-plug文件里面的plug.vim文件放到~/.vim/autoload/目录下："></a>把获取的vim-plug文件里面的plug.vim文件放到~/.vim/autoload/目录下：</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv ~/vim-plug/plug.vim ~/.vim/autoload/</span><br></pre></td></tr></table></figure>
-<h2 id="配置-vimrc文件："><a href="#配置-vimrc文件：" class="headerlink" title="配置.vimrc文件："></a>配置.vimrc文件：</h2><h3 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim .vimrc</span><br></pre></td></tr></table></figure>
-<p>需要用什么插件就按这个格式来添加:<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">call plug#begin(&#x27;~/.vim/plugged&#x27;)</span><br><span class="line">plug &#x27;想用的插件(github上的插件名称，README.md有怎么添加)&#x27;</span><br><span class="line">call plug#end()</span><br></pre></td></tr></table></figure></p>
-<h3 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h3><p>保存.vimrc</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:w</span><br></pre></td></tr></table></figure>
-<h3 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h3><p>安装插件：(可以用tab)<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:PlugInstall</span><br></pre></td></tr></table></figure></p>
-<h3 id="4"><a href="#4" class="headerlink" title="4."></a>4.</h3><p>退出<strong>所有</strong>的vim文件(现在打开的是两个vim文件)<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:wqa</span><br></pre></td></tr></table></figure></p>
-<p>结束</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/symbols/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
-      <meta itemprop="name" content="ezhonghu">
-      <meta itemprop="description" content="花开时节|花自开">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ezhonghu's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/12/symbols/" class="post-title-link" itemprop="url">markdown特殊符号</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-02-12 15:30:35" itemprop="dateCreated datePublished" datetime="2022-02-12T15:30:35+08:00">2022-02-12</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <div class="table-container">
-<table>
-<thead>
-<tr>
-<th>符号</th>
-<th>说明</th>
-<th>对应编码(使用时去掉空格)</th>
-<th>英文怎么说</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>&amp;</td>
-<td>AND 符号</td>
-<td>&amp; amp;</td>
-<td>ampersand</td>
-</tr>
-<tr>
-<td>&lt;</td>
-<td>小于</td>
-<td>&amp; lt;</td>
-<td>little</td>
-</tr>
-<tr>
-<td>&gt;</td>
-<td>大于</td>
-<td>&amp; gt;</td>
-<td>great</td>
-</tr>
-<tr>
-<td></td>
-<td>空格</td>
-<td>&amp; nbsp;</td>
-<td>number space</td>
-</tr>
-<tr>
-<td>¿</td>
-<td>倒问号</td>
-<td>&amp; iquest;</td>
-<td>inverted question</td>
-</tr>
-<tr>
-<td>?</td>
-<td>问号</td>
-<td>&amp; quest;</td>
-<td>question</td>
-</tr>
-<tr>
-<td>«</td>
-<td>左书名号</td>
-<td>&amp; laquo;</td>
-<td>left angle quote</td>
-</tr>
-<tr>
-<td>»</td>
-<td>右书名号</td>
-<td>&amp; raquo;</td>
-<td>right angle quote</td>
-</tr>
-<tr>
-<td>“</td>
-<td>引号</td>
-<td>&amp; quot;</td>
-<td>quote</td>
-</tr>
-<tr>
-<td>‘</td>
-<td>左单引号</td>
-<td>&amp; lsquo;</td>
-<td>left single quote</td>
-</tr>
-<tr>
-<td>’</td>
-<td>右单引号</td>
-<td>&amp; rsquo:</td>
-<td>right single quote</td>
-</tr>
-<tr>
-<td>“</td>
-<td>左双引号</td>
-<td>&amp; ldquo:</td>
-<td>left double quote</td>
-</tr>
-<tr>
-<td>“</td>
-<td>右双引号</td>
-<td>&amp; rdquo:</td>
-<td>right double quote</td>
-</tr>
-<tr>
-<td>¶</td>
-<td>段落符号</td>
-<td>&amp; para;</td>
-<td>paragraph</td>
-</tr>
-<tr>
-<td>§</td>
-<td>章节符</td>
-<td>&amp; sect;</td>
-<td>section</td>
-</tr>
-<tr>
-<td>*</td>
-<td>乘号</td>
-<td>&amp; times;</td>
-<td>times</td>
-</tr>
-<tr>
-<td>÷</td>
-<td>除号</td>
-<td>&amp; divide;</td>
-<td>divide</td>
-</tr>
-<tr>
-<td>±</td>
-<td>加减号</td>
-<td>&amp; plusmn;</td>
-<td>plus minus</td>
-</tr>
-<tr>
-<td>ƒ</td>
-<td>function</td>
-<td>&amp; fnof;</td>
-<td>还没查到</td>
-</tr>
-<tr>
-<td>√</td>
-<td>根号</td>
-<td>&amp; radic;</td>
-<td>radic</td>
-</tr>
-<tr>
-<td>∞</td>
-<td>无穷大</td>
-<td>&amp; infin;</td>
-<td>infinite</td>
-</tr>
-<tr>
-<td>°</td>
-<td>度</td>
-<td>&amp; deg;</td>
-<td>degree</td>
-</tr>
-<tr>
-<td>≠</td>
-<td>不等号</td>
-<td>&amp; ne;</td>
-<td>ne</td>
-</tr>
-<tr>
-<td>≡</td>
-<td>恒等于</td>
-<td>&amp; equiv;</td>
-<td>equivalent</td>
-</tr>
-<tr>
-<td>≤</td>
-<td>小于等于</td>
-<td>&amp; le;</td>
-<td>less than or equal to</td>
-</tr>
-<tr>
-<td>≥</td>
-<td>大于等于</td>
-<td>&amp; ge;</td>
-<td>great than or equal to</td>
-</tr>
-<tr>
-<td>⊥</td>
-<td>垂直符号</td>
-<td>&amp; perp;</td>
-<td>perpendicular</td>
-</tr>
-<tr>
-<td>←</td>
-<td>左箭头</td>
-<td>&amp; larr;</td>
-<td>left arrow</td>
-</tr>
-<tr>
-<td>→</td>
-<td>右箭头</td>
-<td>&amp; rarr;</td>
-<td>right arrow</td>
-</tr>
-<tr>
-<td>↑</td>
-<td>上箭头</td>
-<td>&amp; uarr;</td>
-<td>up arrow</td>
-</tr>
-<tr>
-<td>↓</td>
-<td>下箭头</td>
-<td>&amp; darr;</td>
-<td>down arrow</td>
-</tr>
-<tr>
-<td>↔</td>
-<td>水平箭头</td>
-<td>&amp; harr;</td>
-<td>horizontal arrow</td>
-</tr>
-<tr>
-<td>↕</td>
-<td>竖直箭头</td>
-<td>&amp; varr;</td>
-<td>vertical arrow</td>
-</tr>
-<tr>
-<td>⇐</td>
-<td>双线左箭头</td>
-<td>&amp; lArr;</td>
-<td>left arrow</td>
-</tr>
-<tr>
-<td>⇒</td>
-<td>双线右箭头</td>
-<td>&amp; rArr;</td>
-<td>right arrow</td>
-</tr>
-<tr>
-<td>⇑</td>
-<td>双线上箭头</td>
-<td>&amp; uArr;</td>
-<td>up arrow</td>
-</tr>
-<tr>
-<td>⇓</td>
-<td>双线上箭头</td>
-<td>&amp; dArr;</td>
-<td>down arrow</td>
-</tr>
-<tr>
-<td>⇔</td>
-<td>双线水平双箭头</td>
-<td>&amp; hArr;</td>
-<td>horizontal arrow</td>
-</tr>
-<tr>
-<td>⇕</td>
-<td>双线竖直箭头</td>
-<td>&amp; vArr;</td>
-<td>vertical arrow</td>
-</tr>
-<tr>
-<td>♠</td>
-<td>黑桃</td>
-<td>&amp; spades;</td>
-<td>spades</td>
-</tr>
-<tr>
-<td>♥</td>
-<td>红桃</td>
-<td>&amp; hearts;</td>
-<td>hearts</td>
-</tr>
-<tr>
-<td>♣</td>
-<td>梅花</td>
-<td>&amp; clubs;</td>
-<td>club</td>
-</tr>
-<tr>
-<td>♦</td>
-<td>方块</td>
-<td>&amp; diams;</td>
-<td>diamonds</td>
-</tr>
-<tr>
-<td>©</td>
-<td>版权</td>
-<td>&amp; copy;</td>
-<td>copy right</td>
-</tr>
-<tr>
-<td>®</td>
-<td>注册商标</td>
-<td>&amp; reg;</td>
-<td>registration</td>
-</tr>
-<tr>
-<td>™</td>
-<td>商标</td>
-<td>&amp; trade;</td>
-<td>trade</td>
-</tr>
-<tr>
-<td>¥</td>
-<td>人民币</td>
-<td>&amp; yen;</td>
-<td></td>
-</tr>
-<tr>
-<td>€</td>
-<td>欧元</td>
-<td>&amp; euro;</td>
-<td>euro</td>
-</tr>
-<tr>
-<td>¢</td>
-<td>美分</td>
-<td>&amp; cent;</td>
-<td>cent</td>
-</tr>
-<tr>
-<td>£</td>
-<td>英磅</td>
-<td>&amp; pound;</td>
-<td>pound</td>
-</tr>
-<tr>
-<td>⊕</td>
-<td></td>
-<td>&amp; oplus;</td>
-<td></td>
-</tr>
-<tr>
-<td>½</td>
-<td>二分之一</td>
-<td>&amp; frac12;</td>
-<td>fraction</td>
-</tr>
-<tr>
-<td>¼</td>
-<td>四分之一</td>
-<td>&amp; frac14;</td>
-<td>fraction</td>
-</tr>
-<tr>
-<td>‰</td>
-<td>千分符号</td>
-<td>&amp; permil;</td>
-<td>per mille</td>
-</tr>
-<tr>
-<td>∴</td>
-<td>所以</td>
-<td>&amp; there4;</td>
-<td>there fore</td>
-</tr>
-<tr>
-<td>π</td>
-<td>圆周率</td>
-<td>&amp; pi;</td>
-<td></td>
-</tr>
-<tr>
-<td>¹</td>
-<td>商标1</td>
-<td>&amp; sup1;</td>
-<td>super 1</td>
-</tr>
-<tr>
-<td>α</td>
-<td>alpha</td>
-<td>&amp; alpha;</td>
-<td>alpha</td>
-</tr>
-<tr>
-<td>β</td>
-<td>beta</td>
-<td>&amp; beta;</td>
-<td>beta</td>
-</tr>
-<tr>
-<td>γ</td>
-<td>gamma</td>
-<td>&amp; gamma;</td>
-<td>gamma</td>
-</tr>
-<tr>
-<td>δ</td>
-<td>delta</td>
-<td>&amp; delta;</td>
-<td>delta</td>
-</tr>
-<tr>
-<td>θ</td>
-<td>theta</td>
-<td>&amp; theta;</td>
-<td>theta</td>
-</tr>
-<tr>
-<td>λ</td>
-<td>lambda</td>
-<td>&amp; lambda;</td>
-<td>lambda</td>
-</tr>
-<tr>
-<td>σ</td>
-<td>sigma</td>
-<td>&amp; sigma;</td>
-<td>sigma</td>
-</tr>
-<tr>
-<td>τ</td>
-<td>tau</td>
-<td>&amp; tau;</td>
-<td>tau</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>ps：在markdown tex中,&amp;改为\,并且去掉;号</p>
+<ul>
+<li>除了RSA算法,还有ecdsa算法等等</li>
+</ul>
+<blockquote>
+<p>可以可以通过 -t 参数来指定算法。</p>
+</blockquote>
+<h3 id="2-配置到远程"><a href="#2-配置到远程" class="headerlink" title="2.配置到远程"></a>2.配置到远程</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id -i ~/.ssh/id_rsa.pub &lt;user&gt;@&lt;ip&gt;</span><br></pre></td></tr></table></figure>
+<p>本地的公钥将会写到服务器的~/.ssh/authorized_keys,以后登陆的时候免密登陆。</p>
 
       
     </div>
