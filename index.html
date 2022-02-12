@@ -131,7 +131,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">23</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">22</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -170,6 +170,280 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/vim%E4%BD%BF%E7%94%A8latex%E6%8F%92%E4%BB%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
+      <meta itemprop="name" content="ezhonghu">
+      <meta itemprop="description" content="花开时节|花自开">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ezhonghu's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/12/vim%E4%BD%BF%E7%94%A8latex%E6%8F%92%E4%BB%B6/" class="post-title-link" itemprop="url">vim的latex插件</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-02-12 20:10:32" itemprop="dateCreated datePublished" datetime="2022-02-12T20:10:32+08:00">2022-02-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="首先下载"><a href="#首先下载" class="headerlink" title="首先下载"></a>首先下载</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S texlive-core texlive-langchinese </span><br></pre></td></tr></table></figure>
+<h3 id="在vimrc里面配置如下"><a href="#在vimrc里面配置如下" class="headerlink" title="在vimrc里面配置如下"></a>在vimrc里面配置如下</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Plug &#x27;lervag/vimtex&#x27;</span><br><span class="line">let g:tex_flavor=&#x27;latex&#x27;</span><br><span class="line"></span><br><span class="line">&quot; 阅读器相关的配置 包含正反向查找功能 仅供参考</span><br><span class="line">let g:vimtex_view_general_viewer = &#x27;zathura&#x27;</span><br><span class="line">let g:vimtex_view_general_options_latexmk = &#x27;-reuse-instance&#x27;</span><br><span class="line">let g:vimtex_view_general_options</span><br><span class="line">\ = &#x27;-reuse-instance -forward-search @tex @line @pdf&#x27;</span><br><span class="line">\ . &#x27; -inverse-search &quot;&#x27; . exepath(v:progpath)</span><br><span class="line">\ . &#x27; --servername &#x27; . v:servername</span><br><span class="line">\ . &#x27; --remote-send \&quot;^&lt;C-\^&gt;^&lt;C-n^&gt;&#x27;</span><br><span class="line">\ . &#x27;:execute &#x27;&#x27;drop &#x27;&#x27; . fnameescape(&#x27;&#x27;\%f&#x27;&#x27;)^&lt;CR^&gt;&#x27;</span><br><span class="line">\ . &#x27;:\%l^&lt;CR^&gt;:normal\! zzzv^&lt;CR^&gt;&#x27;</span><br><span class="line">\ . &#x27;:call remote_foreground(&#x27;&#x27;&#x27;.v:servername.&#x27;&#x27;&#x27;)^&lt;CR^&gt;^&lt;CR^&gt;\&quot;&quot;&#x27;</span><br><span class="line"></span><br><span class="line">set conceallevel=1</span><br><span class="line">let g:tex_conceal=&#x27;abdmg&#x27;</span><br></pre></td></tr></table></figure>
+<h3 id="在编辑好的-tex格式文件用vim打开-可以通过一下命令编译操作"><a href="#在编辑好的-tex格式文件用vim打开-可以通过一下命令编译操作" class="headerlink" title="在编辑好的.tex格式文件用vim打开,可以通过一下命令编译操作"></a>在编辑好的.tex格式文件用vim打开,可以通过一下命令编译操作</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">LHS</th>
+<th style="text-align:center">RHS</th>
+<th style="text-align:center">MODE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>&lt;leader&gt;</code>li</td>
+<td style="text-align:center"><plug>(vimtex-info)</td>
+<td style="text-align:center"><code>n</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&lt;leader&gt;</code>lt</td>
+<td style="text-align:center"><plug>(vimtex-toc-open)</td>
+<td style="text-align:center"><code>n</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&lt;leader&gt;</code>lT</td>
+<td style="text-align:center"><plug>(vimtex-toc-toggle)</td>
+<td style="text-align:center"><code>n</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&lt;leader&gt;</code>lv</td>
+<td style="text-align:center"><plug>(vimtex-view)</td>
+<td style="text-align:center"><code>n</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&lt;leader&gt;</code>ll</td>
+<td style="text-align:center"><plug>(vimtex-compile)</td>
+<td style="text-align:center"><code>n</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&lt;leader&gt;</code>lo</td>
+<td style="text-align:center"><plug>(vimtex-compile-output)</td>
+<td style="text-align:center"><code>n</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&lt;leader&gt;</code>lg</td>
+<td style="text-align:center"><plug>(vimtex-status)</td>
+<td style="text-align:center"><code>n</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&lt;leader&gt;</code>lG</td>
+<td style="text-align:center"><plug>(vimtex-status-all)</td>
+<td style="text-align:center"><code>n</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&lt;leader&gt;</code>lc</td>
+<td style="text-align:center"><plug>(vimtex-clean)</td>
+<td style="text-align:center"><code>n</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&lt;leader&gt;</code>lC</td>
+<td style="text-align:center"><plug>(vimtex-clean-full)</td>
+<td style="text-align:center"><code>n</code></td>
+</tr>
+<tr>
+<td style="text-align:center">dse</td>
+<td style="text-align:center"><plug>(vimtex-env-delete)</td>
+<td style="text-align:center"><code>n</code></td>
+</tr>
+<tr>
+<td style="text-align:center">dsc</td>
+<td style="text-align:center"><plug>(vimtex-cmd-delete)</td>
+<td style="text-align:center"><code>n</code></td>
+</tr>
+<tr>
+<td style="text-align:center">cse</td>
+<td style="text-align:center"><plug>(vimtex-env-change)</td>
+<td style="text-align:center"><code>n</code></td>
+</tr>
+<tr>
+<td style="text-align:center">csc</td>
+<td style="text-align:center"><plug>(vimtex-cmd-change)</td>
+<td style="text-align:center"><code>n</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><kbd>F7</kbd></td>
+<td style="text-align:center"><plug>(vimtex-cmd-create)</td>
+<td style="text-align:center"><code>nxi</code></td>
+</tr>
+<tr>
+<td style="text-align:center">]]</td>
+<td style="text-align:center"><plug>(vimtex-delim-close)</td>
+<td style="text-align:center"><code>i</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p><code>&lt;leader&gt;</code>键设置为默认的<kbd>\</kbd>键</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/%E5%AE%89%E8%A3%85%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E5%90%8E%E8%A6%81%E5%81%9A%E7%9A%84%E4%BA%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
+      <meta itemprop="name" content="ezhonghu">
+      <meta itemprop="description" content="花开时节|花自开">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ezhonghu's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/12/%E5%AE%89%E8%A3%85%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E5%90%8E%E8%A6%81%E5%81%9A%E7%9A%84%E4%BA%8B/" class="post-title-link" itemprop="url">树莓派安装系统后要做的事</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-02-12 16:58:38" itemprop="dateCreated datePublished" datetime="2022-02-12T16:58:38+08:00">2022-02-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li><p>树梅派官网下载树梅派系统的镜像。</p>
+</li>
+<li><p>ArchLinux的AUR上搜rpi-imager,烧录用。(windows系统可以在系统找到raspberry Pi imager)</p>
+</li>
+</ul>
+<h4 id="1-使用rpi-mager-把系统烧录到SD卡"><a href="#1-使用rpi-mager-把系统烧录到SD卡" class="headerlink" title="1.使用rpi-mager,把系统烧录到SD卡"></a>1.使用rpi-mager,把系统烧录到SD卡</h4><p>SSH默认是不开启的,所以在烧录之后,在boot盘新建一个名为SSH的文件夹(就默认打开SSH了)</p>
+<h4 id="2-SD卡插入树梅派-插好网线和电源"><a href="#2-SD卡插入树梅派-插好网线和电源" class="headerlink" title="2.SD卡插入树梅派,插好网线和电源"></a>2.SD卡插入树梅派,插好网线和电源</h4><h4 id="3-登陆进入树梅派"><a href="#3-登陆进入树梅派" class="headerlink" title="3.登陆进入树梅派"></a>3.登陆进入树梅派</h4><p>默认SSH帐号密码:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">帐号:pi</span><br><span class="line">密码:raspberry</span><br></pre></td></tr></table></figure></p>
+<h4 id="4-更新密码"><a href="#4-更新密码" class="headerlink" title="4.更新密码"></a>4.更新密码</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd</span><br></pre></td></tr></table></figure>
+<p>(sudo账户同理)</p>
+<h4 id="5-更改镜像源"><a href="#5-更改镜像源" class="headerlink" title="5.更改镜像源"></a>5.更改镜像源</h4><p>用编辑器修改/etc/apt/source.list<br>用#号注释原文内容,替换成以下:(其他源也可以,距离地理位置近即可)<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ stretch main contrib non-free rpi</span><br><span class="line">deb-src http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ stretch main contrib non-free rpi</span><br></pre></td></tr></table></figure><br>用编辑器修改/etc/apt/sources.list.d/raspi.list文件:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/raspberrypi/ stretch main ui</span><br><span class="line">deb-src http://mirrors.tuna.tsinghua.edu.cn/raspberrypi/ stretch main ui</span><br></pre></td></tr></table></figure></p>
+<p>更新源:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure></p>
+<h4 id="6-安装最新版本的Python3-因为用docker-所以这一步遗弃了"><a href="#6-安装最新版本的Python3-因为用docker-所以这一步遗弃了" class="headerlink" title="6.安装最新版本的Python3(因为用docker,所以这一步遗弃了)"></a>6.安装最新版本的Python3(因为用docker,所以这一步遗弃了)</h4><p>提前安装好后面要用的依赖,常用的链接包链接进去</p>
+<p>在官网找到源码,并下载<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://www.python.org/ftp/python/3.9.6/Python-3.9.6.tar.xz</span><br></pre></td></tr></table></figure><br>解压<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar xvJf Python-3.9.6.tar.xz</span><br></pre></td></tr></table></figure><br>编译<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ./configure --prefix=/usr/local/Python-3.9.6 --enable-optimizations</span><br></pre></td></tr></table></figure><br>安装(如果提示无权限创建/usr/local/Python-3.9.6就su成root)<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo make &amp;&amp; make install</span><br></pre></td></tr></table></figure><br>软链接,方便使用<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ln -s /usr/local/Python-3.9.6/bin/python3.9 /usr/bin/python396</span><br><span class="line">ln -s /usr/local/Python-3.9.6/bin/pip3 /usr/bin/pip396</span><br></pre></td></tr></table></figure><br>这样就可以同时存在两个python了！一个是原装的python3.7,另一个是自己编译安装的python3.9.6!</p>
+<hr>
+<h2 id="个性化"><a href="#个性化" class="headerlink" title="个性化"></a>个性化</h2><h4 id="1-把bash改成zsh"><a href="#1-把bash改成zsh" class="headerlink" title="1.把bash改成zsh"></a>1.把bash改成zsh</h4><p>安装zsh<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install zsh</span><br></pre></td></tr></table></figure></p>
+<p>修改/etc/passwd,找到Pi用户所在行,将/usr/bin/bash改为/usr/bin/zsh</p>
+<h4 id="2-正确上网"><a href="#2-正确上网" class="headerlink" title="2.正确上网"></a>2.正确上网</h4><p>在<a target="_blank" rel="noopener" href="https://github.com/v2fly/v2ray-core/releases找到32位arm架构的linux版本,下载,使用">https://github.com/v2fly/v2ray-core/releases找到32位arm架构的linux版本,下载,使用</a><br>先从其他可以上网的电脑下载,复制到树梅派中<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/v2fly/v2ray-core/releases/download/v4.41.1/v2ray-linux-arm32-v7a.zip</span><br></pre></td></tr></table></figure><br>准备好配置文件。</p>
+<p>通过screen在后台运行:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">screen ./v2ray -c xxxx.json</span><br></pre></td></tr></table></figure><br>终端代理:(端口和代理类型要和json文件里指定的一致)<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export http_proxy=&quot;http://127.0.0.1:xxxx&quot;</span><br></pre></td></tr></table></figure></p>
+<h4 id="3-ohmyzsh"><a href="#3-ohmyzsh" class="headerlink" title="3.ohmyzsh"></a>3.ohmyzsh</h4><p>就算挂了代理也访问不了raw.github,所以官方安装方法使用不了。</p>
+<p>克隆这个项目到本地的~/.oh-my-zsh<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/ohmyzsh/ohmyzsh ~/.oh-my-zsh</span><br></pre></td></tr></table></figure><br>把.oh-my-zsh/templates/里面的文件复制到~/.zshrc配置文件中</p>
+<p>把.zshrc里面的ZSH_THEME改为”agnoster”(个人爱好)</p>
+<p>然后source .zshrc,</p>
+<h4 id="4-frp"><a href="#4-frp" class="headerlink" title="4.frp"></a>4.frp</h4><p>在<a target="_blank" rel="noopener" href="https://github.com/fatedier/frp/releases/tag/v0.37.1找到对应的版本(arm架构32位)下载">https://github.com/fatedier/frp/releases/tag/v0.37.1找到对应的版本(arm架构32位)下载</a></p>
+<p>frpc.ini配置文件:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line">server_addr = 120.79.229.218</span><br><span class="line">server_port = 7000</span><br><span class="line"></span><br><span class="line">[ssh]</span><br><span class="line">type = tcp</span><br><span class="line">local_ip = 127.0.0.1</span><br><span class="line">local_port = 22</span><br><span class="line">remote_port = 6000</span><br><span class="line"></span><br><span class="line">[web]</span><br><span class="line">type = http</span><br><span class="line">local_port = 80</span><br><span class="line">custom_domains = www.ezhonghu.top</span><br><span class="line"></span><br><span class="line">[web2]</span><br><span class="line">type = http</span><br><span class="line">local_port = 80</span><br><span class="line">custom_domains = www.ezhonghu.cn</span><br></pre></td></tr></table></figure></p>
+<h4 id="5-samba"><a href="#5-samba" class="headerlink" title="5.samba"></a>5.samba</h4><p>1.安装samba<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install samba</span><br></pre></td></tr></table></figure><br>弹出 Modify smb.conf to use WINS settings from DHCP?选择NO</p>
+<p>2.备份配置文件<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.back</span><br></pre></td></tr></table></figure></p>
+<p>3.配置conf文件<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/samba/smb.conf    </span><br></pre></td></tr></table></figure><br>4.加入以下内容<br><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[ezhonghuNAS]  # 显示被分享文件的名称    </span><br><span class="line">    comment = NAS Storage    # 说明信息    </span><br><span class="line">    valid users = pi,root    # 可以访问的用户    </span><br><span class="line">    path = /media/pi/    # 共享文件的路径    </span><br><span class="line">    browseable = yes    # 可被其他人看到资源名称（非内容）    </span><br><span class="line">    writable = yes    # 可写    </span><br><span class="line">    create mask = 0664    # 新建文件的权限为 664    </span><br><span class="line">    directory mask = 0775    # 新建目录的权限为 775    </span><br></pre></td></tr></table></figure></p>
+<p>5.重启samba<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/smbd restart</span><br></pre></td></tr></table></figure></p>
+<h4 id="6-neovim"><a href="#6-neovim" class="headerlink" title="6.neovim"></a>6.neovim</h4><blockquote>
+<p>因为想用最新的neovim,所以这里编译安装neovim<br>从github克隆neovim源码<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/neovim/neovim.git</span><br></pre></td></tr></table></figure><br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo make &amp;&amp; make install</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h4 id="7-安装docker"><a href="#7-安装docker" class="headerlink" title="7.安装docker"></a>7.<a target="_blank" rel="noopener" href="https://phoenixnap.com/kb/docker-on-raspberry-pi">安装docker</a></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://get.docker.com -o get-docker.sh</span><br></pre></td></tr></table></figure>
+<p>执行<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo sh get-docker.sh</span><br></pre></td></tr></table></figure><br>把pi用户添加到docker group中,让其在非root状态下也能运行docker<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -aG docker pi</span><br></pre></td></tr></table></figure><br>重启后生效。</p>
+<p>测试docker<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run hello-world</span><br></pre></td></tr></table></figure></p>
+<h4 id="8-homeassistant-安装在docker里"><a href="#8-homeassistant-安装在docker里" class="headerlink" title="8.homeassistant(安装在docker里)"></a>8.homeassistant(安装在docker里)</h4><p>安装homeassistant,/PATH_TO_YOUR_CONFIG为配置存放位置,看个人爱好放指定位置。<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">  --name homeassistant \</span><br><span class="line">  --privileged \</span><br><span class="line">  --restart=unless-stopped \</span><br><span class="line">  -e TZ=MY_TIME_ZONE \</span><br><span class="line">  -v /PATH_TO_YOUR_CONFIG:/home/pi/.config/homeassistant/config \</span><br><span class="line">  --network=host \</span><br><span class="line">  ghcr.io/home-assistant/raspberrypi4-homeassistant:stable</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<p>等待安装结束,就可以通过<a href="http://127.0.0.1:8123登陆进入homeassistant">http://127.0.0.1:8123登陆进入homeassistant</a></p>
+<h4 id="9-mosquitto"><a href="#9-mosquitto" class="headerlink" title="9.mosquitto"></a>9.<a target="_blank" rel="noopener" href="https://mosquitto.org/blog/2013/01/mosquitto-debian-repository/">mosquitto</a></h4><p>为树莓派提供新库<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://repo.mosquitto.org/debian/mosquitto-repo.gpg.key</span><br></pre></td></tr></table></figure><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-key add mosquitto-repo.gpg.key</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /etc/apt/sources.list.d/</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo wget http://repo.mosquitto.org/debian/mosquitto-jessie.list</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo wget http://repo.mosquitto.org/debian/mosquitto-stretch.list</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo wget http://repo.mosquitto.org/debian/mosquitto-buster.list</span><br></pre></td></tr></table></figure>
+<p>更新<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure><br>查包<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-cache search mosquitto</span><br></pre></td></tr></table></figure></p>
+<p>安装<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install mosquitto</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -453,103 +727,6 @@
 <blockquote>
 <p>把触控板禁用</p>
 </blockquote>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/%E5%AE%89%E8%A3%85%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E5%90%8E%E8%A6%81%E5%81%9A%E7%9A%84%E4%BA%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
-      <meta itemprop="name" content="ezhonghu">
-      <meta itemprop="description" content="花开时节|花自开">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ezhonghu's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/12/%E5%AE%89%E8%A3%85%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E5%90%8E%E8%A6%81%E5%81%9A%E7%9A%84%E4%BA%8B/" class="post-title-link" itemprop="url">树莓派安装系统后要做的事</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-02-12 15:31:58" itemprop="dateCreated datePublished" datetime="2022-02-12T15:31:58+08:00">2022-02-12</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li><p>树梅派官网下载树梅派系统的镜像。</p>
-</li>
-<li><p>ArchLinux的AUR上搜rpi-imager,烧录用。(windows系统可以在系统找到raspberry Pi imager)</p>
-</li>
-</ul>
-<h3 id="1-使用rpi-mager-把系统烧录到SD卡"><a href="#1-使用rpi-mager-把系统烧录到SD卡" class="headerlink" title="1.使用rpi-mager,把系统烧录到SD卡"></a>1.使用rpi-mager,把系统烧录到SD卡</h3><p>SSH默认是不开启的,所以在烧录之后,在boot盘新建一个名为SSH的文件夹(就默认打开SSH了)</p>
-<h3 id="2-SD卡插入树梅派-插好网线和电源"><a href="#2-SD卡插入树梅派-插好网线和电源" class="headerlink" title="2.SD卡插入树梅派,插好网线和电源"></a>2.SD卡插入树梅派,插好网线和电源</h3><h3 id="3-登陆进入树梅派"><a href="#3-登陆进入树梅派" class="headerlink" title="3.登陆进入树梅派"></a>3.登陆进入树梅派</h3><p>默认SSH帐号密码:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">帐号:pi</span><br><span class="line">密码:raspberry</span><br></pre></td></tr></table></figure></p>
-<h3 id="4-更新密码"><a href="#4-更新密码" class="headerlink" title="4.更新密码"></a>4.更新密码</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd</span><br></pre></td></tr></table></figure>
-<p>(sudo账户同理)</p>
-<h3 id="5-更改镜像源"><a href="#5-更改镜像源" class="headerlink" title="5.更改镜像源"></a>5.更改镜像源</h3><p>用编辑器修改/etc/apt/source.list<br>用#号注释原文内容,替换成以下:(其他源也可以,距离地理位置近即可)<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ stretch main contrib non-free rpi</span><br><span class="line">deb-src http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ stretch main contrib non-free rpi</span><br></pre></td></tr></table></figure><br>用编辑器修改/etc/apt/sources.list.d/raspi.list文件:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/raspberrypi/ stretch main ui</span><br><span class="line">deb-src http://mirrors.tuna.tsinghua.edu.cn/raspberrypi/ stretch main ui</span><br></pre></td></tr></table></figure></p>
-<p>更新源:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure></p>
-<h3 id="6-安装最新版本的Python3-因为用docker-所以这一步遗弃了"><a href="#6-安装最新版本的Python3-因为用docker-所以这一步遗弃了" class="headerlink" title="6.安装最新版本的Python3(因为用docker,所以这一步遗弃了)"></a>6.安装最新版本的Python3(因为用docker,所以这一步遗弃了)</h3><p>提前安装好后面要用的依赖,常用的链接包链接进去</p>
-<p>在官网找到源码,并下载<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://www.python.org/ftp/python/3.9.6/Python-3.9.6.tar.xz</span><br></pre></td></tr></table></figure><br>解压<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar xvJf Python-3.9.6.tar.xz</span><br></pre></td></tr></table></figure><br>编译<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ./configure --prefix=/usr/local/Python-3.9.6 --enable-optimizations</span><br></pre></td></tr></table></figure><br>安装(如果提示无权限创建/usr/local/Python-3.9.6就su成root)<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo make &amp;&amp; make install</span><br></pre></td></tr></table></figure><br>软链接,方便使用<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ln -s /usr/local/Python-3.9.6/bin/python3.9 /usr/bin/python396</span><br><span class="line">ln -s /usr/local/Python-3.9.6/bin/pip3 /usr/bin/pip396</span><br></pre></td></tr></table></figure><br>这样就可以同时存在两个python了！一个是原装的python3.7,另一个是自己编译安装的python3.9.6!</p>
-<h2 id="个性化"><a href="#个性化" class="headerlink" title="个性化"></a>个性化</h2><h4 id="1-把bash改成zsh"><a href="#1-把bash改成zsh" class="headerlink" title="1.把bash改成zsh"></a>1.把bash改成zsh</h4><p>安装zsh<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install zsh</span><br></pre></td></tr></table></figure></p>
-<p>修改/etc/passwd,找到Pi用户所在行,将/usr/bin/bash改为/usr/bin/zsh</p>
-<h4 id="2-正确上网"><a href="#2-正确上网" class="headerlink" title="2.正确上网"></a>2.正确上网</h4><p>在<a target="_blank" rel="noopener" href="https://github.com/v2fly/v2ray-core/releases找到32位arm架构的linux版本,下载,使用">https://github.com/v2fly/v2ray-core/releases找到32位arm架构的linux版本,下载,使用</a><br>先从其他可以上网的电脑下载,复制到树梅派中<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/v2fly/v2ray-core/releases/download/v4.41.1/v2ray-linux-arm32-v7a.zip</span><br></pre></td></tr></table></figure><br>准备好配置文件。</p>
-<p>通过screen在后台运行:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">screen ./v2ray -c xxxx.json</span><br></pre></td></tr></table></figure><br>终端代理:(端口和代理类型要和json文件里指定的一致)<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export http_proxy=&quot;http://127.0.0.1:xxxx&quot;</span><br></pre></td></tr></table></figure></p>
-<h4 id="3-ohmyzsh"><a href="#3-ohmyzsh" class="headerlink" title="3.ohmyzsh"></a>3.ohmyzsh</h4><p>就算挂了代理也访问不了raw.github,所以官方安装方法使用不了。</p>
-<p>克隆这个项目到本地的~/.oh-my-zsh<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/ohmyzsh/ohmyzsh ~/.oh-my-zsh</span><br></pre></td></tr></table></figure><br>把.oh-my-zsh/templates/里面的文件复制到~/.zshrc配置文件中</p>
-<p>把.zshrc里面的ZSH_THEME改为”agnoster”(个人爱好)</p>
-<p>然后source .zshrc,</p>
-<h4 id="4-frp"><a href="#4-frp" class="headerlink" title="4.frp"></a>4.frp</h4><p>在<a target="_blank" rel="noopener" href="https://github.com/fatedier/frp/releases/tag/v0.37.1找到对应的版本(arm架构32位)下载">https://github.com/fatedier/frp/releases/tag/v0.37.1找到对应的版本(arm架构32位)下载</a></p>
-<p>frpc.ini配置文件:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line">server_addr = 120.79.229.218</span><br><span class="line">server_port = 7000</span><br><span class="line"></span><br><span class="line">[ssh]</span><br><span class="line">type = tcp</span><br><span class="line">local_ip = 127.0.0.1</span><br><span class="line">local_port = 22</span><br><span class="line">remote_port = 6000</span><br><span class="line"></span><br><span class="line">[web]</span><br><span class="line">type = http</span><br><span class="line">local_port = 80</span><br><span class="line">custom_domains = www.ezhonghu.top</span><br><span class="line"></span><br><span class="line">[web2]</span><br><span class="line">type = http</span><br><span class="line">local_port = 80</span><br><span class="line">custom_domains = www.ezhonghu.cn</span><br></pre></td></tr></table></figure></p>
-<h4 id="6-samba"><a href="#6-samba" class="headerlink" title="6.samba"></a>6.samba</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install samba</span><br></pre></td></tr></table></figure>
-<p>弹出 Modify smb.conf to use WINS settings from DHCP?选择NO</p>
-<p>2.备份配置文件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.back</span><br><span class="line">```    </span><br><span class="line">    </span><br><span class="line">3.配置conf文件    </span><br><span class="line">    </span><br><span class="line">```shell    </span><br><span class="line">sudo vim /etc/samba/smb.conf    </span><br><span class="line">```    </span><br><span class="line">    </span><br><span class="line">4.加入如下语句    </span><br><span class="line">    </span><br><span class="line">```text    </span><br><span class="line">[ezhonghuNAS]  # 显示被分享文件的名称    </span><br><span class="line">    comment = NAS Storage    # 说明信息    </span><br><span class="line">    valid users = pi,root    # 可以访问的用户    </span><br><span class="line">    path = /media/pi/    # 共享文件的路径    </span><br><span class="line">    browseable = yes    # 可被其他人看到资源名称（非内容）    </span><br><span class="line">    writable = yes    # 可写    </span><br><span class="line">    create mask = 0664    # 新建文件的权限为 664    </span><br><span class="line">    directory mask = 0775    # 新建目录的权限为 775    </span><br><span class="line">```    </span><br><span class="line">    </span><br><span class="line">5.重启samba    </span><br><span class="line">    </span><br><span class="line">```shell</span><br><span class="line">sudo /etc/init.d/smbd restart</span><br><span class="line">`</span><br><span class="line">2、安装pip</span><br><span class="line"></span><br><span class="line">wget https://bootstrap.pypa.io/get-pip.py</span><br><span class="line">python get-pip.py</span><br><span class="line">在执行get-pip脚本的时候发生了一些错误，如没有直接跳过看第3步</span><br><span class="line"></span><br><span class="line">ModuleNotFoundError: No module named &#x27;_ctypes</span><br><span class="line">python3.7版本需要一个新的包libffi-devel，安装此包之后再次进行编译安装即可。</span><br><span class="line"></span><br><span class="line">yum install libffi-devel -y</span><br><span class="line">make install</span><br><span class="line">若在安装前移除了/usr/bin下python的文件链接依赖，此时yum无法正常使用，需要自己下载相关软件包安装，为节省读者时间，放上链接</span><br><span class="line"></span><br><span class="line">wget http://mirror.centos.org/centos/7/os/x86_64/Packages/libffi-devel-3.0.13-18.el7.x86_64.rpm</span><br><span class="line">rpm -ivh libffi-devel-3.0.13-18.el7.x86_64.rpm</span><br><span class="line">安装完成后重新进行make install，结束后再次配置相关文件的软连接即可。</span><br><span class="line"></span><br><span class="line">再次执行</span><br><span class="line"></span><br><span class="line">python get-pip.py</span><br><span class="line">3、查看版本,成功绑定到3.7</span><br><span class="line"></span><br><span class="line">pip -V</span><br><span class="line">￼</span><br><span class="line"></span><br><span class="line">4、更新pip</span><br><span class="line"></span><br><span class="line">pip install --upgrade setuptools</span><br><span class="line"> 5、安装第三方包</span><br><span class="line"></span><br><span class="line">pip install 包名</span><br><span class="line">6、卸载第三方包</span><br><span class="line"></span><br><span class="line">pip uninstall 包名</span><br><span class="line"> 7、pip升级问题 使用python -m pip install --upgrade pip 升级失败，没有报错 升级之后查看还是原来的版本</span><br><span class="line"></span><br><span class="line">￼</span><br><span class="line"></span><br><span class="line">使用以下命令执行 成功升级</span><br><span class="line"></span><br><span class="line">python -m pip install -U --force-reinstall pip</span><br><span class="line"> 8、在有提示升级的pip安装第三方包 会出现报错的情况</span><br><span class="line"></span><br><span class="line">￼</span><br><span class="line"></span><br><span class="line">出现这种情况 按照缺少的包安装完即可，如提示缺少系统C++ 文件的话  可能是你的电脑是64位操作系统却安装的32位python，或者是32位的操作系统安装的64位python导致的。</span><br><span class="line"></span><br><span class="line">9、更换国内镜像源</span><br><span class="line"></span><br><span class="line">linux下，修改 ~/.pip/pip.conf (没有就创建一个)， 修改 index-url至tuna，内容如下：</span><br><span class="line"></span><br><span class="line"> [global]</span><br><span class="line"> index-url = https://pypi.tuna.tsinghua.edu.cn/simple</span><br><span class="line"></span><br><span class="line">windows下，直接在user目录中创建一个pip目录，如：C:\Users\xx\pip，新建文件pip.ini，内容如下</span><br><span class="line"></span><br><span class="line"> [global]</span><br><span class="line"> index-url = https://pypi.tuna.tsinghua.edu.cn/simple</span><br><span class="line">10、通过txt安装包 ，将本地包导出到txt文件</span><br><span class="line"></span><br><span class="line">pip install -r requirements.txt</span><br><span class="line">pip freeze &gt;requirements.txt</span><br><span class="line"> 11、安装numpy</span><br><span class="line"></span><br><span class="line">下载地址：https://www.lfd.uci.edu/~gohlke/pythonlibs/</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">￼</span><br><span class="line"></span><br><span class="line">执行：numpy包名称要加英文双引号。</span><br><span class="line"></span><br><span class="line">pip install “[numpy包名称] ”</span><br><span class="line"> 12、另一种方式安装包     setup.py  https://pypi.python.org/pypi </span><br><span class="line"></span><br><span class="line">先下载你要安装的包，并解压到磁盘下；</span><br><span class="line">进入到该文件的setup.py 目录下 ，打开cmd，并切换到该目录下；</span><br><span class="line">先执行 python setup.py build</span><br><span class="line">然后执行 python setup.py install</span><br><span class="line">以此来记录编程之路，偶尔需要静下心来写点东西。</span><br><span class="line">标签: python</span><br><span class="line">好文要顶 关注我 收藏该文 ￼ ￼</span><br><span class="line">￼进阶丶xiao路</span><br><span class="line">关注 - 12</span><br><span class="line">粉丝 - 2</span><br><span class="line">+加关注</span><br><span class="line">30</span><br><span class="line">« 上一篇： Python --- 卸载</span><br><span class="line">» 下一篇： pycharm安装到32位操作系统</span><br><span class="line">posted @ 2019-03-31 17:36  进阶丶xiao路  阅读(53870)  评论(1)  编辑  收藏  举报</span><br><span class="line">刷新评论刷新页面返回顶部</span><br><span class="line">登录后才能查看或发表评论，立即 登录 或者 逛逛 博客园首页</span><br><span class="line">￼</span><br><span class="line">编辑推荐：</span><br><span class="line">· 一文读懂哈希和一致性哈希算法</span><br><span class="line">· DDD领域驱动及落地方案</span><br><span class="line">· CSS 奇思妙想 | 使用 resize 实现强大的图片拖拽切换预览功能</span><br><span class="line">· 浅谈 C# 取消令牌 CancellationTokenSource</span><br><span class="line">· 记一次 .NET 某WMS仓储打单系统 内存暴涨分析</span><br><span class="line">最新新闻：</span><br><span class="line">· 欧盟新规会让 iPhone 用上 USB-C 口吗？（2021-08-20 18:24）</span><br><span class="line">· 营势者雷军：顺势而为，也要有所不为（2021-08-20 18:10）</span><br><span class="line">· 骂完记得买，一场发布会将宝可梦送上微博热搜（2021-08-20 17:54）</span><br><span class="line">· 一年过去了，《黑神话：悟空》交出了它的进度报告（2021-08-20 17:29）</span><br><span class="line">· 神舟十二号航天员乘组第二次出舱圆满完成！9月回家（2021-08-20 17:20）</span><br><span class="line">» 更多新闻...</span><br><span class="line">公告</span><br><span class="line">昵称： 进阶丶xiao路</span><br><span class="line">园龄： 3年1个月</span><br><span class="line">粉丝： 2</span><br><span class="line">关注： 12</span><br><span class="line">+加关注</span><br><span class="line">``</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="language-bash"><span class="comment">### 6.neovim</span></span></span><br><span class="line">从github克隆neovim源码</span><br></pre></td></tr></table></figure>
-<p>git clone <a target="_blank" rel="noopener" href="https://github.com/neovim/neovim.git">https://github.com/neovim/neovim.git</a><br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">sudo make &amp;&amp; make install</span><br></pre></td></tr></table></figure></p>
-<h4 id="7-安装docker"><a href="#7-安装docker" class="headerlink" title="7.安装docker"></a>7.<a target="_blank" rel="noopener" href="https://phoenixnap.com/kb/docker-on-raspberry-pi">安装docker</a></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://get.docker.com -o get-docker.sh</span><br></pre></td></tr></table></figure>
-<p>执行<br>sudo sh get-docker.sh<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">把pi用户添加到docker group中,让其在非root状态下也能运行docker</span><br></pre></td></tr></table></figure><br>sudo usermod -aG docker pi<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">重启后生效。</span><br><span class="line"></span><br><span class="line">测试docker</span><br></pre></td></tr></table></figure><br>docker run hello-world<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 8.homeassistant(安装在docker里)</span><br><span class="line"></span><br><span class="line">安装homeassistant,/PATH_TO_YOUR_CONFIG为配置存放位置,看个人爱好放指定位置。</span><br></pre></td></tr></table></figure><br>docker run -d \<br>  —name homeassistant \<br>  —privileged \<br>  —restart=unless-stopped \<br>  -e TZ=MY_TIME_ZONE \<br>  -v /PATH_TO_YOUR_CONFIG:/home/pi/.config/homeassistant/config \<br>  —network=host \<br>  ghcr.io/home-assistant/raspberrypi4-homeassistant:stable<br>  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">等待安装结束,就可以通过http://127.0.0.1:8123登陆进入homeassistant</span><br><span class="line"></span><br><span class="line">#### 9.[mosquitto](https://mosquitto.org/blog/2013/01/mosquitto-debian-repository/)</span><br><span class="line">为树莓派提供新库</span><br></pre></td></tr></table></figure><br>wget <a target="_blank" rel="noopener" href="http://repo.mosquitto.org/debian/mosquitto-repo.gpg.key">http://repo.mosquitto.org/debian/mosquitto-repo.gpg.key</a><br>sudo apt-key add mosquitto-repo.gpg.key<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure><br>cd /etc/apt/sources.list.d/<br>sudo wget <a target="_blank" rel="noopener" href="http://repo.mosquitto.org/debian/mosquitto-jessie.list">http://repo.mosquitto.org/debian/mosquitto-jessie.list</a><br>sudo wget <a target="_blank" rel="noopener" href="http://repo.mosquitto.org/debian/mosquitto-stretch.list">http://repo.mosquitto.org/debian/mosquitto-stretch.list</a><br>sudo wget <a target="_blank" rel="noopener" href="http://repo.mosquitto.org/debian/mosquitto-buster.list">http://repo.mosquitto.org/debian/mosquitto-buster.list</a><br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">更新</span><br></pre></td></tr></table></figure><br>sudo apt-get update<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">查包</span><br></pre></td></tr></table></figure><br>sudo apt-cache search mosquitto<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">安装</span><br></pre></td></tr></table></figure><br>sudo apt-get install mosquitto<br>```</p>
 
       
     </div>
@@ -928,76 +1105,6 @@ m_水 &= \rho \times v_水 \\
 <h3 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h3><p>安装插件：(可以用tab)<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:PlugInstall</span><br></pre></td></tr></table></figure></p>
 <h3 id="4"><a href="#4" class="headerlink" title="4."></a>4.</h3><p>退出<strong>所有</strong>的vim文件(现在打开的是两个vim文件)<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:wqa</span><br></pre></td></tr></table></figure></p>
 <p>结束</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/tex/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
-      <meta itemprop="name" content="ezhonghu">
-      <meta itemprop="description" content="花开时节|花自开">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ezhonghu's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/12/tex/" class="post-title-link" itemprop="url">使用latex</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-02-12 15:30:42" itemprop="dateCreated datePublished" datetime="2022-02-12T15:30:42+08:00">2022-02-12</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="首先下载"><a href="#首先下载" class="headerlink" title="首先下载"></a>首先下载</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S texlive-core texlive-langchinese</span><br></pre></td></tr></table></figure>
-<h3 id="在vimrc里面配置如下"><a href="#在vimrc里面配置如下" class="headerlink" title="在vimrc里面配置如下"></a>在vimrc里面配置如下</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Plug &#x27;lervag/vimtex&#x27;</span><br><span class="line">let g:tex_flavor=&#x27;latex&#x27;</span><br><span class="line"></span><br><span class="line">&quot; 阅读器相关的配置 包含正反向查找功能 仅供参考</span><br><span class="line">let g:vimtex_view_general_viewer = &#x27;zathura&#x27;</span><br><span class="line">let g:vimtex_view_general_options_latexmk = &#x27;-reuse-instance&#x27;</span><br><span class="line">let g:vimtex_view_general_options</span><br><span class="line">\ = &#x27;-reuse-instance -forward-search @tex @line @pdf&#x27;</span><br><span class="line">\ . &#x27; -inverse-search &quot;&#x27; . exepath(v:progpath)</span><br><span class="line">\ . &#x27; --servername &#x27; . v:servername</span><br><span class="line">\ . &#x27; --remote-send \&quot;^&lt;C-\^&gt;^&lt;C-n^&gt;&#x27;</span><br><span class="line">\ . &#x27;:execute &#x27;&#x27;drop &#x27;&#x27; . fnameescape(&#x27;&#x27;\%f&#x27;&#x27;)^&lt;CR^&gt;&#x27;</span><br><span class="line">\ . &#x27;:\%l^&lt;CR^&gt;:normal\! zzzv^&lt;CR^&gt;&#x27;</span><br><span class="line">\ . &#x27;:call remote_foreground(&#x27;&#x27;&#x27;.v:servername.&#x27;&#x27;&#x27;)^&lt;CR^&gt;^&lt;CR^&gt;\&quot;&quot;&#x27;</span><br><span class="line"></span><br><span class="line">set conceallevel=1</span><br><span class="line">let g:tex_conceal=&#x27;abdmg&#x27;</span><br></pre></td></tr></table></figure>
-<h3 id="在编辑好的-tex格式文件用vim打开-可以通过一下命令编译操作"><a href="#在编辑好的-tex格式文件用vim打开-可以通过一下命令编译操作" class="headerlink" title="在编辑好的.tex格式文件用vim打开,可以通过一下命令编译操作"></a>在编辑好的.tex格式文件用vim打开,可以通过一下命令编译操作</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">---------------------------------------------------------------------~</span><br><span class="line">   LHS              RHS                               MODE~</span><br><span class="line">  ------------------------------------------------------------~</span><br><span class="line">   &lt;leader&gt;li  |&lt;plug&gt;(vimtex-info)|                  `n`</span><br><span class="line">   &lt;leader&gt;lt  |&lt;plug&gt;(vimtex-toc-open)|              `n`</span><br><span class="line">   &lt;leader&gt;lT  |&lt;plug&gt;(vimtex-toc-toggle)|            `n`</span><br><span class="line">   &lt;leader&gt;lv  |&lt;plug&gt;(vimtex-view)|                  `n`</span><br><span class="line">   &lt;leader&gt;ll  |&lt;plug&gt;(vimtex-compile)|               `n`</span><br><span class="line">   &lt;leader&gt;lo  |&lt;plug&gt;(vimtex-compile-output)|        `n`</span><br><span class="line">   &lt;leader&gt;lg  |&lt;plug&gt;(vimtex-status)|                `n`</span><br><span class="line">   &lt;leader&gt;lG  |&lt;plug&gt;(vimtex-status-all)|            `n`</span><br><span class="line">   &lt;leader&gt;lc  |&lt;plug&gt;(vimtex-clean)|                 `n`</span><br><span class="line">   &lt;leader&gt;lC  |&lt;plug&gt;(vimtex-clean-full)|            `n`</span><br><span class="line">   dse         |&lt;plug&gt;(vimtex-env-delete)|            `n`</span><br><span class="line">   dsc         |&lt;plug&gt;(vimtex-cmd-delete)|            `n`</span><br><span class="line">   cse         |&lt;plug&gt;(vimtex-env-change)|            `n`</span><br><span class="line">   csc         |&lt;plug&gt;(vimtex-cmd-change)|            `n`</span><br><span class="line">   &lt;F7&gt;        |&lt;plug&gt;(vimtex-cmd-create)|            `nxi`</span><br><span class="line">   ]]          |&lt;plug&gt;(vimtex-delim-close)|           `i`</span><br><span class="line">  ---------------------------------------------------------------------~</span><br></pre></td></tr></table></figure>
-<p>  ps:<leader>键设置为默认的<kbd>\</kbd>键</p>
 
       
     </div>
@@ -1568,7 +1675,7 @@ m_水 &= \rho \times v_水 \\
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

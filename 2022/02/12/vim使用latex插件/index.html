@@ -20,17 +20,20 @@
     var CONFIG = {"hostname":"erzhonghoo.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="花开时节|花自开">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ezhonghu&#39;s blog">
-<meta property="og:url" content="https://erzhonghoo.github.io/tags/latex/index.html">
+  <meta name="description" content="首先下载1sudo pacman -S texlive-core texlive-langchinese  在vimrc里面配置如下1234567891011121314151617Plug &amp;#x27;lervag&#x2F;vimtex&amp;#x27;let g:tex_flavor&#x3D;&amp;#x27;latex&amp;#x27;&quot; 阅读器相关的配置 包含正反向查找功能 仅供参考let g:vimtex_vi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vim的latex插件">
+<meta property="og:url" content="https://erzhonghoo.github.io/2022/02/12/vim%E4%BD%BF%E7%94%A8latex%E6%8F%92%E4%BB%B6/index.html">
 <meta property="og:site_name" content="ezhonghu&#39;s blog">
-<meta property="og:description" content="花开时节|花自开">
+<meta property="og:description" content="首先下载1sudo pacman -S texlive-core texlive-langchinese  在vimrc里面配置如下1234567891011121314151617Plug &amp;#x27;lervag&#x2F;vimtex&amp;#x27;let g:tex_flavor&#x3D;&amp;#x27;latex&amp;#x27;&quot; 阅读器相关的配置 包含正反向查找功能 仅供参考let g:vimtex_vi">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-02-12T12:10:32.415Z">
+<meta property="article:modified_time" content="2022-02-12T12:10:32.419Z">
 <meta property="article:author" content="ezhonghu">
+<meta property="article:tag" content="vim">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://erzhonghoo.github.io/tags/latex/">
+<link rel="canonical" href="https://erzhonghoo.github.io/2022/02/12/vim%E4%BD%BF%E7%94%A8latex%E6%8F%92%E4%BB%B6/">
 
 
 <script id="page-configurations">
@@ -38,12 +41,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'en'
   };
 </script>
 
-  <title>Tag: latex | ezhonghu's blog</title>
+  <title>vim的latex插件 | ezhonghu's blog</title>
   
 
 
@@ -131,7 +134,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">23</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">22</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -168,57 +171,229 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">latex
-          <small>Tag</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/vim%E4%BD%BF%E7%94%A8latex%E6%8F%92%E4%BB%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
+      <meta itemprop="name" content="ezhonghu">
+      <meta itemprop="description" content="花开时节|花自开">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ezhonghu's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          vim的latex插件
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-02-12 20:10:32" itemprop="dateCreated datePublished" datetime="2022-02-12T20:10:32+08:00">2022-02-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2022</span>
+        <h3 id="首先下载"><a href="#首先下载" class="headerlink" title="首先下载"></a>首先下载</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S texlive-core texlive-langchinese </span><br></pre></td></tr></table></figure>
+<h3 id="在vimrc里面配置如下"><a href="#在vimrc里面配置如下" class="headerlink" title="在vimrc里面配置如下"></a>在vimrc里面配置如下</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Plug &#x27;lervag/vimtex&#x27;</span><br><span class="line">let g:tex_flavor=&#x27;latex&#x27;</span><br><span class="line"></span><br><span class="line">&quot; 阅读器相关的配置 包含正反向查找功能 仅供参考</span><br><span class="line">let g:vimtex_view_general_viewer = &#x27;zathura&#x27;</span><br><span class="line">let g:vimtex_view_general_options_latexmk = &#x27;-reuse-instance&#x27;</span><br><span class="line">let g:vimtex_view_general_options</span><br><span class="line">\ = &#x27;-reuse-instance -forward-search @tex @line @pdf&#x27;</span><br><span class="line">\ . &#x27; -inverse-search &quot;&#x27; . exepath(v:progpath)</span><br><span class="line">\ . &#x27; --servername &#x27; . v:servername</span><br><span class="line">\ . &#x27; --remote-send \&quot;^&lt;C-\^&gt;^&lt;C-n^&gt;&#x27;</span><br><span class="line">\ . &#x27;:execute &#x27;&#x27;drop &#x27;&#x27; . fnameescape(&#x27;&#x27;\%f&#x27;&#x27;)^&lt;CR^&gt;&#x27;</span><br><span class="line">\ . &#x27;:\%l^&lt;CR^&gt;:normal\! zzzv^&lt;CR^&gt;&#x27;</span><br><span class="line">\ . &#x27;:call remote_foreground(&#x27;&#x27;&#x27;.v:servername.&#x27;&#x27;&#x27;)^&lt;CR^&gt;^&lt;CR^&gt;\&quot;&quot;&#x27;</span><br><span class="line"></span><br><span class="line">set conceallevel=1</span><br><span class="line">let g:tex_conceal=&#x27;abdmg&#x27;</span><br></pre></td></tr></table></figure>
+<h3 id="在编辑好的-tex格式文件用vim打开-可以通过一下命令编译操作"><a href="#在编辑好的-tex格式文件用vim打开-可以通过一下命令编译操作" class="headerlink" title="在编辑好的.tex格式文件用vim打开,可以通过一下命令编译操作"></a>在编辑好的.tex格式文件用vim打开,可以通过一下命令编译操作</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">LHS</th>
+<th style="text-align:center">RHS</th>
+<th style="text-align:center">MODE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>&lt;leader&gt;</code>li</td>
+<td style="text-align:center"><plug>(vimtex-info)</td>
+<td style="text-align:center"><code>n</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&lt;leader&gt;</code>lt</td>
+<td style="text-align:center"><plug>(vimtex-toc-open)</td>
+<td style="text-align:center"><code>n</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&lt;leader&gt;</code>lT</td>
+<td style="text-align:center"><plug>(vimtex-toc-toggle)</td>
+<td style="text-align:center"><code>n</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&lt;leader&gt;</code>lv</td>
+<td style="text-align:center"><plug>(vimtex-view)</td>
+<td style="text-align:center"><code>n</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&lt;leader&gt;</code>ll</td>
+<td style="text-align:center"><plug>(vimtex-compile)</td>
+<td style="text-align:center"><code>n</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&lt;leader&gt;</code>lo</td>
+<td style="text-align:center"><plug>(vimtex-compile-output)</td>
+<td style="text-align:center"><code>n</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&lt;leader&gt;</code>lg</td>
+<td style="text-align:center"><plug>(vimtex-status)</td>
+<td style="text-align:center"><code>n</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&lt;leader&gt;</code>lG</td>
+<td style="text-align:center"><plug>(vimtex-status-all)</td>
+<td style="text-align:center"><code>n</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&lt;leader&gt;</code>lc</td>
+<td style="text-align:center"><plug>(vimtex-clean)</td>
+<td style="text-align:center"><code>n</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&lt;leader&gt;</code>lC</td>
+<td style="text-align:center"><plug>(vimtex-clean-full)</td>
+<td style="text-align:center"><code>n</code></td>
+</tr>
+<tr>
+<td style="text-align:center">dse</td>
+<td style="text-align:center"><plug>(vimtex-env-delete)</td>
+<td style="text-align:center"><code>n</code></td>
+</tr>
+<tr>
+<td style="text-align:center">dsc</td>
+<td style="text-align:center"><plug>(vimtex-cmd-delete)</td>
+<td style="text-align:center"><code>n</code></td>
+</tr>
+<tr>
+<td style="text-align:center">cse</td>
+<td style="text-align:center"><plug>(vimtex-env-change)</td>
+<td style="text-align:center"><code>n</code></td>
+</tr>
+<tr>
+<td style="text-align:center">csc</td>
+<td style="text-align:center"><plug>(vimtex-cmd-change)</td>
+<td style="text-align:center"><code>n</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><kbd>F7</kbd></td>
+<td style="text-align:center"><plug>(vimtex-cmd-create)</td>
+<td style="text-align:center"><code>nxi</code></td>
+</tr>
+<tr>
+<td style="text-align:center">]]</td>
+<td style="text-align:center"><plug>(vimtex-delim-close)</td>
+<td style="text-align:center"><code>i</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p><code>&lt;leader&gt;</code>键设置为默认的<kbd>\</kbd>键</p>
+</blockquote>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-02-12T15:30:42+08:00"
-              content="2022-02-12">
-          02-12
-        </time>
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    Donate
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="ezhonghu WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="ezhonghu Alipay">
+        <p>Alipay</p>
       </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/02/12/tex/" itemprop="url">
-            <span itemprop="name">使用latex</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-    </div>
   </div>
-  
-  
-  
+</div>
 
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>ezhonghu
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://erzhonghoo.github.io/2022/02/12/vim%E4%BD%BF%E7%94%A8latex%E6%8F%92%E4%BB%B6/" title="vim的latex插件">https://erzhonghoo.github.io/2022/02/12/vim使用latex插件/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/vim/" rel="tag"># vim</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/02/12/%E5%AE%89%E8%A3%85%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E5%90%8E%E8%A6%81%E5%81%9A%E7%9A%84%E4%BA%8B/" rel="prev" title="树莓派安装系统后要做的事">
+      <i class="fa fa-chevron-left"></i> 树莓派安装系统后要做的事
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
 
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -265,6 +440,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A6%96%E5%85%88%E4%B8%8B%E8%BD%BD"><span class="nav-number">1.</span> <span class="nav-text">首先下载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8vimrc%E9%87%8C%E9%9D%A2%E9%85%8D%E7%BD%AE%E5%A6%82%E4%B8%8B"><span class="nav-number">2.</span> <span class="nav-text">在vimrc里面配置如下</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8%E7%BC%96%E8%BE%91%E5%A5%BD%E7%9A%84-tex%E6%A0%BC%E5%BC%8F%E6%96%87%E4%BB%B6%E7%94%A8vim%E6%89%93%E5%BC%80-%E5%8F%AF%E4%BB%A5%E9%80%9A%E8%BF%87%E4%B8%80%E4%B8%8B%E5%91%BD%E4%BB%A4%E7%BC%96%E8%AF%91%E6%93%8D%E4%BD%9C"><span class="nav-number">3.</span> <span class="nav-text">在编辑好的.tex格式文件用vim打开,可以通过一下命令编译操作</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -293,7 +469,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -481,6 +657,25 @@ window.addEventListener('pjax:success', () => {
 
   
 
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '6042e8f7631f8a239409',
+      clientSecret: '41d0bff9b3ce802cba762aa06c0c1c863e82e828',
+      repo        : 'ErzhongHoo.github.io',
+      owner       : 'ErzhongHoo',
+      admin       : ['ErzhongHoo'],
+      id          : '220e1dd856892ba23c42b76d78813730',
+        language: '',
+      distractionFreeMode: false
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
     </div>
 </body>
