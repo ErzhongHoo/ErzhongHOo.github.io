@@ -131,7 +131,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">22</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">23</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -141,7 +141,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">34</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">35</span></a>
 
   </li>
   </ul>
@@ -174,7 +174,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/Movement_detect/">
+    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/github%E4%BD%BF%E7%94%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
@@ -188,7 +188,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/02/12/Movement_detect/" class="post-title-link" itemprop="url">基于树莓的派动态监控</a>
+            <a href="/2022/02/12/github%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">github使用</a>
         </h2>
 
         <div class="post-meta">
@@ -197,9 +197,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-02-12 21:57:37 / Modified: 15:30:02" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
+              <time title="Created: 2022-02-12 22:28:19" itemprop="dateCreated datePublished" datetime="2022-02-12T22:28:19+08:00">2022-02-12</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -222,19 +221,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>当有人移动时，捕获下照片（可用于监控）</p>
-<h2 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h2><ul>
-<li>树莓派</li>
-<li>camera</li>
-<li>人体接近传感器</li>
-</ul>
-<h2 id="接线方式"><a href="#接线方式" class="headerlink" title="接线方式"></a>接线方式</h2><p>可以在树莓派终端查看各个引脚的作用</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pinout</span><br></pre></td></tr></table></figure>
-<p><img src="https://ezhonghupictures.oss-cn-shenzhen.aliyuncs.com/typora/pir-motion-sensor-with-raspberry-pi.jpg" alt="pir-motion-sensor-with-raspberry-pi"></p>
-<p><strong>开关的作用</strong>：<br>按下后退出程序。</p>
-<h2 id="烧录文件"><a href="#烧录文件" class="headerlink" title="烧录文件"></a>烧录文件</h2><p>创建一个.py文件，并拷贝以下代码</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Project 13 - Burglar Detector With Photo Capture</span></span><br><span class="line"><span class="comment">#latest code updates available at: https://github.com/RuiSantosdotme/RaspberryPiProject</span></span><br><span class="line"><span class="comment">#project updates at: https://nostarch.com/RaspberryPiProject</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#import the necessary packages</span></span><br><span class="line"><span class="keyword">from</span> gpiozero <span class="keyword">import</span> Button, MotionSensor</span><br><span class="line"><span class="keyword">from</span> picamera <span class="keyword">import</span> PiCamera</span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> sleep</span><br><span class="line"><span class="keyword">from</span> signal <span class="keyword">import</span> pause</span><br><span class="line"></span><br><span class="line"><span class="comment">#create objects that refer to a button,</span></span><br><span class="line"><span class="comment">#a motion sensor and the PiCamera</span></span><br><span class="line">button = Button(<span class="number">2</span>)</span><br><span class="line">pir = MotionSensor(<span class="number">4</span>)</span><br><span class="line">camera = PiCamera()</span><br><span class="line"></span><br><span class="line"><span class="comment">#start the camera</span></span><br><span class="line">camera.start_preview()</span><br><span class="line"></span><br><span class="line"><span class="comment">#image image names</span></span><br><span class="line">i = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#stop the camera when the pushbutton is pressed</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">stop_camera</span>():</span><br><span class="line">    camera.stop_preview()</span><br><span class="line">    <span class="comment">#exit the program</span></span><br><span class="line">    exit()</span><br><span class="line"></span><br><span class="line"><span class="comment">#take photo when motion is detected</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">take_photo</span>():</span><br><span class="line">    <span class="keyword">global</span> i</span><br><span class="line">    i = i + <span class="number">1</span></span><br><span class="line">    <span class="comment"># 自己选择拍照后要安装的位置</span></span><br><span class="line">    camera.capture(<span class="string">&#x27;/home/pi/Desktop/image_%s.jpg&#x27;</span> % i)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;A photo has been taken&#x27;</span>)</span><br><span class="line">    sleep(<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#assign a function that runs when the button is pressed</span></span><br><span class="line">button.when_pressed = stop_camera</span><br><span class="line"><span class="comment">#assign a function that runs when motion is detected</span></span><br><span class="line">pir.when_motion = take_photo</span><br><span class="line"></span><br><span class="line">pause()</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://randomnerdtutorials.com/raspberry-pi-motion-detector-photo-capture/">参考文章</a></p>
+          <h4 id="branch"><a href="#branch" class="headerlink" title="branch"></a>branch</h4><p>分支<br>可以看到版本进化升级的过程<br>如果要比较各个分支的不同，可以在url的末尾输入<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">compare</span><br></pre></td></tr></table></figure><br>就可以比较出各个版本的不同</p>
+<h4 id="issues"><a href="#issues" class="headerlink" title="issues"></a>issues</h4><p>评论留言区<br>告诉bug<br>提交需求<br>疑问功能<br>close的话一般提问不规范或者已经解决</p>
+<h4 id="pull-request"><a href="#pull-request" class="headerlink" title="pull request"></a>pull request</h4><p>为这个开源项目做贡献<br>提交<br>评审code review</p>
+<h4 id="projects"><a href="#projects" class="headerlink" title="projects"></a>projects</h4><p>项目管理（企业用）<br>工作任务流程，需求表<br>要做什么<br>做了什么<br>完成什么</p>
+<h4 id="wiki"><a href="#wiki" class="headerlink" title="wiki"></a>wiki</h4><p>项目资料、介绍</p>
+<h4 id="insights"><a href="#insights" class="headerlink" title="insights"></a>insights</h4><p>统计信息<br>贡献者<br>多少次提交<br>流量等</p>
 
       
     </div>
@@ -327,7 +319,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/archlinux_light_greeter/">
+    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/Movement_detect/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
@@ -341,7 +333,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/02/12/archlinux_light_greeter/" class="post-title-link" itemprop="url">archlinux light greeter error</a>
+            <a href="/2022/02/12/Movement_detect/" class="post-title-link" itemprop="url">基于树莓的派动态监控</a>
         </h2>
 
         <div class="post-meta">
@@ -352,7 +344,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2022-02-12 21:57:37 / Modified: 15:24:06" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
+              <time title="Created: 2022-02-12 21:57:37 / Modified: 15:30:02" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -375,23 +367,19 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="A-problem"><a href="#A-problem" class="headerlink" title="A_problem:"></a>A_problem:</h2><p>I can’t start lightdm after i do fo this</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -Rns deepin plasma</span><br></pre></td></tr></table></figure>
-<p>that i can’t start my windows_manager’s manager!</p>
-<h2 id="Reason"><a href="#Reason" class="headerlink" title="Reason"></a>Reason</h2><p>Because something reliable be uninstalled, like deepin-dm, kde-dm, gnome-dm, plasma-dm etc.</p>
-<p>display-manager be uninstall !</p>
-<p>Other reason:/etc/systemd/system/display-manager already exist an cannot be rewrite.</p>
-<p>such as sudo systemctl enable lightdm.</p>
-<p>return: File /etc/systemc/system/display-manager.service already exists and is a symlink to /usr/lib/systemd/system/sddm.service</p>
-<h2 id="Sole"><a href="#Sole" class="headerlink" title="Sole"></a>Sole</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rm /etc/systemc/system/display-manager.service</span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl enable lightdm</span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ls -1 /usr/share/xgreeters/</span><br></pre></td></tr></table></figure>
-<p>if it not exist, please install a lightdm-greeter first.</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S lightdm-deepin-greeter</span><br></pre></td></tr></table></figure>
-<p>Last step:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nvim /etc/lightdm/lightdm.conf</span><br></pre></td></tr></table></figure>
-<p>change to :<br>greeter-session = lightdm-deepin-greeter</p>
-<p>Done!</p>
+          <p>当有人移动时，捕获下照片（可用于监控）</p>
+<h2 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h2><ul>
+<li>树莓派</li>
+<li>camera</li>
+<li>人体接近传感器</li>
+</ul>
+<h2 id="接线方式"><a href="#接线方式" class="headerlink" title="接线方式"></a>接线方式</h2><p>可以在树莓派终端查看各个引脚的作用</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pinout</span><br></pre></td></tr></table></figure>
+<p><img src="https://ezhonghupictures.oss-cn-shenzhen.aliyuncs.com/typora/pir-motion-sensor-with-raspberry-pi.jpg" alt="pir-motion-sensor-with-raspberry-pi"></p>
+<p><strong>开关的作用</strong>：<br>按下后退出程序。</p>
+<h2 id="烧录文件"><a href="#烧录文件" class="headerlink" title="烧录文件"></a>烧录文件</h2><p>创建一个.py文件，并拷贝以下代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Project 13 - Burglar Detector With Photo Capture</span></span><br><span class="line"><span class="comment">#latest code updates available at: https://github.com/RuiSantosdotme/RaspberryPiProject</span></span><br><span class="line"><span class="comment">#project updates at: https://nostarch.com/RaspberryPiProject</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#import the necessary packages</span></span><br><span class="line"><span class="keyword">from</span> gpiozero <span class="keyword">import</span> Button, MotionSensor</span><br><span class="line"><span class="keyword">from</span> picamera <span class="keyword">import</span> PiCamera</span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> sleep</span><br><span class="line"><span class="keyword">from</span> signal <span class="keyword">import</span> pause</span><br><span class="line"></span><br><span class="line"><span class="comment">#create objects that refer to a button,</span></span><br><span class="line"><span class="comment">#a motion sensor and the PiCamera</span></span><br><span class="line">button = Button(<span class="number">2</span>)</span><br><span class="line">pir = MotionSensor(<span class="number">4</span>)</span><br><span class="line">camera = PiCamera()</span><br><span class="line"></span><br><span class="line"><span class="comment">#start the camera</span></span><br><span class="line">camera.start_preview()</span><br><span class="line"></span><br><span class="line"><span class="comment">#image image names</span></span><br><span class="line">i = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#stop the camera when the pushbutton is pressed</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">stop_camera</span>():</span><br><span class="line">    camera.stop_preview()</span><br><span class="line">    <span class="comment">#exit the program</span></span><br><span class="line">    exit()</span><br><span class="line"></span><br><span class="line"><span class="comment">#take photo when motion is detected</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">take_photo</span>():</span><br><span class="line">    <span class="keyword">global</span> i</span><br><span class="line">    i = i + <span class="number">1</span></span><br><span class="line">    <span class="comment"># 自己选择拍照后要安装的位置</span></span><br><span class="line">    camera.capture(<span class="string">&#x27;/home/pi/Desktop/image_%s.jpg&#x27;</span> % i)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;A photo has been taken&#x27;</span>)</span><br><span class="line">    sleep(<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#assign a function that runs when the button is pressed</span></span><br><span class="line">button.when_pressed = stop_camera</span><br><span class="line"><span class="comment">#assign a function that runs when motion is detected</span></span><br><span class="line">pir.when_motion = take_photo</span><br><span class="line"></span><br><span class="line">pause()</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://randomnerdtutorials.com/raspberry-pi-motion-detector-photo-capture/">参考文章</a></p>
 
       
     </div>
@@ -525,6 +513,90 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">umount /mnt</span><br></pre></td></tr></table></figure>
 <h2 id="重启"><a href="#重启" class="headerlink" title="重启:"></a>重启:</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reboot</span><br></pre></td></tr></table></figure>
 <p><strong>恭喜成功安装ArchLinux！</strong></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/archlinux_light_greeter/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
+      <meta itemprop="name" content="ezhonghu">
+      <meta itemprop="description" content="花开时节|花自开">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ezhonghu's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/12/archlinux_light_greeter/" class="post-title-link" itemprop="url">archlinux light greeter error</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-02-12 21:57:37 / Modified: 15:24:06" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="A-problem"><a href="#A-problem" class="headerlink" title="A_problem:"></a>A_problem:</h2><p>I can’t start lightdm after i do fo this</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -Rns deepin plasma</span><br></pre></td></tr></table></figure>
+<p>that i can’t start my windows_manager’s manager!</p>
+<h2 id="Reason"><a href="#Reason" class="headerlink" title="Reason"></a>Reason</h2><p>Because something reliable be uninstalled, like deepin-dm, kde-dm, gnome-dm, plasma-dm etc.</p>
+<p>display-manager be uninstall !</p>
+<p>Other reason:/etc/systemd/system/display-manager already exist an cannot be rewrite.</p>
+<p>such as sudo systemctl enable lightdm.</p>
+<p>return: File /etc/systemc/system/display-manager.service already exists and is a symlink to /usr/lib/systemd/system/sddm.service</p>
+<h2 id="Sole"><a href="#Sole" class="headerlink" title="Sole"></a>Sole</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rm /etc/systemc/system/display-manager.service</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl enable lightdm</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ls -1 /usr/share/xgreeters/</span><br></pre></td></tr></table></figure>
+<p>if it not exist, please install a lightdm-greeter first.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S lightdm-deepin-greeter</span><br></pre></td></tr></table></figure>
+<p>Last step:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nvim /etc/lightdm/lightdm.conf</span><br></pre></td></tr></table></figure>
+<p>change to :<br>greeter-session = lightdm-deepin-greeter</p>
+<p>Done!</p>
 
       
     </div>
@@ -1263,86 +1335,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/ssh%E5%85%8D%E5%AF%86%E7%99%BB%E9%99%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
-      <meta itemprop="name" content="ezhonghu">
-      <meta itemprop="description" content="花开时节|花自开">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ezhonghu's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/12/ssh%E5%85%8D%E5%AF%86%E7%99%BB%E9%99%86/" class="post-title-link" itemprop="url">ssh免密登陆</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-02-12 21:57:37 / Modified: 15:30:28" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="1-本地生成密钥对"><a href="#1-本地生成密钥对" class="headerlink" title="1.本地生成密钥对:"></a>1.本地生成密钥对:</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen</span><br></pre></td></tr></table></figure>
-<p>默认在~/.ssh/ 的目录默认生成名为id_rsa的两个文件</p>
-<blockquote>
-<p>私钥rd_rsa<br>公钥id_rsa.pub</p>
-</blockquote>
-<ul>
-<li>除了RSA算法,还有ecdsa算法等等</li>
-</ul>
-<blockquote>
-<p>可以可以通过 -t 参数来指定算法。</p>
-</blockquote>
-<h3 id="2-配置到远程"><a href="#2-配置到远程" class="headerlink" title="2.配置到远程"></a>2.配置到远程</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id -i ~/.ssh/id_rsa.pub &lt;user&gt;@&lt;ip&gt;</span><br></pre></td></tr></table></figure>
-<p>本地的公钥将会写到服务器的~/.ssh/authorized_keys,以后登陆的时候免密登陆。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1414,7 +1406,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-count">35</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1427,7 +1419,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-count">23</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

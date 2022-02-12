@@ -131,7 +131,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">22</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">23</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -141,7 +141,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">34</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">35</span></a>
 
   </li>
   </ul>
@@ -170,6 +170,86 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/ssh%E5%85%8D%E5%AF%86%E7%99%BB%E9%99%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
+      <meta itemprop="name" content="ezhonghu">
+      <meta itemprop="description" content="花开时节|花自开">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ezhonghu's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/12/ssh%E5%85%8D%E5%AF%86%E7%99%BB%E9%99%86/" class="post-title-link" itemprop="url">ssh免密登陆</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-02-12 21:57:37 / Modified: 15:30:28" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="1-本地生成密钥对"><a href="#1-本地生成密钥对" class="headerlink" title="1.本地生成密钥对:"></a>1.本地生成密钥对:</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen</span><br></pre></td></tr></table></figure>
+<p>默认在~/.ssh/ 的目录默认生成名为id_rsa的两个文件</p>
+<blockquote>
+<p>私钥rd_rsa<br>公钥id_rsa.pub</p>
+</blockquote>
+<ul>
+<li>除了RSA算法,还有ecdsa算法等等</li>
+</ul>
+<blockquote>
+<p>可以可以通过 -t 参数来指定算法。</p>
+</blockquote>
+<h3 id="2-配置到远程"><a href="#2-配置到远程" class="headerlink" title="2.配置到远程"></a>2.配置到远程</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id -i ~/.ssh/id_rsa.pub &lt;user&gt;@&lt;ip&gt;</span><br></pre></td></tr></table></figure>
+<p>本地的公钥将会写到服务器的~/.ssh/authorized_keys,以后登陆的时候免密登陆。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -516,6 +596,80 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/DesktopLaunch/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
+      <meta itemprop="name" content="ezhonghu">
+      <meta itemprop="description" content="花开时节|花自开">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ezhonghu's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/12/DesktopLaunch/" class="post-title-link" itemprop="url">linux如何把程序添加到桌面和启动器</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-02-12 21:57:37 / Modified: 15:25:17" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="一个重要的思想-linux下一切皆文件！！"><a href="#一个重要的思想-linux下一切皆文件！！" class="headerlink" title="一个重要的思想:linux下一切皆文件！！"></a>一个重要的思想:linux下一切皆文件！！</h1><p>最近需要用到arduino，在官网下了个arduino的文件，解压之后发现:如果要打开需要跑到/opt/arduino/arduino-1.8.12/arduino路径下，执行./arduino才可以运行这个程序。</p>
+<p>在dmenu启动器，dde启动器，还有终端都不能直接找到或者运行这个软件！</p>
+<p>为了方便以后执行这个程序，需要配置一下！(也可以说是安装程序创建快捷方式的一个方法)。</p>
+<h2 id="1、在桌面-Desktop-创建一个xxxxxx-desktop"><a href="#1、在桌面-Desktop-创建一个xxxxxx-desktop" class="headerlink" title="1、在桌面(Desktop)创建一个xxxxxx.desktop"></a>1、在桌面(Desktop)创建一个xxxxxx.desktop</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim arduino.desktop</span><br></pre></td></tr></table></figure>
+<h2 id="2、编辑"><a href="#2、编辑" class="headerlink" title="2、编辑:"></a>2、编辑:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[Desktop Entry]     //表明执行方式</span><br><span class="line">Encoding=UTF-8      //编码方式</span><br><span class="line">Type=Application    //类型</span><br><span class="line">Terminal=false      //打开程序后是否打开终端</span><br><span class="line">Icon=/opt/arduino/arduino.png       //图标位置(.png)</span><br><span class="line">Exec=&quot;/opt/arduino/arduino-1.8.12/arduino&quot; %U       //执行方式,也可以为sh -c &quot;xxxxxxxxxx&quot;</span><br><span class="line">Name=arduino       //名称 </span><br><span class="line">Name[zh_CN]=arduino     //在中文路径下的名称</span><br><span class="line">Comment=arduinoIDE      //软件的作用</span><br><span class="line">Comment[zh_CN]=arduinoIDE</span><br><span class="line">Categories=Application;     //软件归类为</span><br></pre></td></tr></table></figure>
+<p>此时已经可以在桌面双击打开此文件。</p>
+<h2 id="3、添加到程序启动器中"><a href="#3、添加到程序启动器中" class="headerlink" title="3、添加到程序启动器中"></a>3、添加到程序启动器中</h2><p>复制文件到到/usr/bin/applications/<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp arduino.desktop /usr/share/applications/</span><br></pre></td></tr></table></figure><br>此时可以在启动器(d-menu)里面能找到该软件,并且可以鼠标双击执行了。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/VLOOKUP/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -740,80 +894,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/DesktopLaunch/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
-      <meta itemprop="name" content="ezhonghu">
-      <meta itemprop="description" content="花开时节|花自开">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ezhonghu's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/12/DesktopLaunch/" class="post-title-link" itemprop="url">linux如何把程序添加到桌面和启动器</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-02-12 21:57:37 / Modified: 15:25:17" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="一个重要的思想-linux下一切皆文件！！"><a href="#一个重要的思想-linux下一切皆文件！！" class="headerlink" title="一个重要的思想:linux下一切皆文件！！"></a>一个重要的思想:linux下一切皆文件！！</h1><p>最近需要用到arduino，在官网下了个arduino的文件，解压之后发现:如果要打开需要跑到/opt/arduino/arduino-1.8.12/arduino路径下，执行./arduino才可以运行这个程序。</p>
-<p>在dmenu启动器，dde启动器，还有终端都不能直接找到或者运行这个软件！</p>
-<p>为了方便以后执行这个程序，需要配置一下！(也可以说是安装程序创建快捷方式的一个方法)。</p>
-<h2 id="1、在桌面-Desktop-创建一个xxxxxx-desktop"><a href="#1、在桌面-Desktop-创建一个xxxxxx-desktop" class="headerlink" title="1、在桌面(Desktop)创建一个xxxxxx.desktop"></a>1、在桌面(Desktop)创建一个xxxxxx.desktop</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim arduino.desktop</span><br></pre></td></tr></table></figure>
-<h2 id="2、编辑"><a href="#2、编辑" class="headerlink" title="2、编辑:"></a>2、编辑:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[Desktop Entry]     //表明执行方式</span><br><span class="line">Encoding=UTF-8      //编码方式</span><br><span class="line">Type=Application    //类型</span><br><span class="line">Terminal=false      //打开程序后是否打开终端</span><br><span class="line">Icon=/opt/arduino/arduino.png       //图标位置(.png)</span><br><span class="line">Exec=&quot;/opt/arduino/arduino-1.8.12/arduino&quot; %U       //执行方式,也可以为sh -c &quot;xxxxxxxxxx&quot;</span><br><span class="line">Name=arduino       //名称 </span><br><span class="line">Name[zh_CN]=arduino     //在中文路径下的名称</span><br><span class="line">Comment=arduinoIDE      //软件的作用</span><br><span class="line">Comment[zh_CN]=arduinoIDE</span><br><span class="line">Categories=Application;     //软件归类为</span><br></pre></td></tr></table></figure>
-<p>此时已经可以在桌面双击打开此文件。</p>
-<h2 id="3、添加到程序启动器中"><a href="#3、添加到程序启动器中" class="headerlink" title="3、添加到程序启动器中"></a>3、添加到程序启动器中</h2><p>复制文件到到/usr/bin/applications/<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp arduino.desktop /usr/share/applications/</span><br></pre></td></tr></table></figure><br>此时可以在启动器(d-menu)里面能找到该软件,并且可以鼠标双击执行了。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/archlinux%E6%97%A0%E6%B3%95%E9%94%81%E5%AE%9A%E6%95%B0%E6%8D%AE%E5%BA%93/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -863,86 +943,6 @@
 
       
           <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rm /var/lib/pacman/db.lck</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/bluetoothctl%E4%BD%BF%E7%94%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
-      <meta itemprop="name" content="ezhonghu">
-      <meta itemprop="description" content="花开时节|花自开">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ezhonghu's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/12/bluetoothctl%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">bluetoothctl 连接蓝牙键盘</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-02-12 21:57:37 / Modified: 15:24:32" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>罗技键盘K480蓝牙连接(连接要求:连接后输入配对数字并按下回车才可配对)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start bluetoothcli.device</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bluetoothctl</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scan on</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>如果有bluz.error not ready报错,先用power on来使能</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connect &lt;ssid&gt;</span><br></pre></td></tr></table></figure>
-<p>用蓝牙键盘输入显示出来的数字</p>
-<p>按<kbd>Enter</kbd></p>
-<h2 id="bug"><a href="#bug" class="headerlink" title="bug"></a>bug</h2><p>因为蓝牙和wifi都使用2.4GHz，打开蓝牙后，wifi速度明显下降。</p>
-<p>有因为路由器不支持5GHz…</p>
-<p>所以改成回线键盘。</p>
 
       
     </div>
@@ -1044,7 +1044,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/dd/">
+    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/bluetoothctl%E4%BD%BF%E7%94%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
@@ -1058,7 +1058,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/02/12/dd/" class="post-title-link" itemprop="url">格式化U盘</a>
+            <a href="/2022/02/12/bluetoothctl%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">bluetoothctl 连接蓝牙键盘</a>
         </h2>
 
         <div class="post-meta">
@@ -1069,7 +1069,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2022-02-12 21:57:37 / Modified: 15:24:52" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
+              <time title="Created: 2022-02-12 21:57:37 / Modified: 15:24:32" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1092,8 +1092,19 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mkfs.vfat /dev/sda1</span><br></pre></td></tr></table></figure>
-<h1 id="将iso镜像写入U盘"><a href="#将iso镜像写入U盘" class="headerlink" title="将iso镜像写入U盘"></a>将iso镜像写入U盘</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dd if=/home/ezhonghu/Downloads/archlinuxxxxxxxxx.iso of=/dev/sda</span><br></pre></td></tr></table></figure>
+          <p>罗技键盘K480蓝牙连接(连接要求:连接后输入配对数字并按下回车才可配对)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start bluetoothcli.device</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bluetoothctl</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scan on</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果有bluz.error not ready报错,先用power on来使能</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connect &lt;ssid&gt;</span><br></pre></td></tr></table></figure>
+<p>用蓝牙键盘输入显示出来的数字</p>
+<p>按<kbd>Enter</kbd></p>
+<h2 id="bug"><a href="#bug" class="headerlink" title="bug"></a>bug</h2><p>因为蓝牙和wifi都使用2.4GHz，打开蓝牙后，wifi速度明显下降。</p>
+<p>有因为路由器不支持5GHz…</p>
+<p>所以改成回线键盘。</p>
 
       
     </div>
@@ -1180,7 +1191,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-count">35</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1193,7 +1204,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-count">23</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
