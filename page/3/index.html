@@ -174,7 +174,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/bluetoothctl%E4%BD%BF%E7%94%A8/">
+    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/daemon_config/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
@@ -188,7 +188,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/02/12/bluetoothctl%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">bluetoothctl 连接蓝牙键盘</a>
+            <a href="/2022/02/12/daemon_config/" class="post-title-link" itemprop="url">写个守护进程(daemon)</a>
         </h2>
 
         <div class="post-meta">
@@ -199,7 +199,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2022-02-12 21:57:37 / Modified: 15:24:32" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
+              <time title="Created: 2022-02-12 21:57:37 / Modified: 15:24:45" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -222,19 +222,21 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>罗技键盘K480蓝牙连接(连接要求:连接后输入配对数字并按下回车才可配对)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start bluetoothcli.device</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bluetoothctl</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scan on</span><br></pre></td></tr></table></figure>
+          <p><em>init.d已去,systemctl当立。</em></p>
 <blockquote>
-<p>如果有bluz.error not ready报错,先用power on来使能</p>
+<p>守护进程(daemon):开机后默默执行的程序,关机前默默执行的程序</p>
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connect &lt;ssid&gt;</span><br></pre></td></tr></table></figure>
-<p>用蓝牙键盘输入显示出来的数字</p>
-<p>按<kbd>Enter</kbd></p>
-<h2 id="bug"><a href="#bug" class="headerlink" title="bug"></a>bug</h2><p>因为蓝牙和wifi都使用2.4GHz，打开蓝牙后，wifi速度明显下降。</p>
-<p>有因为路由器不支持5GHz…</p>
-<p>所以改成回线键盘。</p>
+<p>在systemctl配置文件里面修改:</p>
+<h2 id="1-systemctl的service服务可以存在两个位置"><a href="#1-systemctl的service服务可以存在两个位置" class="headerlink" title="1.systemctl的service服务可以存在两个位置"></a>1.systemctl的service服务可以存在两个位置</h2><p>1./usr/lib/systmd/system/</p>
+<p>2./etc/systemd/system/(一般给root用)</p>
+<h2 id="2-写配置文件"><a href="#2-写配置文件" class="headerlink" title="2.写配置文件"></a>2.写配置文件</h2><p>1.[unit]守护进程的启动顺序与依赖的关系</p>
+<p>2.[service]守护进程的行为</p>
+<p>3.[install]本守护进程阶段</p>
+<h2 id="3-systemctl的守护进程重新启动"><a href="#3-systemctl的守护进程重新启动" class="headerlink" title="3.systemctl的守护进程重新启动"></a>3.systemctl的守护进程重新启动</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl daemon-reload</span><br></pre></td></tr></table></figure>
+<h2 id="4-执行"><a href="#4-执行" class="headerlink" title="4.执行"></a>4.执行</h2><p>立马执行：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start xxx.service </span><br></pre></td></tr></table></figure></p>
+<p>开机自启动：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl enable xxx.service</span><br></pre></td></tr></table></figure></p>
+<p>这个<a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-part-two.html">博客</a>写的很清晰！</p>
+<p>```</p>
 
       
     </div>
@@ -304,97 +306,6 @@
       
           <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mkfs.vfat /dev/sda1</span><br></pre></td></tr></table></figure>
 <h1 id="将iso镜像写入U盘"><a href="#将iso镜像写入U盘" class="headerlink" title="将iso镜像写入U盘"></a>将iso镜像写入U盘</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dd if=/home/ezhonghu/Downloads/archlinuxxxxxxxxx.iso of=/dev/sda</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/deepin%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
-      <meta itemprop="name" content="ezhonghu">
-      <meta itemprop="description" content="花开时节|花自开">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ezhonghu's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/12/deepin%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/" class="post-title-link" itemprop="url">deepin常用软件推荐</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-02-12 21:57:37 / Modified: 15:25:06" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>推荐一些deepin下我个人觉得比较好用的软件</p>
-<p>1、QQ(wine)</p>
-<p>deepin系统的wine qq和wine 微信算是deepin特色,这也是linux这么多发行版选择deepin系统的原因之一。</p>
-<p><img src="https://ezhonghupictures.oss-cn-shenzhen.aliyuncs.com/1.13.png" alt="1.13"></p>
-<p>QQ for linux也还行,只是很有年代感。</p>
-<p>2、微信(wine)</p>
-<p><img src="https://ezhonghupictures.oss-cn-shenzhen.aliyuncs.com/1.14.png" alt="1.14"></p>
-<p>3、坚果云</p>
-<p>文件同步软件,可以在linux、windows、android、ios、mac上同步文件。</p>
-<p><img src="https://ezhonghupictures.oss-cn-shenzhen.aliyuncs.com/1.16.png" alt="1.16"></p>
-<p><a target="_blank" rel="noopener" href="https://www.jianguoyun.com/s/downloads/linux">下载地址</a><br>ubuntu和debian的都可以用。</p>
-<p>4、mindmaster</p>
-<p>思维导图软件,用来清晰思路</p>
-<p><img src="https://ezhonghupictures.oss-cn-shenzhen.aliyuncs.com/1.17.png" alt="1.17"></p>
-<p>5、wps</p>
-<p>linux下编辑word、excel、powerpoint(个人觉得比libreoffice强大)</p>
-<p><img src="https://ezhonghupictures.oss-cn-shenzhen.aliyuncs.com/1.19.png" alt="1.19"></p>
-<p>6、vim</p>
-<p>学习曲线较陡,但学会后爱不释手的文本编辑器</p>
-<p><img src="https://ezhonghupictures.oss-cn-shenzhen.aliyuncs.com/1.15.png" alt="1.15"></p>
-<p>7、网易云音乐</p>
-<p>软件商店里有,网易云和deepin合作开发的(支持国产产品加入到linux当中来)<br><img src="https://ezhonghupictures.oss-cn-shenzhen.aliyuncs.com/1.12.png" alt="1.12"></p>
-<p>8、chromium浏览器<br>浏览器,反应快捷,拓展性高(特殊方式)</p>
-<p><img src="https://ezhonghupictures.oss-cn-shenzhen.aliyuncs.com/1.18.png" alt="1.18"></p>
 
       
     </div>
@@ -498,6 +409,97 @@
 <p>用鼠标把下好的deb包拖拽进去就自动安装了！</p>
 <p>当然有linux基础的看官也可以cd到deb包目录,然后通过:<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dkpg -i xxx</span><br></pre></td></tr></table></figure><br>也能够安装deb包。</p>
 <h3 id="通过可视化下载、使用终端下载和用deb拖拽到软件包管理器的方法基本上可以下载大多数软件啦！"><a href="#通过可视化下载、使用终端下载和用deb拖拽到软件包管理器的方法基本上可以下载大多数软件啦！" class="headerlink" title="通过可视化下载、使用终端下载和用deb拖拽到软件包管理器的方法基本上可以下载大多数软件啦！"></a>通过可视化下载、使用终端下载和用deb拖拽到软件包管理器的方法基本上可以下载大多数软件啦！</h3>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/deepin%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
+      <meta itemprop="name" content="ezhonghu">
+      <meta itemprop="description" content="花开时节|花自开">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ezhonghu's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/12/deepin%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/" class="post-title-link" itemprop="url">deepin常用软件推荐</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-02-12 21:57:37 / Modified: 15:25:06" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>推荐一些deepin下我个人觉得比较好用的软件</p>
+<p>1、QQ(wine)</p>
+<p>deepin系统的wine qq和wine 微信算是deepin特色,这也是linux这么多发行版选择deepin系统的原因之一。</p>
+<p><img src="https://ezhonghupictures.oss-cn-shenzhen.aliyuncs.com/1.13.png" alt="1.13"></p>
+<p>QQ for linux也还行,只是很有年代感。</p>
+<p>2、微信(wine)</p>
+<p><img src="https://ezhonghupictures.oss-cn-shenzhen.aliyuncs.com/1.14.png" alt="1.14"></p>
+<p>3、坚果云</p>
+<p>文件同步软件,可以在linux、windows、android、ios、mac上同步文件。</p>
+<p><img src="https://ezhonghupictures.oss-cn-shenzhen.aliyuncs.com/1.16.png" alt="1.16"></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianguoyun.com/s/downloads/linux">下载地址</a><br>ubuntu和debian的都可以用。</p>
+<p>4、mindmaster</p>
+<p>思维导图软件,用来清晰思路</p>
+<p><img src="https://ezhonghupictures.oss-cn-shenzhen.aliyuncs.com/1.17.png" alt="1.17"></p>
+<p>5、wps</p>
+<p>linux下编辑word、excel、powerpoint(个人觉得比libreoffice强大)</p>
+<p><img src="https://ezhonghupictures.oss-cn-shenzhen.aliyuncs.com/1.19.png" alt="1.19"></p>
+<p>6、vim</p>
+<p>学习曲线较陡,但学会后爱不释手的文本编辑器</p>
+<p><img src="https://ezhonghupictures.oss-cn-shenzhen.aliyuncs.com/1.15.png" alt="1.15"></p>
+<p>7、网易云音乐</p>
+<p>软件商店里有,网易云和deepin合作开发的(支持国产产品加入到linux当中来)<br><img src="https://ezhonghupictures.oss-cn-shenzhen.aliyuncs.com/1.12.png" alt="1.12"></p>
+<p>8、chromium浏览器<br>浏览器,反应快捷,拓展性高(特殊方式)</p>
+<p><img src="https://ezhonghupictures.oss-cn-shenzhen.aliyuncs.com/1.18.png" alt="1.18"></p>
+
       
     </div>
 
