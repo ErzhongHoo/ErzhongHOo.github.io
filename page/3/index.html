@@ -141,7 +141,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">36</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">37</span></a>
 
   </li>
   </ul>
@@ -170,6 +170,86 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/bluetoothctl%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
+      <meta itemprop="name" content="ezhonghu">
+      <meta itemprop="description" content="花开时节|花自开">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ezhonghu's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/12/bluetoothctl%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">bluetoothctl 连接蓝牙键盘</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-02-12 21:57:37 / Modified: 15:24:32" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>罗技键盘K480蓝牙连接(连接要求:连接后输入配对数字并按下回车才可配对)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start bluetoothcli.device</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bluetoothctl</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scan on</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果有bluz.error not ready报错,先用power on来使能</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connect &lt;ssid&gt;</span><br></pre></td></tr></table></figure>
+<p>用蓝牙键盘输入显示出来的数字</p>
+<p>按<kbd>Enter</kbd></p>
+<h2 id="bug"><a href="#bug" class="headerlink" title="bug"></a>bug</h2><p>因为蓝牙和wifi都使用2.4GHz，打开蓝牙后，wifi速度明显下降。</p>
+<p>有因为路由器不支持5GHz…</p>
+<p>所以改成回线键盘。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -1061,86 +1141,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/jupyter_lab_ssl/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
-      <meta itemprop="name" content="ezhonghu">
-      <meta itemprop="description" content="花开时节|花自开">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ezhonghu's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/12/jupyter_lab_ssl/" class="post-title-link" itemprop="url">config ssl to jupyter lab.</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-02-12 21:57:37 / Modified: 15:26:37" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ol>
-<li><p>Put xxx.key and xxx.pem into your website.</p>
-</li>
-<li><p>copy the following code to .jupyter/jupyter_config.py</p>
-</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">c.NotebookApp.certfile = <span class="string">u&#x27;path_to_public.crt&#x27;</span></span><br><span class="line">c.NotebookApp.keyfile = <span class="string">u&#x27;path_to.key&#x27;</span></span><br></pre></td></tr></table></figure>
-<p>Don’t forget your path where xxx.key and xxx.pem file.</p>
-<p>Generally, i put xxx.key and xxx.pem in /etc/nginx/cert/ (to create your own cert file first)</p>
-<ol>
-<li>reboot your jupyter lab.</li>
-</ol>
-<p>Done.</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1212,7 +1212,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-count">37</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
