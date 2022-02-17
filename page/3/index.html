@@ -131,7 +131,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">25</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">26</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -141,7 +141,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">38</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">39</span></a>
 
   </li>
   </ul>
@@ -170,6 +170,230 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/VLOOKUP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
+      <meta itemprop="name" content="ezhonghu">
+      <meta itemprop="description" content="花开时节|花自开">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ezhonghu's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/12/VLOOKUP/" class="post-title-link" itemprop="url">Excel VLOOPUP 函数 使用</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-02-12 21:57:37 / Modified: 15:31:07" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>作用:从已知的一个表格匹配另一个表格对应的数据,并返回它的其他属性</p>
+<p>A表如下(已知)</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>姓名</td>
+<td>排名</td>
+</tr>
+<tr>
+<td>2</td>
+<td>小明</td>
+<td>1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>小张</td>
+<td>2</td>
+</tr>
+<tr>
+<td>4</td>
+<td>小王</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>B表如下(排名要求)</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>姓名</td>
+<td>班级</td>
+<td>排名</td>
+</tr>
+<tr>
+<td>2</td>
+<td>小明</td>
+<td>一班</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>小王</td>
+<td>五班</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>小张</td>
+<td>三班</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>如何通过B表的姓名,知道其个人的排名？</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>姓名</td>
+<td>班级</td>
+<td>排名</td>
+</tr>
+<tr>
+<td>2</td>
+<td>小明</td>
+<td>一班</td>
+<td>=VLOOPUP(A3,A表$A,$B,3,FALSE)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>小王</td>
+<td>五班</td>
+<td>=VLOOPUP(A3,A表$A,$B,3,FALSE)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>小张</td>
+<td>三班</td>
+<td>=VLOOPUP(A3,A表$A,$B,3,FALSE)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p>A3表示所需要匹配的数据</p>
+<p>选择A表的所有列(从A列到B列)</p>
+<p>返回能和A3匹配的那一行对应的列(第三列)</p>
+<p>FALSE表示精确查找,TRUE表示模糊查找</p>
+</blockquote>
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>姓名</td>
+<td>班级</td>
+<td>排名</td>
+</tr>
+<tr>
+<td>2</td>
+<td>小明</td>
+<td>一班</td>
+<td>1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>小王</td>
+<td>五班</td>
+<td>3</td>
+</tr>
+<tr>
+<td>4</td>
+<td>小张</td>
+<td>三班</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -928,124 +1152,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
-      <meta itemprop="name" content="ezhonghu">
-      <meta itemprop="description" content="花开时节|花自开">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ezhonghu's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/12/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">hexo搭建博客步骤</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-02-12 21:57:37 / Modified: 15:26:12" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="1-搭建环境"><a href="#1-搭建环境" class="headerlink" title="1.搭建环境"></a>1.搭建环境</h3><p>1.在<a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">nodejs官网</a>查看最新的nodejs包。</p>
-<p>2.下载Linux Binaries (x64) 的二进制包。（以下包为写下这篇博客时最新的包，当你看到的时候应该已经不是最新的了，请自行替换成上一步你所看到的最新的包）。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://nodejs.org/dist/v16.13.2/node-v16.13.2-linux-x64.tar.xz </span><br></pre></td></tr></table></figure>
-<p>3.解压包</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -Jxvf node-v16.13.2-linux-x64.tar.xz /opt/</span><br></pre></td></tr></table></figure>
-<p>4.在个人用户的shell配置文件加入环境变量（我的shell使用zsh，所以这里是.zshrc）</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvim .zshrc</span><br></pre></td></tr></table></figure>
-<p>在末尾加入(请自行替换成实际解压的文件夹名)</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PATH=/opt/node-v16.13.2-linux-x64/bin:$PATH</span><br></pre></td></tr></table></figure>
-<p>5.验证node安装成功</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
-<p>6.安装hexo(全局位置)</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-<h3 id="2-创建文件夹并初始化"><a href="#2-创建文件夹并初始化" class="headerlink" title="2.创建文件夹并初始化"></a>2.创建文件夹并初始化</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir hexo_blog</span><br><span class="line">hexo init hexo_blog/</span><br></pre></td></tr></table></figure>
-<p><img src="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/image-20220207095231195.png" alt="image-20220207095231195"></p>
-<h3 id="3-生成静态文件"><a href="#3-生成静态文件" class="headerlink" title="3.生成静态文件"></a>3.生成静态文件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd hexo</span><br><span class="line">hexo generate</span><br></pre></td></tr></table></figure>
-<h3 id="4-启动服务"><a href="#4-启动服务" class="headerlink" title="4.启动服务"></a>4.启动服务</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">heso server</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>默认端口为4000</p>
-</blockquote>
-<h3 id="5-浏览器查看"><a href="#5-浏览器查看" class="headerlink" title="5.浏览器查看"></a>5.浏览器查看</h3><p><img src="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/image-20220207103724320.png" alt="image-20220207103724320"></p>
-<blockquote>
-<p>以上为默认的模板文件</p>
-</blockquote>
-<hr>
-<h1 id="写文章"><a href="#写文章" class="headerlink" title="写文章"></a>写文章</h1><p>1.生成文章</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;第一篇博客&quot;</span><br></pre></td></tr></table></figure>
-<p>此时会在~/hexo_blog/source/_posts/下生成对应名称，后缀为md的文件。</p>
-<hr>
-<h1 id="部署到github-page上"><a href="#部署到github-page上" class="headerlink" title="部署到github page上"></a>部署到github page上</h1><h3 id="1-安装插件"><a href="#1-安装插件" class="headerlink" title="1.安装插件"></a>1.安装插件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-<h3 id="2-在github创建repository"><a href="#2-在github创建repository" class="headerlink" title="2.在github创建repository"></a>2.在github创建repository</h3><blockquote>
-<p>名称要与用户名一致,后面跟上.github.io</p>
-<p><img src="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/image-20220208091729049.png" alt="image-20220208091729049"></p>
-</blockquote>
-<h3 id="3-修改-config-yml文件"><a href="#3-修改-config-yml文件" class="headerlink" title="3.修改_config.yml文件"></a>3.修改_config.yml文件</h3><p>添加以下内容(repo替换上一步创建的repository)</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/ErzhongHoo/ErzhongHoo.github.io.git</span><br><span class="line">  branch: gh-pages</span><br></pre></td></tr></table></figure>
-<hr>
-<h1 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h1><h4 id="1-更换next主题"><a href="#1-更换next主题" class="headerlink" title="1.更换next主题"></a>1.更换next主题</h4><p><a target="_blank" rel="noopener" href="https://github.com/theme-next/hexo-theme-next/blob/master/docs/INSTALLATION.md">next官方安装文档</a></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd hexo_blog/</span><br><span class="line">git clone https://github.com/theme-next/hexo-theme-next themes/next</span><br><span class="line">nvim ~/hexo_blog/_config.yml</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p> 找到theme，将landscape替换为next</p>
-</blockquote>
-<h4 id="2-支持渲染latex公式"><a href="#2-支持渲染latex公式" class="headerlink" title="2.支持渲染latex公式"></a>2.支持渲染latex公式</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvim ~/hexo_blog/source/themes/next/_config.yml</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>找到mathjax，改成：</p>
-<blockquote>
-<p>enable : true</p>
-</blockquote>
-</blockquote>
-<p>在blog文件夹下:<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked</span><br><span class="line">npm install hexo-renderer-kramed</span><br></pre></td></tr></table></figure></p>
-<p>渲染<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1117,7 +1223,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-count">39</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1130,7 +1236,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-count">26</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
