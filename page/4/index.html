@@ -174,7 +174,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/ffmpeg%E6%8A%8Amp4%E8%BD%ACmp3/">
+    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/droidcam/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
@@ -188,7 +188,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/02/12/ffmpeg%E6%8A%8Amp4%E8%BD%ACmp3/" class="post-title-link" itemprop="url">使用ffmpeg提取mp4中的音频为mp3</a>
+            <a href="/2022/02/12/droidcam/" class="post-title-link" itemprop="url">droidcam</a>
         </h2>
 
         <div class="post-meta">
@@ -199,7 +199,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2022-02-12 21:57:37 / Modified: 15:26:00" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
+              <time title="Created: 2022-02-12 21:57:37 / Modified: 15:25:46" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -222,26 +222,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>很欣赏这个<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1xK4y197kb?p=1&amp;share_medium=android&amp;share_plat=android&amp;share_source=WEIXIN&amp;share_tag=s_i&amp;timestamp=1624666315&amp;unique_k=YjluUT">up主</a>。</p>
-<p>但是每次想听的时候需要打开b站看视频来听音乐，很麻烦。</p>
-<p>所以打算把Up的视频下载下来，转成Mp3，保存在本地。</p>
-<h3 id="1-使用you-get-下载原视频："><a href="#1-使用you-get-下载原视频：" class="headerlink" title="1.使用you-get 下载原视频："></a>1.使用you-get 下载原视频：</h3><p>用you-get将原视频下载到当前目录：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">you-get https://www.bilibili.com/video/BV1xK4y197kb?from=search&amp;seid=13742639050475514939</span><br></pre></td></tr></table></figure>
-<p>you-get可以通过Python3的pip3获得。</p>
-<ul>
-<li>-i 查询信息（infomation)</li>
-<li>-format[ ] 下载对应格式，若不选择，则为最高画质</li>
-<li>-o 指定储存位置</li>
-<li>-c 有会员限制的网站，可以用-c参数，加上cookie保存的路径</li>
-<li>使用火狐浏览器，在本地的C:\Users\ezhonghu\AppData\Roaming\Mozilla\Firefox\Profiles\eyne4mq2.default-release可以找到cookies.sqlite的文件，这个就是对应的cookie</li>
-</ul>
-<h3 id="2-使用ffmpeg将mp4转换为mp3："><a href="#2-使用ffmpeg将mp4转换为mp3：" class="headerlink" title="2.使用ffmpeg将mp4转换为mp3："></a>2.使用ffmpeg将mp4转换为mp3：</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i 春庭雪.mp4 -f mp3 -vn 春庭雪.mp3</span><br></pre></td></tr></table></figure>
-<ul>
-<li>-i 为输入文件</li>
-<li>-f 为强制修改为mp3格式</li>
-<li>-vn 为不输出视频格式(video no)</li>
-<li>最后为新文件名</li>
-</ul>
+          <h3 id="install-droidcam"><a href="#install-droidcam" class="headerlink" title="install droidcam"></a>install droidcam</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yay -S droidcam</span><br></pre></td></tr></table></figure>
+<h3 id="install-linux-header"><a href="#install-linux-header" class="headerlink" title="install linux-header"></a>install linux-header</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S linux-header</span><br></pre></td></tr></table></figure>
+<h2 id="usage"><a href="#usage" class="headerlink" title="usage"></a>usage</h2><h3 id="1-wifi"><a href="#1-wifi" class="headerlink" title="1.wifi"></a>1.wifi</h3><p>android install droidcam and launch</p>
+<p>chromium enter <a target="_blank" rel="noopener" href="http://192.168.25.x:4747">http://192.168.25.x:4747</a></p>
+<h3 id="2-usb"><a href="#2-usb" class="headerlink" title="2.usb"></a>2.usb</h3><p>Android mobile phone and linu computers connected by cable</p>
+<p>android debug mode<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb devices</span><br></pre></td></tr></table></figure></p>
+<p>remember devices name<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo modprobe v4l2loopback_dc</span><br></pre></td></tr></table></figure></p>
+<p>open droidcam on android<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">env ANDROID_SERIAL=bd4a6a1a droidcam-cli adb 4747</span><br></pre></td></tr></table></figure></p>
+<p>while open obs, mobile phones camera can be detected and used</p>
 
       
     </div>
