@@ -131,7 +131,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">27</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">28</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -141,7 +141,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">40</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">41</span></a>
 
   </li>
   </ul>
@@ -174,7 +174,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/DesktopLaunch/">
+    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/22/github%E4%BD%BF%E7%94%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
@@ -188,7 +188,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/02/12/DesktopLaunch/" class="post-title-link" itemprop="url">linux如何把程序添加到桌面和启动器</a>
+            <a href="/2022/02/22/github%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">github使用</a>
         </h2>
 
         <div class="post-meta">
@@ -197,9 +197,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-02-12 21:57:37 / Modified: 15:25:17" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
+              <time title="Created: 2022-02-22 10:07:49" itemprop="dateCreated datePublished" datetime="2022-02-22T10:07:49+08:00">2022-02-22</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -222,13 +221,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="一个重要的思想-linux下一切皆文件！！"><a href="#一个重要的思想-linux下一切皆文件！！" class="headerlink" title="一个重要的思想:linux下一切皆文件！！"></a>一个重要的思想:linux下一切皆文件！！</h1><p>最近需要用到arduino，在官网下了个arduino的文件，解压之后发现:如果要打开需要跑到/opt/arduino/arduino-1.8.12/arduino路径下，执行./arduino才可以运行这个程序。</p>
-<p>在dmenu启动器，dde启动器，还有终端都不能直接找到或者运行这个软件！</p>
-<p>为了方便以后执行这个程序，需要配置一下！(也可以说是安装程序创建快捷方式的一个方法)。</p>
-<h2 id="1、在桌面-Desktop-创建一个xxxxxx-desktop"><a href="#1、在桌面-Desktop-创建一个xxxxxx-desktop" class="headerlink" title="1、在桌面(Desktop)创建一个xxxxxx.desktop"></a>1、在桌面(Desktop)创建一个xxxxxx.desktop</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim arduino.desktop</span><br></pre></td></tr></table></figure>
-<h2 id="2、编辑"><a href="#2、编辑" class="headerlink" title="2、编辑:"></a>2、编辑:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[Desktop Entry]     //表明执行方式</span><br><span class="line">Encoding=UTF-8      //编码方式</span><br><span class="line">Type=Application    //类型</span><br><span class="line">Terminal=false      //打开程序后是否打开终端</span><br><span class="line">Icon=/opt/arduino/arduino.png       //图标位置(.png)</span><br><span class="line">Exec=&quot;/opt/arduino/arduino-1.8.12/arduino&quot; %U       //执行方式,也可以为sh -c &quot;xxxxxxxxxx&quot;</span><br><span class="line">Name=arduino       //名称 </span><br><span class="line">Name[zh_CN]=arduino     //在中文路径下的名称</span><br><span class="line">Comment=arduinoIDE      //软件的作用</span><br><span class="line">Comment[zh_CN]=arduinoIDE</span><br><span class="line">Categories=Application;     //软件归类为</span><br></pre></td></tr></table></figure>
-<p>此时已经可以在桌面双击打开此文件。</p>
-<h2 id="3、添加到程序启动器中"><a href="#3、添加到程序启动器中" class="headerlink" title="3、添加到程序启动器中"></a>3、添加到程序启动器中</h2><p>复制文件到到/usr/bin/applications/<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp arduino.desktop /usr/share/applications/</span><br></pre></td></tr></table></figure><br>此时可以在启动器(d-menu)里面能找到该软件,并且可以鼠标双击执行了。</p>
+          <h4 id="branch"><a href="#branch" class="headerlink" title="branch"></a>branch</h4><p>分支<br>可以看到版本进化升级的过程<br>如果要比较各个分支的不同，可以在url的末尾输入<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">compare</span><br></pre></td></tr></table></figure><br>就可以比较出各个版本的不同</p>
+<h4 id="issues"><a href="#issues" class="headerlink" title="issues"></a>issues</h4><p>评论留言区<br>告诉bug<br>提交需求<br>疑问功能<br>close的话一般提问不规范或者已经解决</p>
+<h4 id="pull-request"><a href="#pull-request" class="headerlink" title="pull request"></a>pull request</h4><p>为这个开源项目做贡献<br>提交<br>评审code review</p>
+<h4 id="projects"><a href="#projects" class="headerlink" title="projects"></a>projects</h4><p>项目管理（企业用）<br>工作任务流程，需求表<br>要做什么<br>做了什么<br>完成什么</p>
+<h4 id="wiki"><a href="#wiki" class="headerlink" title="wiki"></a>wiki</h4><p>项目资料、介绍</p>
+<h4 id="insights"><a href="#insights" class="headerlink" title="insights"></a>insights</h4><p>统计信息<br>贡献者<br>多少次提交<br>流量等</p>
 
       
     </div>
@@ -248,7 +246,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/VLOOKUP/">
+    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/22/%E5%B8%82%E5%9C%BA%E5%9D%87%E8%A1%A1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
@@ -262,7 +260,751 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/02/12/VLOOKUP/" class="post-title-link" itemprop="url">Excel VLOOPUP 函数 使用</a>
+            <a href="/2022/02/22/%E5%B8%82%E5%9C%BA%E5%9D%87%E8%A1%A1/" class="post-title-link" itemprop="url">市场均衡</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-02-22 10:07:49" itemprop="dateCreated datePublished" datetime="2022-02-22T10:07:49+08:00">2022-02-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BB%8F%E6%B5%8E%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">经济学</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="市场均衡和价格形成"><a href="#市场均衡和价格形成" class="headerlink" title="市场均衡和价格形成"></a>市场均衡和价格形成</h3><p><img src="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/IMG_0045.jpeg" alt="供需均衡点"></p>
+<p>市场经济中，”看不见的手”最后会把供给和需求最后交汇在均衡点。</p>
+<p>而我认为某些重要行业应该由国家宏观调控。</p>
+<blockquote>
+<p> 比如医院，如果仅靠市场调控，回归周期太长！等医院变多起来，人都没了！</p>
+</blockquote>
+<p>这样的回归结果就像自动控制原理里的PID震荡曲线。最后影响到现实生活中的结果就是经济周期的出现。</p>
+<h3 id="预测经济周期方法"><a href="#预测经济周期方法" class="headerlink" title="预测经济周期方法"></a>预测经济周期方法</h3><p>1.<a target="_blank" rel="noopener" href="http://www.stats.gov.cn/search/s?qt=PPI">PPI</a>(生产者价格指数)</p>
+<p>2.<a target="_blank" rel="noopener" href="http://www.stats.gov.cn/search/s?qt=PMI">PMI</a>(采购经理人指数)</p>
+<blockquote>
+<p>提前发布，快，但太灵敏，不一定准确</p>
+</blockquote>
+<h3 id="一点对现实生活中的理解"><a href="#一点对现实生活中的理解" class="headerlink" title="一点对现实生活中的理解"></a>一点对现实生活中的理解</h3><p>1.租房</p>
+<p>11月最便宜，3、4月最贵。因为3、4月大学生出来找工作，并且公司里的人拿了年终奖，房东多少都会涨点价。</p>
+<p>2.证书</p>
+<p>门槛越高、通过率越低证明供给越少，也就越有价值。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/22/symbols/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
+      <meta itemprop="name" content="ezhonghu">
+      <meta itemprop="description" content="花开时节|花自开">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ezhonghu's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/22/symbols/" class="post-title-link" itemprop="url">markdown特殊符号</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-02-22 10:07:49" itemprop="dateCreated datePublished" datetime="2022-02-22T10:07:49+08:00">2022-02-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <div class="table-container">
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>说明</th>
+<th>对应编码(使用时去掉空格)</th>
+<th>英文怎么说</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&amp;</td>
+<td>AND 符号</td>
+<td>&amp; amp;</td>
+<td>ampersand</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>小于</td>
+<td>&amp; lt;</td>
+<td>little</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>大于</td>
+<td>&amp; gt;</td>
+<td>great</td>
+</tr>
+<tr>
+<td></td>
+<td>空格</td>
+<td>&amp; nbsp;</td>
+<td>number space</td>
+</tr>
+<tr>
+<td>¿</td>
+<td>倒问号</td>
+<td>&amp; iquest;</td>
+<td>inverted question</td>
+</tr>
+<tr>
+<td>?</td>
+<td>问号</td>
+<td>&amp; quest;</td>
+<td>question</td>
+</tr>
+<tr>
+<td>«</td>
+<td>左书名号</td>
+<td>&amp; laquo;</td>
+<td>left angle quote</td>
+</tr>
+<tr>
+<td>»</td>
+<td>右书名号</td>
+<td>&amp; raquo;</td>
+<td>right angle quote</td>
+</tr>
+<tr>
+<td>“</td>
+<td>引号</td>
+<td>&amp; quot;</td>
+<td>quote</td>
+</tr>
+<tr>
+<td>‘</td>
+<td>左单引号</td>
+<td>&amp; lsquo;</td>
+<td>left single quote</td>
+</tr>
+<tr>
+<td>’</td>
+<td>右单引号</td>
+<td>&amp; rsquo:</td>
+<td>right single quote</td>
+</tr>
+<tr>
+<td>“</td>
+<td>左双引号</td>
+<td>&amp; ldquo:</td>
+<td>left double quote</td>
+</tr>
+<tr>
+<td>“</td>
+<td>右双引号</td>
+<td>&amp; rdquo:</td>
+<td>right double quote</td>
+</tr>
+<tr>
+<td>¶</td>
+<td>段落符号</td>
+<td>&amp; para;</td>
+<td>paragraph</td>
+</tr>
+<tr>
+<td>§</td>
+<td>章节符</td>
+<td>&amp; sect;</td>
+<td>section</td>
+</tr>
+<tr>
+<td>*</td>
+<td>乘号</td>
+<td>&amp; times;</td>
+<td>times</td>
+</tr>
+<tr>
+<td>÷</td>
+<td>除号</td>
+<td>&amp; divide;</td>
+<td>divide</td>
+</tr>
+<tr>
+<td>±</td>
+<td>加减号</td>
+<td>&amp; plusmn;</td>
+<td>plus minus</td>
+</tr>
+<tr>
+<td>ƒ</td>
+<td>function</td>
+<td>&amp; fnof;</td>
+<td>还没查到</td>
+</tr>
+<tr>
+<td>√</td>
+<td>根号</td>
+<td>&amp; radic;</td>
+<td>radic</td>
+</tr>
+<tr>
+<td>∞</td>
+<td>无穷大</td>
+<td>&amp; infin;</td>
+<td>infinite</td>
+</tr>
+<tr>
+<td>°</td>
+<td>度</td>
+<td>&amp; deg;</td>
+<td>degree</td>
+</tr>
+<tr>
+<td>≠</td>
+<td>不等号</td>
+<td>&amp; ne;</td>
+<td>ne</td>
+</tr>
+<tr>
+<td>≡</td>
+<td>恒等于</td>
+<td>&amp; equiv;</td>
+<td>equivalent</td>
+</tr>
+<tr>
+<td>≤</td>
+<td>小于等于</td>
+<td>&amp; le;</td>
+<td>less than or equal to</td>
+</tr>
+<tr>
+<td>≥</td>
+<td>大于等于</td>
+<td>&amp; ge;</td>
+<td>great than or equal to</td>
+</tr>
+<tr>
+<td>⊥</td>
+<td>垂直符号</td>
+<td>&amp; perp;</td>
+<td>perpendicular</td>
+</tr>
+<tr>
+<td>←</td>
+<td>左箭头</td>
+<td>&amp; larr;</td>
+<td>left arrow</td>
+</tr>
+<tr>
+<td>→</td>
+<td>右箭头</td>
+<td>&amp; rarr;</td>
+<td>right arrow</td>
+</tr>
+<tr>
+<td>↑</td>
+<td>上箭头</td>
+<td>&amp; uarr;</td>
+<td>up arrow</td>
+</tr>
+<tr>
+<td>↓</td>
+<td>下箭头</td>
+<td>&amp; darr;</td>
+<td>down arrow</td>
+</tr>
+<tr>
+<td>↔</td>
+<td>水平箭头</td>
+<td>&amp; harr;</td>
+<td>horizontal arrow</td>
+</tr>
+<tr>
+<td>↕</td>
+<td>竖直箭头</td>
+<td>&amp; varr;</td>
+<td>vertical arrow</td>
+</tr>
+<tr>
+<td>⇐</td>
+<td>双线左箭头</td>
+<td>&amp; lArr;</td>
+<td>left arrow</td>
+</tr>
+<tr>
+<td>⇒</td>
+<td>双线右箭头</td>
+<td>&amp; rArr;</td>
+<td>right arrow</td>
+</tr>
+<tr>
+<td>⇑</td>
+<td>双线上箭头</td>
+<td>&amp; uArr;</td>
+<td>up arrow</td>
+</tr>
+<tr>
+<td>⇓</td>
+<td>双线上箭头</td>
+<td>&amp; dArr;</td>
+<td>down arrow</td>
+</tr>
+<tr>
+<td>⇔</td>
+<td>双线水平双箭头</td>
+<td>&amp; hArr;</td>
+<td>horizontal arrow</td>
+</tr>
+<tr>
+<td>⇕</td>
+<td>双线竖直箭头</td>
+<td>&amp; vArr;</td>
+<td>vertical arrow</td>
+</tr>
+<tr>
+<td>♠</td>
+<td>黑桃</td>
+<td>&amp; spades;</td>
+<td>spades</td>
+</tr>
+<tr>
+<td>♥</td>
+<td>红桃</td>
+<td>&amp; hearts;</td>
+<td>hearts</td>
+</tr>
+<tr>
+<td>♣</td>
+<td>梅花</td>
+<td>&amp; clubs;</td>
+<td>club</td>
+</tr>
+<tr>
+<td>♦</td>
+<td>方块</td>
+<td>&amp; diams;</td>
+<td>diamonds</td>
+</tr>
+<tr>
+<td>©</td>
+<td>版权</td>
+<td>&amp; copy;</td>
+<td>copy right</td>
+</tr>
+<tr>
+<td>®</td>
+<td>注册商标</td>
+<td>&amp; reg;</td>
+<td>registration</td>
+</tr>
+<tr>
+<td>™</td>
+<td>商标</td>
+<td>&amp; trade;</td>
+<td>trade</td>
+</tr>
+<tr>
+<td>¥</td>
+<td>人民币</td>
+<td>&amp; yen;</td>
+<td></td>
+</tr>
+<tr>
+<td>€</td>
+<td>欧元</td>
+<td>&amp; euro;</td>
+<td>euro</td>
+</tr>
+<tr>
+<td>¢</td>
+<td>美分</td>
+<td>&amp; cent;</td>
+<td>cent</td>
+</tr>
+<tr>
+<td>£</td>
+<td>英磅</td>
+<td>&amp; pound;</td>
+<td>pound</td>
+</tr>
+<tr>
+<td>⊕</td>
+<td></td>
+<td>&amp; oplus;</td>
+<td></td>
+</tr>
+<tr>
+<td>½</td>
+<td>二分之一</td>
+<td>&amp; frac12;</td>
+<td>fraction</td>
+</tr>
+<tr>
+<td>¼</td>
+<td>四分之一</td>
+<td>&amp; frac14;</td>
+<td>fraction</td>
+</tr>
+<tr>
+<td>‰</td>
+<td>千分符号</td>
+<td>&amp; permil;</td>
+<td>per mille</td>
+</tr>
+<tr>
+<td>∴</td>
+<td>所以</td>
+<td>&amp; there4;</td>
+<td>there fore</td>
+</tr>
+<tr>
+<td>π</td>
+<td>圆周率</td>
+<td>&amp; pi;</td>
+<td></td>
+</tr>
+<tr>
+<td>¹</td>
+<td>商标1</td>
+<td>&amp; sup1;</td>
+<td>super 1</td>
+</tr>
+<tr>
+<td>α</td>
+<td>alpha</td>
+<td>&amp; alpha;</td>
+<td>alpha</td>
+</tr>
+<tr>
+<td>β</td>
+<td>beta</td>
+<td>&amp; beta;</td>
+<td>beta</td>
+</tr>
+<tr>
+<td>γ</td>
+<td>gamma</td>
+<td>&amp; gamma;</td>
+<td>gamma</td>
+</tr>
+<tr>
+<td>δ</td>
+<td>delta</td>
+<td>&amp; delta;</td>
+<td>delta</td>
+</tr>
+<tr>
+<td>θ</td>
+<td>theta</td>
+<td>&amp; theta;</td>
+<td>theta</td>
+</tr>
+<tr>
+<td>λ</td>
+<td>lambda</td>
+<td>&amp; lambda;</td>
+<td>lambda</td>
+</tr>
+<tr>
+<td>σ</td>
+<td>sigma</td>
+<td>&amp; sigma;</td>
+<td>sigma</td>
+</tr>
+<tr>
+<td>τ</td>
+<td>tau</td>
+<td>&amp; tau;</td>
+<td>tau</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>ps：在markdown tex中,&amp;改为\,并且去掉;号</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/22/linux%E7%9A%84fhs%E8%A7%84%E8%8C%83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
+      <meta itemprop="name" content="ezhonghu">
+      <meta itemprop="description" content="花开时节|花自开">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ezhonghu's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/22/linux%E7%9A%84fhs%E8%A7%84%E8%8C%83/" class="post-title-link" itemprop="url">linux fhs 规范</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-02-22 10:07:49" itemprop="dateCreated datePublished" datetime="2022-02-22T10:07:49+08:00">2022-02-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>linux文件路径和windows不太一样，windows有CDEFG各种盘，但是Linux一切由/而生。</p>
+<h3 id="常见的位置："><a href="#常见的位置：" class="headerlink" title="常见的位置："></a>常见的位置：</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>位置</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/</td>
+<td>又叫根路径(root)，代表了整个系统。以下所有的路径都是他的子路径</td>
+</tr>
+<tr>
+<td>/boot/</td>
+<td>放系统启动所需的东西</td>
+</tr>
+<tr>
+<td>/usr</td>
+<td>放可运行的程序</td>
+</tr>
+<tr>
+<td>/usr/bin/</td>
+<td>放一些基本指令</td>
+</tr>
+<tr>
+<td>/usr/local/</td>
+<td>相当于给其他用户可以放想放程序的一个路径，里面也有/bin，/etc/等等子路径</td>
+</tr>
+<tr>
+<td>/usr/include/</td>
+<td>放c和c++的头文件</td>
+</tr>
+<tr>
+<td>/usr/lib</td>
+<td>放可供所有架构调用的二进制库文件、放守护进程类型的程序</td>
+</tr>
+<tr>
+<td>/usr/share</td>
+<td>放可供各种可以一起使用的一些东西，比如帮助文档、字体等等</td>
+</tr>
+<tr>
+<td>/usr/share/doc</td>
+<td>放程序使用的帮助文档</td>
+</tr>
+<tr>
+<td>/etc</td>
+<td>装程序的配置文件</td>
+</tr>
+<tr>
+<td>/homt</td>
+<td>普通用户的家</td>
+</tr>
+<tr>
+<td>/root/</td>
+<td>超级管理员的家</td>
+</tr>
+<tr>
+<td>/srv/</td>
+<td>装载服务（一般可以装看不见的一些进程）</td>
+</tr>
+<tr>
+<td>/tmp</td>
+<td>临时文件存放处</td>
+</tr>
+<tr>
+<td>/var/</td>
+<td>放一些永久的变量（值会经常变，但是变量不变）</td>
+</tr>
+<tr>
+<td>/dev/</td>
+<td>插入的设备都会以文件的方式呈现出来（很好去Linux下一切皆文件的思想）</td>
+</tr>
+<tr>
+<td>/proc/</td>
+<td>存放这台电脑的软件信息</td>
+</tr>
+<tr>
+<td>/sys/</td>
+<td>存放这台电脑的硬件信息（以文件的方式存放）</td>
+</tr>
+<tr>
+<td>/bin/</td>
+<td>开机直接挂载（指向/usr/bin/）</td>
+</tr>
+<tr>
+<td>/sbin/</td>
+<td>开机直接被挂载（指向/usr/sbin/）</td>
+</tr>
+<tr>
+<td>/usr/sbin/</td>
+<td>放root的基本指令</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="家的位置（-home-lt-用户名-gt-）"><a href="#家的位置（-home-lt-用户名-gt-）" class="headerlink" title="家的位置（/home/&lt;用户名&gt;/）"></a>家的位置（/home/&lt;用户名&gt;/）</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">位置</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">~/.config</td>
+<td style="text-align:center">放本用户的个人配置文件</td>
+</tr>
+<tr>
+<td style="text-align:center">~/.local/bin</td>
+<td style="text-align:center">放用户自行安装的可执行程序文件</td>
+</tr>
+<tr>
+<td style="text-align:center">~/.local/lib</td>
+<td style="text-align:center">放用户自行安装的库文件</td>
+</tr>
+<tr>
+<td style="text-align:center">~/.local/share</td>
+<td style="text-align:center">程序之间共享的资源</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/22/samba/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
+      <meta itemprop="name" content="ezhonghu">
+      <meta itemprop="description" content="花开时节|花自开">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ezhonghu's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/22/samba/" class="post-title-link" itemprop="url">Respberry pi NAS</a>
         </h2>
 
         <div class="post-meta">
@@ -273,7 +1015,87 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2022-02-12 21:57:37 / Modified: 15:31:07" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
+              <time title="Created: 2022-02-22 10:07:48 / Modified: 10:07:49" itemprop="dateCreated datePublished" datetime="2022-02-22T10:07:48+08:00">2022-02-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>1.安装samba</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install samba</span><br></pre></td></tr></table></figure>
+<p>弹出 Modify smb.conf to use WINS settings from DHCP?选择NO</p>
+<p>2.备份配置文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.back</span><br></pre></td></tr></table></figure>
+<p>3.配置conf文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/samba/smb.conf</span><br></pre></td></tr></table></figure>
+<p>4.加入如下语句</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[ezhonghuNAS]  # 显示被分享文件的名称</span><br><span class="line">    comment = NAS Storage    # 说明信息</span><br><span class="line">    valid users = pi,root    # 可以访问的用户</span><br><span class="line">    path = /media/pi/    # 共享文件的路径</span><br><span class="line">    browseable = yes    # 可被其他人看到资源名称（非内容）</span><br><span class="line">    writable = yes    # 可写</span><br><span class="line">    create mask = 0664    # 新建文件的权限为 664</span><br><span class="line">    directory mask = 0775    # 新建目录的权限为 775</span><br></pre></td></tr></table></figure>
+<p>5.重启samba</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/smbd restart</span><br></pre></td></tr></table></figure>
+<p>6.没启动的话启动samba</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo samba</span><br></pre></td></tr></table></figure>
+<p>7.添加Pi用户作为登陆<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo smbpasswd -a pi</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/22/VLOOKUP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
+      <meta itemprop="name" content="ezhonghu">
+      <meta itemprop="description" content="花开时节|花自开">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ezhonghu's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/22/VLOOKUP/" class="post-title-link" itemprop="url">Excel VLOOPUP 函数 使用</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-02-22 10:07:48" itemprop="dateCreated datePublished" datetime="2022-02-22T10:07:48+08:00">2022-02-22</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -472,7 +1294,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/archlinux%E6%97%A0%E6%B3%95%E9%94%81%E5%AE%9A%E6%95%B0%E6%8D%AE%E5%BA%93/">
+    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/22/arch_install/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
@@ -486,7 +1308,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/02/12/archlinux%E6%97%A0%E6%B3%95%E9%94%81%E5%AE%9A%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-title-link" itemprop="url">archlinux 无法锁定数据库</a>
+            <a href="/2022/02/22/arch_install/" class="post-title-link" itemprop="url">ArchLinux基本系统的安装</a>
         </h2>
 
         <div class="post-meta">
@@ -495,9 +1317,134 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-02-12 21:57:37 / Modified: 15:24:17" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
+              <time title="Created: 2022-02-22 10:07:48" itemprop="dateCreated datePublished" datetime="2022-02-22T10:07:48+08:00">2022-02-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>本文要完成的效果：安装archlinux,暂无图形界面,与window10系统共存</p>
+<h2 id="本次安装使用："><a href="#本次安装使用：" class="headerlink" title="本次安装使用："></a>本次安装使用：</h2><p>硬件：16G的U盘一个(启动盘）、500G的固态硬盘一个(安装盘)、电脑支持UEFI启动<br>软件：windows下使用rufus(linux用dd命令)</p>
+<p>镜像准备：</p>
+<p>进入清华arch的镜像网站<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/archlinux/iso/latest/">https://mirrors.tuna.tsinghua.edu.cn/archlinux/iso/latest/</a>选择最新的ISO文件下载（600多Mib的那个）</p>
+<p>使用rufus将.ISO文件刻录到16GU盘中。</p>
+<p>插入固态硬盘，重启电脑进入bios界面（微星GE为开机后按.号进入,有些笔记本为F2），把安全启动关闭，启动方式为UEFI启动，将启动顺序设置为 U盘启动优先于硬盘启动，保存后重启。</p>
+<p>进入电脑后选择archlinux进入（如果Ultra录入U盘正确，全为绿色OK，若出现Fail自行查询archl wiki）完成后有红色的root登录界面。</p>
+<h2 id="连接网络："><a href="#连接网络：" class="headerlink" title="连接网络："></a>连接网络：</h2><p>方法1.(如果当前的网络为自家的wifi)：</p>
+<p>查看当前有哪些wifi：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wifi-menu</span><br></pre></td></tr></table></figure><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">选择wifi并输入密码</span><br></pre></td></tr></table></figure><br>自动分配ip地址：(否则连上也不能ping通)<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dhcpcd</span><br></pre></td></tr></table></figure><br>ping下百度：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping www.baidu.com</span><br></pre></td></tr></table></figure><br>退出ping：<br><kbd>Ctrl</kbd>+<kbd>C</kbd> </p>
+<p>方法2.(使用企业级网络，比如校园网):</p>
+<p>查看当前可以连接的wifi设备(网卡)<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip link</span><br></pre></td></tr></table></figure><br>启动wlan0网卡<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip link set wlan0 up</span><br></pre></td></tr></table></figure><br>确认ip link 的wlan0的网卡是否成功打开<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip link</span><br></pre></td></tr></table></figure><br>显示现有的wifi<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iwlist wlan0 scan | grep ESSID</span><br></pre></td></tr></table></figure><br>将账号密码储存起来(帐号密码可修改)<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wpa_passphrase 网络名 密码 &gt; internet.conf </span><br></pre></td></tr></table></figure><br>用wlan0的网卡设备连接刚才储存起来的网络(&amp;为后台挂起)<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wpa_supplicant -c internet.conf -i wlan0 &amp;</span><br></pre></td></tr></table></figure><br>动态分配IP地址<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dhcpcd</span><br></pre></td></tr></table></figure></p>
+<h2 id="同步时间："><a href="#同步时间：" class="headerlink" title="同步时间："></a>同步时间：</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">timedatectl set-ntp true</span><br></pre></td></tr></table></figure>
+<h2 id="给硬盘分区及格式化-UEFI方式-："><a href="#给硬盘分区及格式化-UEFI方式-：" class="headerlink" title="给硬盘分区及格式化(UEFI方式)："></a>给硬盘分区及格式化(UEFI方式)：</h2><p>查看硬盘和分区：(本文中的500G硬盘为/dev/sdc)<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fdisk -l</span><br></pre></td></tr></table></figure><br>使用本U盘安装盘自带了分区的工具给硬盘分区：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fdisk /dev/sdc</span><br></pre></td></tr></table></figure><br>现在进入了 fdisk 分区环境，输入<kbd>g</kbd>来创建新gpt的分区表</p>
+<p>1、分512M的UEFI的启动分区</p>
+<p>输入<kbd>n</kbd>创建新的分区</p>
+<p>分区号码设置为1,输入<kbd>Enter</kbd>选择默认的1号</p>
+<p>分区开头为默认,输入<kbd>Enter</kbd>应该是2048</p>
+<p>分区结尾可以输入需要的大小,输入<kbd>+512M</kbd></p>
+<p>2、分250G的根分区</p>
+<p>分区号码设置为2,输入<kbd>2</kbd></p>
+<p>分区开头为默认,输入<kbd>Enter</kbd></p>
+<p>分区结尾250G,输入<kbd>+250G</kbd></p>
+<p>完成后可以输入<kbd>p</kbd>来查看刚才分的怎么样</p>
+<p>3、修改分区类型</p>
+<p>输入<kbd>t</kbd>选择/dev/sdc1（刚刚分的UEFI分区）</p>
+<p>输入<kbd>l</kbd>查看可以修改的类型，找到Linux UEFI对应的数字输入。</p>
+<p>输入<kbd>t</kbd>选择/dev/sdc2（刚刚分的根分区）</p>
+<p>输入<kbd>l</kbd>查看可以修改的类型，找到ext4对应的数字输入。</p>
+<p>查看刚刚的操作如何，输入<kbd>p</kbd></p>
+<p>觉得满意，保存！输入<kbd>w</kbd></p>
+<p>不满意，返回步骤1重来<br>格式化UEFI分区：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkfs.fat -F32 /dev/sdc1</span><br></pre></td></tr></table></figure><br>格式化根分区：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkfs.ext4 /dev/sdc2</span><br></pre></td></tr></table></figure></p>
+<h2 id="把制作好的硬盘挂在到这个U盘的系统-Live-CD-来进行操作："><a href="#把制作好的硬盘挂在到这个U盘的系统-Live-CD-来进行操作：" class="headerlink" title="把制作好的硬盘挂在到这个U盘的系统(Live CD)来进行操作："></a>把制作好的硬盘挂在到这个U盘的系统(Live CD)来进行操作：</h2><p>挂载根分区到/mnt上：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount /dev/sdc2 /mnt</span><br></pre></td></tr></table></figure>
+<p>在Live CD的/mnt中创建/boot目录：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir /boot</span><br></pre></td></tr></table></figure><br>挂在UEFI启动分区到/mnt/boot上：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount /dev/sdc1 /mnt/boot</span><br></pre></td></tr></table></figure></p>
+<h2 id="配置Pacman包管理工具的镜像"><a href="#配置Pacman包管理工具的镜像" class="headerlink" title="配置Pacman包管理工具的镜像:"></a>配置Pacman包管理工具的镜像:</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/pacman.d/mirrorlist</span><br></pre></td></tr></table></figure>
+<p>找到标有China的镜像源，选择几个距离本地比较近的镜像位置，放到开头<br>推荐浙江大学和清华大学的镜像</p>
+<h2 id="安装基本的包："><a href="#安装基本的包：" class="headerlink" title="安装基本的包："></a>安装基本的包：</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacstrap /mnt base base-devel linux linux-firmware dhcpcd</span><br></pre></td></tr></table></figure>
+<p>如果在上一部配置镜像正确的话应该不会慢的。</p>
+<h2 id="配置fstab："><a href="#配置fstab：" class="headerlink" title="配置fstab："></a>配置fstab：</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">genfstab -L /mnt &gt;&gt; /mnt/etc/fstab</span><br></pre></td></tr></table></figure>
+<p>检查下配置好了没<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /mnt/etc/fstab</span><br></pre></td></tr></table></figure></p>
+<p>可以看到/dev/sdc1 挂在到了 /boot分区，/dev/sdc2 挂载到了/根分区</p>
+<h2 id="把交互者更换为我们的新系统："><a href="#把交互者更换为我们的新系统：" class="headerlink" title="把交互者更换为我们的新系统："></a>把交互者更换为我们的新系统：</h2><p>接下来所有的操作路径前面都会有一个看不见的/mnt！<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arch-chroot /mnt</span><br></pre></td></tr></table></figure><br>如果系统被玩坏了，可以将根分区挂载到/mnt，启动分区挂载到/mnt/boot上，然后arch-chroot来修复系统。</p>
+<p>设置时区：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</span><br></pre></td></tr></table></figure><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hwclock --systohc</span><br></pre></td></tr></table></figure></p>
+<h2 id="提前安装必要的软件"><a href="#提前安装必要的软件" class="headerlink" title="提前安装必要的软件:"></a>提前安装必要的软件:</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S vim dialog wpa_supplicant ntfs-3g networkmanager netctl</span><br></pre></td></tr></table></figure>
+<h2 id="配置语言："><a href="#配置语言：" class="headerlink" title="配置语言："></a>配置语言：</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/locale.gen</span><br></pre></td></tr></table></figure>
+<p>去掉zh_CN.UTF—8,zh_HK.UTF-8,zh_TW.UTF-8.en_US.UTF-8前面的#号,保存并退出</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">locale-gen</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/locale.conf</span><br></pre></td></tr></table></figure>
+<p>在第一行加入：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LANG=en_US.UTF-8</span><br></pre></td></tr></table></figure><br>保存并退出</p>
+<p>设置主机名称：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/hostname</span><br></pre></td></tr></table></figure><br>自己设定一个myhostname(记住名称，等会用到)<br>这里我设置<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ArchLinux</span><br></pre></td></tr></table></figure><br>保存并退出<br>编辑/etc/hosts<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/hosts</span><br></pre></td></tr></table></figure><br>到达文件末尾，加入如下内容：(ArchLinux替换为刚才设置myhostname的名称)<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1 localhost</span><br><span class="line">::1 localhost</span><br><span class="line">127.0.1.1 ArchLinux.localdomain ArchLinux</span><br></pre></td></tr></table></figure><br>保存并退出</p>
+<p>设置Root的密码：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd</span><br></pre></td></tr></table></figure></p>
+<h2 id="安装Intel-ucode-AMD处理器安装AMD-ucode"><a href="#安装Intel-ucode-AMD处理器安装AMD-ucode" class="headerlink" title="安装Intel-ucode(AMD处理器安装AMD-ucode):"></a>安装Intel-ucode(AMD处理器安装AMD-ucode):</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S intel-ucode</span><br></pre></td></tr></table></figure>
+<p>安装启动引导Bootloader：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S os-prober ntfs-3g</span><br></pre></td></tr></table></figure><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S grub efibootmgr</span><br></pre></td></tr></table></figure><br>部署grub:<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub```</span><br><span class="line"></span><br><span class="line">ps:如果安装在U盘(移动硬盘上),应把上面那条改为:</span><br><span class="line">​```shell</span><br><span class="line">grub-install --terget=x86_64-efi --efi-directory=/boot --removable --recheck</span><br></pre></td></tr></table></figure></p>
+<p>生成配置文件:<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grub-mkconfig -o /boot/grub/grub.cfg</span><br></pre></td></tr></table></figure></p>
+<p>检查下是否成功生成系统的引导入口:<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /boot/grub/grub.cfg</span><br></pre></td></tr></table></figure><br>看看末尾menuentry是否有Archlinux系统。</p>
+<h2 id="退出chroot模式："><a href="#退出chroot模式：" class="headerlink" title="退出chroot模式："></a>退出chroot模式：</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exit</span><br></pre></td></tr></table></figure>
+<h2 id="解挂"><a href="#解挂" class="headerlink" title="解挂:"></a>解挂:</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">umount /mnt/boot</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">umount /mnt</span><br></pre></td></tr></table></figure>
+<h2 id="重启"><a href="#重启" class="headerlink" title="重启:"></a>重启:</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reboot</span><br></pre></td></tr></table></figure>
+<p><strong>恭喜成功安装ArchLinux！</strong></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/22/archlinux%E6%97%A0%E6%B3%95%E9%94%81%E5%AE%9A%E6%95%B0%E6%8D%AE%E5%BA%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
+      <meta itemprop="name" content="ezhonghu">
+      <meta itemprop="description" content="花开时节|花自开">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ezhonghu's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/22/archlinux%E6%97%A0%E6%B3%95%E9%94%81%E5%AE%9A%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-title-link" itemprop="url">archlinux 无法锁定数据库</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-02-22 10:07:48" itemprop="dateCreated datePublished" datetime="2022-02-22T10:07:48+08:00">2022-02-22</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -540,7 +1487,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/bluetoothctl%E4%BD%BF%E7%94%A8/">
+    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/22/use_vimplug/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
@@ -554,7 +1501,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/02/12/bluetoothctl%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">bluetoothctl 连接蓝牙键盘</a>
+            <a href="/2022/02/22/use_vimplug/" class="post-title-link" itemprop="url">使用vimplug来安装vim插件：</a>
         </h2>
 
         <div class="post-meta">
@@ -563,9 +1510,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-02-12 21:57:37 / Modified: 15:24:32" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
+              <time title="Created: 2022-02-22 10:07:48" itemprop="dateCreated datePublished" datetime="2022-02-22T10:07:48+08:00">2022-02-22</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -588,553 +1534,94 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>罗技键盘K480蓝牙连接(连接要求:连接后输入配对数字并按下回车才可配对)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start bluetoothcli.device</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bluetoothctl</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scan on</span><br></pre></td></tr></table></figure>
+          <h2 id="从github上获取vim-plug："><a href="#从github上获取vim-plug：" class="headerlink" title="从github上获取vim-plug："></a>从github上获取vim-plug：</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/junegunn/vim-plug</span><br></pre></td></tr></table></figure>
+<h2 id="把获取的vim-plug文件里面的plug-vim文件放到-vim-autoload-目录下："><a href="#把获取的vim-plug文件里面的plug-vim文件放到-vim-autoload-目录下：" class="headerlink" title="把获取的vim-plug文件里面的plug.vim文件放到~/.vim/autoload/目录下："></a>把获取的vim-plug文件里面的plug.vim文件放到~/.vim/autoload/目录下：</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv ~/vim-plug/plug.vim ~/.vim/autoload/</span><br></pre></td></tr></table></figure>
+<h2 id="配置-vimrc文件："><a href="#配置-vimrc文件：" class="headerlink" title="配置.vimrc文件："></a>配置.vimrc文件：</h2><h3 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim .vimrc</span><br></pre></td></tr></table></figure>
+<p>需要用什么插件就按这个格式来添加:<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">call plug#begin(&#x27;~/.vim/plugged&#x27;)</span><br><span class="line">plug &#x27;想用的插件(github上的插件名称，README.md有怎么添加)&#x27;</span><br><span class="line">call plug#end()</span><br></pre></td></tr></table></figure></p>
+<h3 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h3><p>保存.vimrc</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:w</span><br></pre></td></tr></table></figure>
+<h3 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h3><p>安装插件：(可以用tab)<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:PlugInstall</span><br></pre></td></tr></table></figure></p>
+<h3 id="4"><a href="#4" class="headerlink" title="4."></a>4.</h3><p>退出<strong>所有</strong>的vim文件(现在打开的是两个vim文件)<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:wqa</span><br></pre></td></tr></table></figure></p>
+<p>结束</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/22/ssh%E5%85%8D%E5%AF%86%E7%99%BB%E9%99%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
+      <meta itemprop="name" content="ezhonghu">
+      <meta itemprop="description" content="花开时节|花自开">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ezhonghu's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/22/ssh%E5%85%8D%E5%AF%86%E7%99%BB%E9%99%86/" class="post-title-link" itemprop="url">ssh免密登陆</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-02-22 10:07:48" itemprop="dateCreated datePublished" datetime="2022-02-22T10:07:48+08:00">2022-02-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="1-本地生成密钥对"><a href="#1-本地生成密钥对" class="headerlink" title="1.本地生成密钥对:"></a>1.本地生成密钥对:</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen</span><br></pre></td></tr></table></figure>
+<p>默认在~/.ssh/ 的目录默认生成名为id_rsa的两个文件</p>
 <blockquote>
-<p>如果有bluz.error not ready报错,先用power on来使能</p>
+<p>私钥rd_rsa<br>公钥id_rsa.pub</p>
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connect &lt;ssid&gt;</span><br></pre></td></tr></table></figure>
-<p>用蓝牙键盘输入显示出来的数字</p>
-<p>按<kbd>Enter</kbd></p>
-<h2 id="bug"><a href="#bug" class="headerlink" title="bug"></a>bug</h2><p>因为蓝牙和wifi都使用2.4GHz，打开蓝牙后，wifi速度明显下降。</p>
-<p>有因为路由器不支持5GHz…</p>
-<p>所以改成回线键盘。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/daemon_config/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
-      <meta itemprop="name" content="ezhonghu">
-      <meta itemprop="description" content="花开时节|花自开">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ezhonghu's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/12/daemon_config/" class="post-title-link" itemprop="url">写个守护进程(daemon)</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-02-12 21:57:37 / Modified: 15:24:45" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><em>init.d已去,systemctl当立。</em></p>
-<blockquote>
-<p>守护进程(daemon):开机后默默执行的程序,关机前默默执行的程序</p>
-</blockquote>
-<p>在systemctl配置文件里面修改:</p>
-<h2 id="1-systemctl的service服务可以存在两个位置"><a href="#1-systemctl的service服务可以存在两个位置" class="headerlink" title="1.systemctl的service服务可以存在两个位置"></a>1.systemctl的service服务可以存在两个位置</h2><p>1./usr/lib/systmd/system/</p>
-<p>2./etc/systemd/system/(一般给root用)</p>
-<h2 id="2-写配置文件"><a href="#2-写配置文件" class="headerlink" title="2.写配置文件"></a>2.写配置文件</h2><p>1.[unit]守护进程的启动顺序与依赖的关系</p>
-<p>2.[service]守护进程的行为</p>
-<p>3.[install]本守护进程阶段</p>
-<h2 id="3-systemctl的守护进程重新启动"><a href="#3-systemctl的守护进程重新启动" class="headerlink" title="3.systemctl的守护进程重新启动"></a>3.systemctl的守护进程重新启动</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl daemon-reload</span><br></pre></td></tr></table></figure>
-<h2 id="4-执行"><a href="#4-执行" class="headerlink" title="4.执行"></a>4.执行</h2><p>立马执行：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start xxx.service </span><br></pre></td></tr></table></figure></p>
-<p>开机自启动：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl enable xxx.service</span><br></pre></td></tr></table></figure></p>
-<p>这个<a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-part-two.html">博客</a>写的很清晰！</p>
-<p>```</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/dd/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
-      <meta itemprop="name" content="ezhonghu">
-      <meta itemprop="description" content="花开时节|花自开">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ezhonghu's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/12/dd/" class="post-title-link" itemprop="url">格式化U盘</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-02-12 21:57:37 / Modified: 15:24:52" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mkfs.vfat /dev/sda1</span><br></pre></td></tr></table></figure>
-<h1 id="将iso镜像写入U盘"><a href="#将iso镜像写入U盘" class="headerlink" title="将iso镜像写入U盘"></a>将iso镜像写入U盘</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dd if=/home/ezhonghu/Downloads/archlinuxxxxxxxxx.iso of=/dev/sda</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/deepin%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
-      <meta itemprop="name" content="ezhonghu">
-      <meta itemprop="description" content="花开时节|花自开">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ezhonghu's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/12/deepin%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/" class="post-title-link" itemprop="url">deepin安装软件</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-02-12 21:57:37 / Modified: 15:25:00" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>前几天3399买了华为荣耀的magicbook14 锐龙3500U,512G版本,第三方linux版(比windows版本便宜300多),预装deepin系统,看京东评论里的图片基本上到手都重装了windows10,出于对deepin的好奇,有了此文。</p>
-<h2 id="第一感觉"><a href="#第一感觉" class="headerlink" title="第一感觉"></a>第一感觉</h2><p>只用输入帐号密码就可以用了,开箱即用!</p>
-<p>界面是这样的:<br><img src="https://ezhonghupictures.oss-cn-shenzhen.aliyuncs.com/1.1.png" alt="1.1"><br>感觉很清新~</p>
-<p><img src="https://ezhonghupictures.oss-cn-shenzhen.aliyuncs.com/1.2.png" alt="1.2"></p>
-<p><img src="https://ezhonghupictures.oss-cn-shenzhen.aliyuncs.com/1.3.png" alt="1.3"></p>
-<p>专业版已激活,千万别换软件源！官网说换源后专业版会变成未激活！虽然没看出专业版和社区版的区别..但专业版没地方装..</p>
-<h2 id="安装软件"><a href="#安装软件" class="headerlink" title="安装软件"></a>安装软件</h2><p>linux下最好用的就是终端(terminal)！</p>
-<p>按快捷键<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>t</kbd>来打开终端。</p>
-<p>linux软件更新方式:官方软件源更新了新的软件-&gt;手动更新自己的软件仓库-&gt;手动更新本地电脑软件。(免除windows突然更新的烦恼)</p>
-<p>第一步更新自己的软件仓库,和官方软件源一样新。</p>
-<p>在刚才打开的终端的$号后面输入下面命令</p>
-<p>(提示输入密码输入的时候是看不到*****的,输入后默默按回车就行)。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure><br>像这样:</p>
-<p><img src="https://ezhonghupictures.oss-cn-shenzhen.aliyuncs.com/1.4.png" alt="1.4"></p>
-<p>第二步更新自己电脑的软件让它和刚刚更新的软件仓库一样新。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get upgrade</span><br></pre></td></tr></table></figure></p>
-<p>这时候这台电脑上的软件都是和官方源一样新的啦(ps:想吐槽deepin官方源太旧了,好多好几年没更新了！！)</p>
-<p>因为专业版deepin没有deepin软件仓库(社区版有)！得自己下。</p>
-<p>和上面一样在终端$号后面输入:<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install deepin-appstore</span><br></pre></td></tr></table></figure><br>就下好啦！</p>
-<p>单击这个标志<br><img src="https://ezhonghupictures.oss-cn-shenzhen.aliyuncs.com/1.5.png" alt="1.5"></p>
-<p>就看到了应用商店<br><img src="https://ezhonghupictures.oss-cn-shenzhen.aliyuncs.com/1.6.png" alt="1.6"></p>
-<h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><p>打开后就可以可视化安装软件:<br><img src="https://ezhonghupictures.oss-cn-shenzhen.aliyuncs.com/1.7.png" alt="1.7"></p>
-<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><p>安装软件的另一种方式直接在终端安装,前提是需要知道软件的名字(其实这种方式最简单,不用像windows先去官网下载-&gt;双击exe文件-&gt;设定安装位置那么麻烦)</p>
-<p>安装软件:(一条命令就装好了)<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install xxx</span><br></pre></td></tr></table></figure></p>
-<p>如果只知道软件大概的名字可以先在官方源里搜索有没有符合条件的。</p>
-<p>打个比方要下载一个保护眼睛的软件叫redshift,但现在模糊只知道似乎叫redshi,那么用下面这个命令搜一下我们知道的关键词:<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-cache search redshi</span><br></pre></td></tr></table></figure><br>就找到他的完整名称！名称后边是软件作用。<br><img src="https://ezhonghupictures.oss-cn-shenzhen.aliyuncs.com/1.8.png" alt="1.8"></p>
-<p>用上面格式下载就行:<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install redshift</span><br></pre></td></tr></table></figure></p>
-<h3 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h3><p>deb包安装。</p>
-<p>打个比方,在<a target="_blank" rel="noopener" href="https://pan.baidu.com/download">百度网盘for linux</a>下载页有两种格式,rpm格式和deb格式。</p>
-<p><img src="https://ezhonghupictures.oss-cn-shenzhen.aliyuncs.com/1.9.png" alt="1.9"></p>
-<p>deepin是debian系的,包管理工具是apt,所以下载deb格式。(另一个rpm格式给redhat系,包管理工具为yum用)</p>
-<p>下载后,在启动器里面有个软件包管理器,长这样(debian标志):</p>
-<p><img src="https://ezhonghupictures.oss-cn-shenzhen.aliyuncs.com/1.10.png" alt="1.10"></p>
-<p>打开后长这样:</p>
-<p><img src="https://ezhonghupictures.oss-cn-shenzhen.aliyuncs.com/1.11.png" alt="1.11"></p>
-<p>用鼠标把下好的deb包拖拽进去就自动安装了！</p>
-<p>当然有linux基础的看官也可以cd到deb包目录,然后通过:<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dkpg -i xxx</span><br></pre></td></tr></table></figure><br>也能够安装deb包。</p>
-<h3 id="通过可视化下载、使用终端下载和用deb拖拽到软件包管理器的方法基本上可以下载大多数软件啦！"><a href="#通过可视化下载、使用终端下载和用deb拖拽到软件包管理器的方法基本上可以下载大多数软件啦！" class="headerlink" title="通过可视化下载、使用终端下载和用deb拖拽到软件包管理器的方法基本上可以下载大多数软件啦！"></a>通过可视化下载、使用终端下载和用deb拖拽到软件包管理器的方法基本上可以下载大多数软件啦！</h3>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/deepin%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
-      <meta itemprop="name" content="ezhonghu">
-      <meta itemprop="description" content="花开时节|花自开">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ezhonghu's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/12/deepin%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/" class="post-title-link" itemprop="url">deepin常用软件推荐</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-02-12 21:57:37 / Modified: 15:25:06" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>推荐一些deepin下我个人觉得比较好用的软件</p>
-<p>1、QQ(wine)</p>
-<p>deepin系统的wine qq和wine 微信算是deepin特色,这也是linux这么多发行版选择deepin系统的原因之一。</p>
-<p><img src="https://ezhonghupictures.oss-cn-shenzhen.aliyuncs.com/1.13.png" alt="1.13"></p>
-<p>QQ for linux也还行,只是很有年代感。</p>
-<p>2、微信(wine)</p>
-<p><img src="https://ezhonghupictures.oss-cn-shenzhen.aliyuncs.com/1.14.png" alt="1.14"></p>
-<p>3、坚果云</p>
-<p>文件同步软件,可以在linux、windows、android、ios、mac上同步文件。</p>
-<p><img src="https://ezhonghupictures.oss-cn-shenzhen.aliyuncs.com/1.16.png" alt="1.16"></p>
-<p><a target="_blank" rel="noopener" href="https://www.jianguoyun.com/s/downloads/linux">下载地址</a><br>ubuntu和debian的都可以用。</p>
-<p>4、mindmaster</p>
-<p>思维导图软件,用来清晰思路</p>
-<p><img src="https://ezhonghupictures.oss-cn-shenzhen.aliyuncs.com/1.17.png" alt="1.17"></p>
-<p>5、wps</p>
-<p>linux下编辑word、excel、powerpoint(个人觉得比libreoffice强大)</p>
-<p><img src="https://ezhonghupictures.oss-cn-shenzhen.aliyuncs.com/1.19.png" alt="1.19"></p>
-<p>6、vim</p>
-<p>学习曲线较陡,但学会后爱不释手的文本编辑器</p>
-<p><img src="https://ezhonghupictures.oss-cn-shenzhen.aliyuncs.com/1.15.png" alt="1.15"></p>
-<p>7、网易云音乐</p>
-<p>软件商店里有,网易云和deepin合作开发的(支持国产产品加入到linux当中来)<br><img src="https://ezhonghupictures.oss-cn-shenzhen.aliyuncs.com/1.12.png" alt="1.12"></p>
-<p>8、chromium浏览器<br>浏览器,反应快捷,拓展性高(特殊方式)</p>
-<p><img src="https://ezhonghupictures.oss-cn-shenzhen.aliyuncs.com/1.18.png" alt="1.18"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/docker/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
-      <meta itemprop="name" content="ezhonghu">
-      <meta itemprop="description" content="花开时节|花自开">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ezhonghu's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/12/docker/" class="post-title-link" itemprop="url">docker使用方法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-02-12 21:57:37 / Modified: 15:25:24" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>全球最大的docker image中心<a target="_blank" rel="noopener" href="https://registry.hub.docker.com/">Docker Hub</a></p>
-<p>在这里可以找到很多images。</p>
-<blockquote>
-<p>images可以看作模板<br>这些模板可以下载到自己的电脑来运行<br>和从下载可执行程序不同的是,<strong>这些模板可以是环境！或者是已经包括环境的程序！</strong></p>
-</blockquote>
-<p>docker可以在不同的平台先下载好。可以通过包管理工具或者手动下载安装等方法来进行安装。</p>
-<p>自己在<a target="_blank" rel="noopener" href="https://registry.hub.docker.com/">Docker Hub</a>看上哪个image后就可以下载。</p>
-<p>给个容器(container)来运行这个模板(images)。这个步骤可以认为是实例化。</p>
-<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>以安装mysql-server-5.7为例。</p>
-<h4 id="背景"><a href="#背景" class="headerlink" title="背景:"></a>背景:</h4><blockquote>
-<p>主机系统: ubuntu 20 LTS </p>
-</blockquote>
-<p>安装docker服务:<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install docker-compose docker -y</span><br></pre></td></tr></table></figure></p>
-<h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h4><p>1.查找模板image<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker search mysql</span><br></pre></td></tr></table></figure></p>
-<p>2.拉取5.7版本的Mysql<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker pull mysql:5.7</span><br></pre></td></tr></table></figure><br>等待…</p>
-<p>3.查看image是否已经被下载下来<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker images</span><br></pre></td></tr></table></figure><br>4.实例化(给予这个实例一个container并运行mysql)<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 3306:3306 --name mysql_5.7 -e MYSQL_ROOT_PASSWORD=123456 -d mysql:5.7</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>-p 指定端口号(本地暴露的端口3306,容器暴露的端口3306)</p>
-<p>-name 设置容器名称</p>
-<p>-e 设定配置(密码123456)</p>
-<p>-d 设定小名(tag)</p>
-</blockquote>
-<p>5.查看docker所有的容器<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker ps -a</span><br></pre></td></tr></table></figure></p>
-<p>6.进入容器<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker exec -it mysql_5.7 bash</span><br></pre></td></tr></table></figure><br>7.进入数据库<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p123456</span><br></pre></td></tr></table></figure></p>
 <ul>
-<li>退出容器用exit命令</li>
+<li>除了RSA算法,还有ecdsa算法等等</li>
 </ul>
-<p>到这里结束。</p>
 <blockquote>
-<p>虚拟容器文件软链接映射实体路径文件先挖个坑,晚些再补上</p>
+<p>可以可以通过 -t 参数来指定算法。</p>
 </blockquote>
-<hr>
-<h3 id="其他一些特殊操作"><a href="#其他一些特殊操作" class="headerlink" title="其他一些特殊操作"></a>其他一些特殊操作</h3><h4 id="删除容器-container"><a href="#删除容器-container" class="headerlink" title="删除容器(container)"></a>删除容器(container)</h4><p>1.找出要停止container的ID<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker ps</span><br></pre></td></tr></table></figure><br>复制  CONTAINER ID</p>
-<p>2.停下服务<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker stop &lt;CONTAINER ID&gt;</span><br></pre></td></tr></table></figure><br>3.删除容器<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker rm &lt;CONTAINER ID&gt;</span><br></pre></td></tr></table></figure></p>
-<h4 id="删除模板-image"><a href="#删除模板-image" class="headerlink" title="删除模板(image)"></a>删除模板(image)</h4><p>1.查看要删除模板的<IMAGE ID><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker images</span><br></pre></td></tr></table></figure><br>复制  IMAGE ID</p>
-<p>2.删除image<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker rmi &lt;IMAGE ID&gt;</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/ffmpeg%E6%8A%8Amp4%E8%BD%ACmp3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
-      <meta itemprop="name" content="ezhonghu">
-      <meta itemprop="description" content="花开时节|花自开">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ezhonghu's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/12/ffmpeg%E6%8A%8Amp4%E8%BD%ACmp3/" class="post-title-link" itemprop="url">使用ffmpeg提取mp4中的音频为mp3</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-02-12 21:57:37 / Modified: 15:26:00" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>很欣赏这个<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1xK4y197kb?p=1&amp;share_medium=android&amp;share_plat=android&amp;share_source=WEIXIN&amp;share_tag=s_i&amp;timestamp=1624666315&amp;unique_k=YjluUT">up主</a>。</p>
-<p>但是每次想听的时候需要打开b站看视频来听音乐，很麻烦。</p>
-<p>所以打算把Up的视频下载下来，转成Mp3，保存在本地。</p>
-<h3 id="1-使用you-get-下载原视频："><a href="#1-使用you-get-下载原视频：" class="headerlink" title="1.使用you-get 下载原视频："></a>1.使用you-get 下载原视频：</h3><p>用you-get将原视频下载到当前目录：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">you-get https://www.bilibili.com/video/BV1xK4y197kb?from=search&amp;seid=13742639050475514939</span><br></pre></td></tr></table></figure>
-<p>you-get可以通过Python3的pip3获得。</p>
-<ul>
-<li>-i 查询信息（infomation)</li>
-<li>-format[ ] 下载对应格式，若不选择，则为最高画质</li>
-<li>-o 指定储存位置</li>
-<li>-c 有会员限制的网站，可以用-c参数，加上cookie保存的路径</li>
-<li>使用火狐浏览器，在本地的C:\Users\ezhonghu\AppData\Roaming\Mozilla\Firefox\Profiles\eyne4mq2.default-release可以找到cookies.sqlite的文件，这个就是对应的cookie</li>
-</ul>
-<h3 id="2-使用ffmpeg将mp4转换为mp3："><a href="#2-使用ffmpeg将mp4转换为mp3：" class="headerlink" title="2.使用ffmpeg将mp4转换为mp3："></a>2.使用ffmpeg将mp4转换为mp3：</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i 春庭雪.mp4 -f mp3 -vn 春庭雪.mp3</span><br></pre></td></tr></table></figure>
-<ul>
-<li>-i 为输入文件</li>
-<li>-f 为强制修改为mp3格式</li>
-<li>-vn 为不输出视频格式(video no)</li>
-<li>最后为新文件名</li>
-</ul>
+<h3 id="2-配置到远程"><a href="#2-配置到远程" class="headerlink" title="2.配置到远程"></a>2.配置到远程</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id -i ~/.ssh/id_rsa.pub &lt;user&gt;@&lt;ip&gt;</span><br></pre></td></tr></table></figure>
+<p>本地的公钥将会写到服务器的~/.ssh/authorized_keys,以后登陆的时候免密登陆。</p>
 
       
     </div>
@@ -1153,7 +1640,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1221,7 +1708,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-count">41</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1234,7 +1721,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-count">28</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

@@ -131,7 +131,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">27</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">28</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -141,7 +141,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">40</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">41</span></a>
 
   </li>
   </ul>
@@ -174,7 +174,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/droidcam/">
+    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/22/nmcli%E4%BD%BF%E7%94%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
@@ -188,7 +188,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/02/12/droidcam/" class="post-title-link" itemprop="url">droidcam</a>
+            <a href="/2022/02/22/nmcli%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">NetworkManager client使用(nmcli)</a>
         </h2>
 
         <div class="post-meta">
@@ -197,9 +197,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-02-12 21:57:37 / Modified: 15:25:46" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
+              <time title="Created: 2022-02-22 10:07:48" itemprop="dateCreated datePublished" datetime="2022-02-22T10:07:48+08:00">2022-02-22</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -222,15 +221,22 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="install-droidcam"><a href="#install-droidcam" class="headerlink" title="install droidcam"></a>install droidcam</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yay -S droidcam</span><br></pre></td></tr></table></figure>
-<h3 id="install-linux-header"><a href="#install-linux-header" class="headerlink" title="install linux-header"></a>install linux-header</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S linux-header</span><br></pre></td></tr></table></figure>
-<h2 id="usage"><a href="#usage" class="headerlink" title="usage"></a>usage</h2><h3 id="1-wifi"><a href="#1-wifi" class="headerlink" title="1.wifi"></a>1.wifi</h3><p>android install droidcam and launch</p>
-<p>chromium enter <a target="_blank" rel="noopener" href="http://192.168.25.x:4747">http://192.168.25.x:4747</a></p>
-<h3 id="2-usb"><a href="#2-usb" class="headerlink" title="2.usb"></a>2.usb</h3><p>Android mobile phone and linu computers connected by cable</p>
-<p>android debug mode<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb devices</span><br></pre></td></tr></table></figure></p>
-<p>remember devices name<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo modprobe v4l2loopback_dc</span><br></pre></td></tr></table></figure></p>
-<p>open droidcam on android<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">env ANDROID_SERIAL=bd4a6a1a droidcam-cli adb 4747</span><br></pre></td></tr></table></figure></p>
-<p>while open obs, mobile phones camera can be detected and used</p>
+          <p>本文主要写:如何使用nmcli在终端下内查看wifi、连接wifi</p>
+<h3 id="连接wifi"><a href="#连接wifi" class="headerlink" title="连接wifi:"></a>连接wifi:</h3><p>1查找周围有那些wifi:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmcli device wifi</span><br></pre></td></tr></table></figure>
+<p>2连接wifi<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmcli device wifi connect xxxxx(wifi名称) password ******(wifi密码)</span><br></pre></td></tr></table></figure></p>
+<p>每用一次上面的命令,就会在/etc/NetworkManager/system-connections/目录下生成一个配置文件</p>
+<h3 id="删除wifi"><a href="#删除wifi" class="headerlink" title="删除wifi"></a>删除wifi</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmcli con del xxxxx(设备名称)</span><br></pre></td></tr></table></figure>
+<p>此时,/etc/NetworkManager/system-connections/目录下的配置文件就会被删掉</p>
+<h3 id="启动wifi"><a href="#启动wifi" class="headerlink" title="启动wifi"></a>启动wifi</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmcli connection up xxxxx(之前连接过的wifi名称(有配置了))</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmcli device con wlp1s0(网卡名称)</span><br></pre></td></tr></table></figure>
+<h3 id="关闭wifi"><a href="#关闭wifi" class="headerlink" title="关闭wifi"></a>关闭wifi</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmcli connection down xxxxx(wifi名称)</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmcli device dis wlpis0(网卡名称)</span><br></pre></td></tr></table></figure>
+<h3 id="创建热点"><a href="#创建热点" class="headerlink" title="创建热点"></a>创建热点</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmcli device wifi hotspot ifname wlp1s0(网卡名称) con-name Myhotspot(所创建热点的名字) ssid haha(SSID(暂不懂)) passwd *******(密码)</span><br></pre></td></tr></table></figure>
+<h3 id="自动连接"><a href="#自动连接" class="headerlink" title="自动连接"></a>自动连接</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmcli connection modify xxxxxx(wifi名称) connection.autoconnect yes</span><br></pre></td></tr></table></figure>
+<h2 id="gui界面"><a href="#gui界面" class="headerlink" title="gui界面"></a>gui界面</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmtui</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -250,7 +256,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">
+    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/22/dd/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
@@ -264,7 +270,75 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/02/12/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">hexo搭建博客步骤</a>
+            <a href="/2022/02/22/dd/" class="post-title-link" itemprop="url">格式化U盘</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-02-22 10:07:48" itemprop="dateCreated datePublished" datetime="2022-02-22T10:07:48+08:00">2022-02-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mkfs.vfat /dev/sda1</span><br></pre></td></tr></table></figure>
+<h1 id="将iso镜像写入U盘"><a href="#将iso镜像写入U盘" class="headerlink" title="将iso镜像写入U盘"></a>将iso镜像写入U盘</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dd if=/home/ezhonghu/Downloads/archlinuxxxxxxxxx.iso of=/dev/sda</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/22/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
+      <meta itemprop="name" content="ezhonghu">
+      <meta itemprop="description" content="花开时节|花自开">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ezhonghu's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/22/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">hexo搭建博客步骤</a>
         </h2>
 
         <div class="post-meta">
@@ -275,7 +349,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2022-02-12 21:57:37 / Modified: 15:26:12" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
+              <time title="Created: 2022-02-22 10:07:47 / Modified: 10:07:48" itemprop="dateCreated datePublished" datetime="2022-02-22T10:07:47+08:00">2022-02-22</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -368,7 +442,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/i3/">
+    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/22/Movement_detect/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
@@ -382,7 +456,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/02/12/i3/" class="post-title-link" itemprop="url">manjaro下i3 wimdows manager使用方法</a>
+            <a href="/2022/02/22/Movement_detect/" class="post-title-link" itemprop="url">基于树莓的派动态监控</a>
         </h2>
 
         <div class="post-meta">
@@ -391,9 +465,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-02-12 21:57:37 / Modified: 15:26:30" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
+              <time title="Created: 2022-02-22 10:07:47" itemprop="dateCreated datePublished" datetime="2022-02-22T10:07:47+08:00">2022-02-22</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -416,270 +489,19 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S i3</span><br></pre></td></tr></table></figure>
-<p>注销帐号，在dde默认登陆界面的右下角选择i3，然后输入密码登陆。</p>
-<p>选择$mod键：Alt键对我而言更顺手</p>
-<p>如果需要重新配置~/.config/i3/config文件(重新配置$mod键:win或Alt)<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">i3-config-wizard</span><br></pre></td></tr></table></figure></p>
-<h2 id="基本键位"><a href="#基本键位" class="headerlink" title="基本键位:"></a>基本键位:</h2><p>要修改的话在~/.config/i3/config里修改<br>个人觉得比较舒服的键位:</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>键位</th>
-<th>效果</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>$mod+Enter</td>
-<td>打开终端</td>
-</tr>
-<tr>
-<td>$mod+d</td>
-<td>进入dmenu</td>
-</tr>
-<tr>
-<td>$mod+shift+q</td>
-<td>关闭窗口</td>
-</tr>
-<tr>
-<td>$mod+f</td>
-<td>全屏模式</td>
-</tr>
-<tr>
-<td>$mod+r</td>
-<td>调整窗口大小</td>
-</tr>
-<tr>
-<td>$mod+shift+r</td>
-<td>重启i3</td>
-</tr>
-<tr>
-<td>$mod+shift+e</td>
-<td>退出i3</td>
-</tr>
-<tr>
-<td>$mod+shift+space</td>
-<td>使窗口浮动</td>
-</tr>
-<tr>
-<td>$mod+v</td>
-<td>纵模式</td>
-</tr>
-<tr>
-<td>$mod+z</td>
-<td>横模式</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h2 id="调节音量"><a href="#调节音量" class="headerlink" title="调节音量:"></a>调节音量:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacmixer</span><br></pre></td></tr></table></figure>
-<p>操作同vim,k声音高,j声音低</p>
-<h2 id="调节亮度"><a href="#调节亮度" class="headerlink" title="调节亮度:"></a>调节亮度:</h2><h3 id="方法1手动"><a href="#方法1手动" class="headerlink" title="方法1手动"></a>方法1手动</h3><p>先查看支持最大亮度是多少:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /sys/class/backlight/amdgpu_bl0/max_brightness</span><br></pre></td></tr></table></figure><br>此处为255，故选择合适的值修改亮度:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /sys/class/backlight/amdgpu_bl0/brightness</span><br></pre></td></tr></table></figure>
-<p>为了方便调节亮度，在.bashrc配置:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alias brightness=&#x27;/sys/class/backlight/amdgpu_bl0/brightness</span><br></pre></td></tr></table></figure></p>
-<h3 id="方法二脚本"><a href="#方法二脚本" class="headerlink" title="方法二脚本"></a>方法二脚本</h3><p>建立brightnessup.sh和brightnessdown.sh位于~/.config/i3/,写入:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#！/bin/bash</span><br><span class="line">var1=+50 #正数为调高亮度，负数为调低亮度</span><br><span class="line">var1=$(($var1 + $(cat /sys/class/backlight/amdgpu_bl0/brightness)))</span><br><span class="line">echo $var1 &gt; /sys/class/backlight/amdgpu_bl0/brightness</span><br></pre></td></tr></table></figure><br>修改/sys/class/backlight/amdgpu_bl0/brightness的读写权限:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod 666 brightness</span><br></pre></td></tr></table></figure><br>用xev查看要绑定的键位的键码,会返回一个keycode(键位对应的键码)</p>
-<p>在i3的config中写入,并绑定快捷键:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bindcode &lt;键码&gt; exec &lt;脚本路径&gt;</span><br><span class="line">或</span><br><span class="line">bindsym &lt;键名&gt; exec &lt;脚本路径&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="查看电量"><a href="#查看电量" class="headerlink" title="查看电量:"></a>查看电量:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /sys/class/power_supply/BAT0/capacity</span><br></pre></td></tr></table></figure>
-<p>默认已经在窗口栏显示了当前电量。</p>
-<p>节能软件:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S tlp</span><br></pre></td></tr></table></figure><br>查看状态:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo tlp stat </span><br></pre></td></tr></table></figure><br>参数:</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>option</th>
-<th>can</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-b</td>
-<td>battery</td>
-</tr>
-<tr>
-<td>-c</td>
-<td>设备信息</td>
-</tr>
-<tr>
-<td>-r</td>
-<td>无线</td>
-</tr>
-<tr>
-<td>-t</td>
-<td>温度风扇转速</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/jupyter_lab_ssl/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
-      <meta itemprop="name" content="ezhonghu">
-      <meta itemprop="description" content="花开时节|花自开">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ezhonghu's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/12/jupyter_lab_ssl/" class="post-title-link" itemprop="url">config ssl to jupyter lab.</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-02-12 21:57:37 / Modified: 15:26:37" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ol>
-<li><p>Put xxx.key and xxx.pem into your website.</p>
-</li>
-<li><p>copy the following code to .jupyter/jupyter_config.py</p>
-</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">c.NotebookApp.certfile = <span class="string">u&#x27;path_to_public.crt&#x27;</span></span><br><span class="line">c.NotebookApp.keyfile = <span class="string">u&#x27;path_to.key&#x27;</span></span><br></pre></td></tr></table></figure>
-<p>Don’t forget your path where xxx.key and xxx.pem file.</p>
-<p>Generally, i put xxx.key and xxx.pem in /etc/nginx/cert/ (to create your own cert file first)</p>
-<ol>
-<li>reboot your jupyter lab.</li>
-</ol>
-<p>Done.</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/jupyter_nginx/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
-      <meta itemprop="name" content="ezhonghu">
-      <meta itemprop="description" content="花开时节|花自开">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ezhonghu's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/12/jupyter_nginx/" class="post-title-link" itemprop="url">配置jupyter,并且通过nginx反向代理登陆。</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-02-12 21:57:37 / Modified: 15:26:42" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>1.在home目录创建jupyter根文件目录<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir ~/jupyter</span><br></pre></td></tr></table></figure></p>
-<p>2.建立虚拟环境</p>
-<ul>
-<li>jupyter基于python环境,为了隔离主机python环境,所以创建虚拟环境。<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">virtuanenv -p /usr/bin/python3 ~/jupyter/jupyterenv</span><br><span class="line">source ~/jupyter/jupyterenv/bin/activate</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>以下涉及python3执行的步骤都需要在刚刚进入的jupyterenv虚拟环境下。</p>
-</blockquote>
-</li>
+          <p>当有人移动时，捕获下照片（可用于监控）</p>
+<h2 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h2><ul>
+<li>树莓派</li>
+<li>camera</li>
+<li>人体接近传感器</li>
 </ul>
-<p>3.用pip3安装jupyter<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 instal jupyter</span><br></pre></td></tr></table></figure></p>
-<p>4.生成默认配置文件<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook --generate-config</span><br></pre></td></tr></table></figure><br>会默认在家目录生成配置文件~/.jupyter/jupyter_notebook_config.py</p>
-<p>5.修改jupyter配置文件</p>
-<ul>
-<li>找到以下配置进行更新(如果为注释则取消注释)<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">c.NotebookApp.ip = &#x27;localhost&#x27;</span><br><span class="line">c.NotebookApp.allow_remote_access = True</span><br><span class="line">c.NotebookApp.base_url = &#x27;/jupyter&#x27;    #必须与nginx代理目录一致。只有配置了才可以通过http协议进入www.ezhonghu.cn/jupyter访问jupyter服务</span><br><span class="line">c.NotebookApp.open_browser = False    #因为服务在云服务器端,没必要</span><br><span class="line">c.NotebookApp.port = 8888    #需要和nginx指定的端口一致。(如果端口被占用,jupyter会随机生成端口)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">6.nginx配置</span><br><span class="line"></span><br><span class="line">```shell</span><br><span class="line">nvim /etc/nginx/site-enables/nginx.config</span><br></pre></td></tr></table></figure>
-根据以下修改<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    #server头此处略</span><br><span class="line"></span><br><span class="line">    # 要和Jupyter配置文件里的url一致</span><br><span class="line">    location /jupyter &#123;</span><br><span class="line">        proxy_pass    http://127.0.0.1:8888;</span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">        proxy_set_header Host $host;</span><br><span class="line">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">        proxy_set_header Host $host;</span><br><span class="line">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">        proxy_http_version 1.1;</span><br><span class="line">        proxy_set_header Upgrade $http_upgrade;</span><br><span class="line">        proxy_set_header Connection &quot;upgrade&quot;;</span><br><span class="line">        proxy_redirect off;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>7.后台运行<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">screen jupyter-lab</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>个人比较习惯用screen。<br>也可以写一个system daemon,或者用Nohup &amp;语句</p>
-</blockquote>
+<h2 id="接线方式"><a href="#接线方式" class="headerlink" title="接线方式"></a>接线方式</h2><p>可以在树莓派终端查看各个引脚的作用</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pinout</span><br></pre></td></tr></table></figure>
+<p><img src="https://ezhonghupictures.oss-cn-shenzhen.aliyuncs.com/typora/pir-motion-sensor-with-raspberry-pi.jpg" alt="pir-motion-sensor-with-raspberry-pi"></p>
+<p><strong>开关的作用</strong>：<br>按下后退出程序。</p>
+<h2 id="烧录文件"><a href="#烧录文件" class="headerlink" title="烧录文件"></a>烧录文件</h2><p>创建一个.py文件，并拷贝以下代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Project 13 - Burglar Detector With Photo Capture</span></span><br><span class="line"><span class="comment">#latest code updates available at: https://github.com/RuiSantosdotme/RaspberryPiProject</span></span><br><span class="line"><span class="comment">#project updates at: https://nostarch.com/RaspberryPiProject</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#import the necessary packages</span></span><br><span class="line"><span class="keyword">from</span> gpiozero <span class="keyword">import</span> Button, MotionSensor</span><br><span class="line"><span class="keyword">from</span> picamera <span class="keyword">import</span> PiCamera</span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> sleep</span><br><span class="line"><span class="keyword">from</span> signal <span class="keyword">import</span> pause</span><br><span class="line"></span><br><span class="line"><span class="comment">#create objects that refer to a button,</span></span><br><span class="line"><span class="comment">#a motion sensor and the PiCamera</span></span><br><span class="line">button = Button(<span class="number">2</span>)</span><br><span class="line">pir = MotionSensor(<span class="number">4</span>)</span><br><span class="line">camera = PiCamera()</span><br><span class="line"></span><br><span class="line"><span class="comment">#start the camera</span></span><br><span class="line">camera.start_preview()</span><br><span class="line"></span><br><span class="line"><span class="comment">#image image names</span></span><br><span class="line">i = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#stop the camera when the pushbutton is pressed</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">stop_camera</span>():</span><br><span class="line">    camera.stop_preview()</span><br><span class="line">    <span class="comment">#exit the program</span></span><br><span class="line">    exit()</span><br><span class="line"></span><br><span class="line"><span class="comment">#take photo when motion is detected</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">take_photo</span>():</span><br><span class="line">    <span class="keyword">global</span> i</span><br><span class="line">    i = i + <span class="number">1</span></span><br><span class="line">    <span class="comment"># 自己选择拍照后要安装的位置</span></span><br><span class="line">    camera.capture(<span class="string">&#x27;/home/pi/Desktop/image_%s.jpg&#x27;</span> % i)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;A photo has been taken&#x27;</span>)</span><br><span class="line">    sleep(<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#assign a function that runs when the button is pressed</span></span><br><span class="line">button.when_pressed = stop_camera</span><br><span class="line"><span class="comment">#assign a function that runs when motion is detected</span></span><br><span class="line">pir.when_motion = take_photo</span><br><span class="line"></span><br><span class="line">pause()</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://randomnerdtutorials.com/raspberry-pi-motion-detector-photo-capture/">参考文章</a></p>
 
       
     </div>
@@ -699,7 +521,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/nmcli%E4%BD%BF%E7%94%A8/">
+    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/22/droidcam/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
@@ -713,7 +535,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/02/12/nmcli%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">NetworkManager client使用(nmcli)</a>
+            <a href="/2022/02/22/droidcam/" class="post-title-link" itemprop="url">droidcam</a>
         </h2>
 
         <div class="post-meta">
@@ -722,9 +544,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-02-12 21:57:37 / Modified: 15:30:13" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
+              <time title="Created: 2022-02-22 10:07:47" itemprop="dateCreated datePublished" datetime="2022-02-22T10:07:47+08:00">2022-02-22</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -747,22 +568,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>本文主要写:如何使用nmcli在终端下内查看wifi、连接wifi</p>
-<h3 id="连接wifi"><a href="#连接wifi" class="headerlink" title="连接wifi:"></a>连接wifi:</h3><p>1查找周围有那些wifi:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmcli device wifi</span><br></pre></td></tr></table></figure>
-<p>2连接wifi<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmcli device wifi connect xxxxx(wifi名称) password ******(wifi密码)</span><br></pre></td></tr></table></figure></p>
-<p>每用一次上面的命令,就会在/etc/NetworkManager/system-connections/目录下生成一个配置文件</p>
-<h3 id="删除wifi"><a href="#删除wifi" class="headerlink" title="删除wifi"></a>删除wifi</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmcli con del xxxxx(设备名称)</span><br></pre></td></tr></table></figure>
-<p>此时,/etc/NetworkManager/system-connections/目录下的配置文件就会被删掉</p>
-<h3 id="启动wifi"><a href="#启动wifi" class="headerlink" title="启动wifi"></a>启动wifi</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmcli connection up xxxxx(之前连接过的wifi名称(有配置了))</span><br></pre></td></tr></table></figure>
-<p>或者</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmcli device con wlp1s0(网卡名称)</span><br></pre></td></tr></table></figure>
-<h3 id="关闭wifi"><a href="#关闭wifi" class="headerlink" title="关闭wifi"></a>关闭wifi</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmcli connection down xxxxx(wifi名称)</span><br></pre></td></tr></table></figure>
-<p>或者</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmcli device dis wlpis0(网卡名称)</span><br></pre></td></tr></table></figure>
-<h3 id="创建热点"><a href="#创建热点" class="headerlink" title="创建热点"></a>创建热点</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmcli device wifi hotspot ifname wlp1s0(网卡名称) con-name Myhotspot(所创建热点的名字) ssid haha(SSID(暂不懂)) passwd *******(密码)</span><br></pre></td></tr></table></figure>
-<h3 id="自动连接"><a href="#自动连接" class="headerlink" title="自动连接"></a>自动连接</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmcli connection modify xxxxxx(wifi名称) connection.autoconnect yes</span><br></pre></td></tr></table></figure>
-<h2 id="gui界面"><a href="#gui界面" class="headerlink" title="gui界面"></a>gui界面</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmtui</span><br></pre></td></tr></table></figure>
+          <h3 id="install-droidcam"><a href="#install-droidcam" class="headerlink" title="install droidcam"></a>install droidcam</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yay -S droidcam</span><br></pre></td></tr></table></figure>
+<h3 id="install-linux-header"><a href="#install-linux-header" class="headerlink" title="install linux-header"></a>install linux-header</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S linux-header</span><br></pre></td></tr></table></figure>
+<h2 id="usage"><a href="#usage" class="headerlink" title="usage"></a>usage</h2><h3 id="1-wifi"><a href="#1-wifi" class="headerlink" title="1.wifi"></a>1.wifi</h3><p>android install droidcam and launch</p>
+<p>chromium enter <a target="_blank" rel="noopener" href="http://192.168.25.x:4747">http://192.168.25.x:4747</a></p>
+<h3 id="2-usb"><a href="#2-usb" class="headerlink" title="2.usb"></a>2.usb</h3><p>Android mobile phone and linu computers connected by cable</p>
+<p>android debug mode<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb devices</span><br></pre></td></tr></table></figure></p>
+<p>remember devices name<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo modprobe v4l2loopback_dc</span><br></pre></td></tr></table></figure></p>
+<p>open droidcam on android<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">env ANDROID_SERIAL=bd4a6a1a droidcam-cli adb 4747</span><br></pre></td></tr></table></figure></p>
+<p>while open obs, mobile phones camera can be detected and used</p>
 
       
     </div>
@@ -782,7 +596,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/symbols/">
+    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/22/%E5%8D%95%E4%BD%8D%E6%8D%A2%E7%AE%97/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
@@ -796,7 +610,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/02/12/symbols/" class="post-title-link" itemprop="url">markdown特殊符号</a>
+            <a href="/2022/02/22/%E5%8D%95%E4%BD%8D%E6%8D%A2%E7%AE%97/" class="post-title-link" itemprop="url">单位换算</a>
         </h2>
 
         <div class="post-meta">
@@ -805,646 +619,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-02-12 21:57:37 / Modified: 15:30:35" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <div class="table-container">
-<table>
-<thead>
-<tr>
-<th>符号</th>
-<th>说明</th>
-<th>对应编码(使用时去掉空格)</th>
-<th>英文怎么说</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>&amp;</td>
-<td>AND 符号</td>
-<td>&amp; amp;</td>
-<td>ampersand</td>
-</tr>
-<tr>
-<td>&lt;</td>
-<td>小于</td>
-<td>&amp; lt;</td>
-<td>little</td>
-</tr>
-<tr>
-<td>&gt;</td>
-<td>大于</td>
-<td>&amp; gt;</td>
-<td>great</td>
-</tr>
-<tr>
-<td></td>
-<td>空格</td>
-<td>&amp; nbsp;</td>
-<td>number space</td>
-</tr>
-<tr>
-<td>¿</td>
-<td>倒问号</td>
-<td>&amp; iquest;</td>
-<td>inverted question</td>
-</tr>
-<tr>
-<td>?</td>
-<td>问号</td>
-<td>&amp; quest;</td>
-<td>question</td>
-</tr>
-<tr>
-<td>«</td>
-<td>左书名号</td>
-<td>&amp; laquo;</td>
-<td>left angle quote</td>
-</tr>
-<tr>
-<td>»</td>
-<td>右书名号</td>
-<td>&amp; raquo;</td>
-<td>right angle quote</td>
-</tr>
-<tr>
-<td>“</td>
-<td>引号</td>
-<td>&amp; quot;</td>
-<td>quote</td>
-</tr>
-<tr>
-<td>‘</td>
-<td>左单引号</td>
-<td>&amp; lsquo;</td>
-<td>left single quote</td>
-</tr>
-<tr>
-<td>’</td>
-<td>右单引号</td>
-<td>&amp; rsquo:</td>
-<td>right single quote</td>
-</tr>
-<tr>
-<td>“</td>
-<td>左双引号</td>
-<td>&amp; ldquo:</td>
-<td>left double quote</td>
-</tr>
-<tr>
-<td>“</td>
-<td>右双引号</td>
-<td>&amp; rdquo:</td>
-<td>right double quote</td>
-</tr>
-<tr>
-<td>¶</td>
-<td>段落符号</td>
-<td>&amp; para;</td>
-<td>paragraph</td>
-</tr>
-<tr>
-<td>§</td>
-<td>章节符</td>
-<td>&amp; sect;</td>
-<td>section</td>
-</tr>
-<tr>
-<td>*</td>
-<td>乘号</td>
-<td>&amp; times;</td>
-<td>times</td>
-</tr>
-<tr>
-<td>÷</td>
-<td>除号</td>
-<td>&amp; divide;</td>
-<td>divide</td>
-</tr>
-<tr>
-<td>±</td>
-<td>加减号</td>
-<td>&amp; plusmn;</td>
-<td>plus minus</td>
-</tr>
-<tr>
-<td>ƒ</td>
-<td>function</td>
-<td>&amp; fnof;</td>
-<td>还没查到</td>
-</tr>
-<tr>
-<td>√</td>
-<td>根号</td>
-<td>&amp; radic;</td>
-<td>radic</td>
-</tr>
-<tr>
-<td>∞</td>
-<td>无穷大</td>
-<td>&amp; infin;</td>
-<td>infinite</td>
-</tr>
-<tr>
-<td>°</td>
-<td>度</td>
-<td>&amp; deg;</td>
-<td>degree</td>
-</tr>
-<tr>
-<td>≠</td>
-<td>不等号</td>
-<td>&amp; ne;</td>
-<td>ne</td>
-</tr>
-<tr>
-<td>≡</td>
-<td>恒等于</td>
-<td>&amp; equiv;</td>
-<td>equivalent</td>
-</tr>
-<tr>
-<td>≤</td>
-<td>小于等于</td>
-<td>&amp; le;</td>
-<td>less than or equal to</td>
-</tr>
-<tr>
-<td>≥</td>
-<td>大于等于</td>
-<td>&amp; ge;</td>
-<td>great than or equal to</td>
-</tr>
-<tr>
-<td>⊥</td>
-<td>垂直符号</td>
-<td>&amp; perp;</td>
-<td>perpendicular</td>
-</tr>
-<tr>
-<td>←</td>
-<td>左箭头</td>
-<td>&amp; larr;</td>
-<td>left arrow</td>
-</tr>
-<tr>
-<td>→</td>
-<td>右箭头</td>
-<td>&amp; rarr;</td>
-<td>right arrow</td>
-</tr>
-<tr>
-<td>↑</td>
-<td>上箭头</td>
-<td>&amp; uarr;</td>
-<td>up arrow</td>
-</tr>
-<tr>
-<td>↓</td>
-<td>下箭头</td>
-<td>&amp; darr;</td>
-<td>down arrow</td>
-</tr>
-<tr>
-<td>↔</td>
-<td>水平箭头</td>
-<td>&amp; harr;</td>
-<td>horizontal arrow</td>
-</tr>
-<tr>
-<td>↕</td>
-<td>竖直箭头</td>
-<td>&amp; varr;</td>
-<td>vertical arrow</td>
-</tr>
-<tr>
-<td>⇐</td>
-<td>双线左箭头</td>
-<td>&amp; lArr;</td>
-<td>left arrow</td>
-</tr>
-<tr>
-<td>⇒</td>
-<td>双线右箭头</td>
-<td>&amp; rArr;</td>
-<td>right arrow</td>
-</tr>
-<tr>
-<td>⇑</td>
-<td>双线上箭头</td>
-<td>&amp; uArr;</td>
-<td>up arrow</td>
-</tr>
-<tr>
-<td>⇓</td>
-<td>双线上箭头</td>
-<td>&amp; dArr;</td>
-<td>down arrow</td>
-</tr>
-<tr>
-<td>⇔</td>
-<td>双线水平双箭头</td>
-<td>&amp; hArr;</td>
-<td>horizontal arrow</td>
-</tr>
-<tr>
-<td>⇕</td>
-<td>双线竖直箭头</td>
-<td>&amp; vArr;</td>
-<td>vertical arrow</td>
-</tr>
-<tr>
-<td>♠</td>
-<td>黑桃</td>
-<td>&amp; spades;</td>
-<td>spades</td>
-</tr>
-<tr>
-<td>♥</td>
-<td>红桃</td>
-<td>&amp; hearts;</td>
-<td>hearts</td>
-</tr>
-<tr>
-<td>♣</td>
-<td>梅花</td>
-<td>&amp; clubs;</td>
-<td>club</td>
-</tr>
-<tr>
-<td>♦</td>
-<td>方块</td>
-<td>&amp; diams;</td>
-<td>diamonds</td>
-</tr>
-<tr>
-<td>©</td>
-<td>版权</td>
-<td>&amp; copy;</td>
-<td>copy right</td>
-</tr>
-<tr>
-<td>®</td>
-<td>注册商标</td>
-<td>&amp; reg;</td>
-<td>registration</td>
-</tr>
-<tr>
-<td>™</td>
-<td>商标</td>
-<td>&amp; trade;</td>
-<td>trade</td>
-</tr>
-<tr>
-<td>¥</td>
-<td>人民币</td>
-<td>&amp; yen;</td>
-<td></td>
-</tr>
-<tr>
-<td>€</td>
-<td>欧元</td>
-<td>&amp; euro;</td>
-<td>euro</td>
-</tr>
-<tr>
-<td>¢</td>
-<td>美分</td>
-<td>&amp; cent;</td>
-<td>cent</td>
-</tr>
-<tr>
-<td>£</td>
-<td>英磅</td>
-<td>&amp; pound;</td>
-<td>pound</td>
-</tr>
-<tr>
-<td>⊕</td>
-<td></td>
-<td>&amp; oplus;</td>
-<td></td>
-</tr>
-<tr>
-<td>½</td>
-<td>二分之一</td>
-<td>&amp; frac12;</td>
-<td>fraction</td>
-</tr>
-<tr>
-<td>¼</td>
-<td>四分之一</td>
-<td>&amp; frac14;</td>
-<td>fraction</td>
-</tr>
-<tr>
-<td>‰</td>
-<td>千分符号</td>
-<td>&amp; permil;</td>
-<td>per mille</td>
-</tr>
-<tr>
-<td>∴</td>
-<td>所以</td>
-<td>&amp; there4;</td>
-<td>there fore</td>
-</tr>
-<tr>
-<td>π</td>
-<td>圆周率</td>
-<td>&amp; pi;</td>
-<td></td>
-</tr>
-<tr>
-<td>¹</td>
-<td>商标1</td>
-<td>&amp; sup1;</td>
-<td>super 1</td>
-</tr>
-<tr>
-<td>α</td>
-<td>alpha</td>
-<td>&amp; alpha;</td>
-<td>alpha</td>
-</tr>
-<tr>
-<td>β</td>
-<td>beta</td>
-<td>&amp; beta;</td>
-<td>beta</td>
-</tr>
-<tr>
-<td>γ</td>
-<td>gamma</td>
-<td>&amp; gamma;</td>
-<td>gamma</td>
-</tr>
-<tr>
-<td>δ</td>
-<td>delta</td>
-<td>&amp; delta;</td>
-<td>delta</td>
-</tr>
-<tr>
-<td>θ</td>
-<td>theta</td>
-<td>&amp; theta;</td>
-<td>theta</td>
-</tr>
-<tr>
-<td>λ</td>
-<td>lambda</td>
-<td>&amp; lambda;</td>
-<td>lambda</td>
-</tr>
-<tr>
-<td>σ</td>
-<td>sigma</td>
-<td>&amp; sigma;</td>
-<td>sigma</td>
-</tr>
-<tr>
-<td>τ</td>
-<td>tau</td>
-<td>&amp; tau;</td>
-<td>tau</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>ps：在markdown tex中,&amp;改为\,并且去掉;号</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/vim%E4%BD%BF%E7%94%A8latex%E6%8F%92%E4%BB%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
-      <meta itemprop="name" content="ezhonghu">
-      <meta itemprop="description" content="花开时节|花自开">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ezhonghu's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/12/vim%E4%BD%BF%E7%94%A8latex%E6%8F%92%E4%BB%B6/" class="post-title-link" itemprop="url">vim的latex插件</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-02-12 21:57:37 / Modified: 20:10:32" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="首先下载"><a href="#首先下载" class="headerlink" title="首先下载"></a>首先下载</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S texlive-core texlive-langchinese </span><br></pre></td></tr></table></figure>
-<h3 id="在vimrc里面配置如下"><a href="#在vimrc里面配置如下" class="headerlink" title="在vimrc里面配置如下"></a>在vimrc里面配置如下</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Plug &#x27;lervag/vimtex&#x27;</span><br><span class="line">let g:tex_flavor=&#x27;latex&#x27;</span><br><span class="line"></span><br><span class="line">&quot; 阅读器相关的配置 包含正反向查找功能 仅供参考</span><br><span class="line">let g:vimtex_view_general_viewer = &#x27;zathura&#x27;</span><br><span class="line">let g:vimtex_view_general_options_latexmk = &#x27;-reuse-instance&#x27;</span><br><span class="line">let g:vimtex_view_general_options</span><br><span class="line">\ = &#x27;-reuse-instance -forward-search @tex @line @pdf&#x27;</span><br><span class="line">\ . &#x27; -inverse-search &quot;&#x27; . exepath(v:progpath)</span><br><span class="line">\ . &#x27; --servername &#x27; . v:servername</span><br><span class="line">\ . &#x27; --remote-send \&quot;^&lt;C-\^&gt;^&lt;C-n^&gt;&#x27;</span><br><span class="line">\ . &#x27;:execute &#x27;&#x27;drop &#x27;&#x27; . fnameescape(&#x27;&#x27;\%f&#x27;&#x27;)^&lt;CR^&gt;&#x27;</span><br><span class="line">\ . &#x27;:\%l^&lt;CR^&gt;:normal\! zzzv^&lt;CR^&gt;&#x27;</span><br><span class="line">\ . &#x27;:call remote_foreground(&#x27;&#x27;&#x27;.v:servername.&#x27;&#x27;&#x27;)^&lt;CR^&gt;^&lt;CR^&gt;\&quot;&quot;&#x27;</span><br><span class="line"></span><br><span class="line">set conceallevel=1</span><br><span class="line">let g:tex_conceal=&#x27;abdmg&#x27;</span><br></pre></td></tr></table></figure>
-<h3 id="在编辑好的-tex格式文件用vim打开-可以通过一下命令编译操作"><a href="#在编辑好的-tex格式文件用vim打开-可以通过一下命令编译操作" class="headerlink" title="在编辑好的.tex格式文件用vim打开,可以通过一下命令编译操作"></a>在编辑好的.tex格式文件用vim打开,可以通过一下命令编译操作</h3><div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">LHS</th>
-<th style="text-align:center">RHS</th>
-<th style="text-align:center">MODE</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><code>&lt;leader&gt;</code>li</td>
-<td style="text-align:center"><plug>(vimtex-info)</td>
-<td style="text-align:center"><code>n</code></td>
-</tr>
-<tr>
-<td style="text-align:center"><code>&lt;leader&gt;</code>lt</td>
-<td style="text-align:center"><plug>(vimtex-toc-open)</td>
-<td style="text-align:center"><code>n</code></td>
-</tr>
-<tr>
-<td style="text-align:center"><code>&lt;leader&gt;</code>lT</td>
-<td style="text-align:center"><plug>(vimtex-toc-toggle)</td>
-<td style="text-align:center"><code>n</code></td>
-</tr>
-<tr>
-<td style="text-align:center"><code>&lt;leader&gt;</code>lv</td>
-<td style="text-align:center"><plug>(vimtex-view)</td>
-<td style="text-align:center"><code>n</code></td>
-</tr>
-<tr>
-<td style="text-align:center"><code>&lt;leader&gt;</code>ll</td>
-<td style="text-align:center"><plug>(vimtex-compile)</td>
-<td style="text-align:center"><code>n</code></td>
-</tr>
-<tr>
-<td style="text-align:center"><code>&lt;leader&gt;</code>lo</td>
-<td style="text-align:center"><plug>(vimtex-compile-output)</td>
-<td style="text-align:center"><code>n</code></td>
-</tr>
-<tr>
-<td style="text-align:center"><code>&lt;leader&gt;</code>lg</td>
-<td style="text-align:center"><plug>(vimtex-status)</td>
-<td style="text-align:center"><code>n</code></td>
-</tr>
-<tr>
-<td style="text-align:center"><code>&lt;leader&gt;</code>lG</td>
-<td style="text-align:center"><plug>(vimtex-status-all)</td>
-<td style="text-align:center"><code>n</code></td>
-</tr>
-<tr>
-<td style="text-align:center"><code>&lt;leader&gt;</code>lc</td>
-<td style="text-align:center"><plug>(vimtex-clean)</td>
-<td style="text-align:center"><code>n</code></td>
-</tr>
-<tr>
-<td style="text-align:center"><code>&lt;leader&gt;</code>lC</td>
-<td style="text-align:center"><plug>(vimtex-clean-full)</td>
-<td style="text-align:center"><code>n</code></td>
-</tr>
-<tr>
-<td style="text-align:center">dse</td>
-<td style="text-align:center"><plug>(vimtex-env-delete)</td>
-<td style="text-align:center"><code>n</code></td>
-</tr>
-<tr>
-<td style="text-align:center">dsc</td>
-<td style="text-align:center"><plug>(vimtex-cmd-delete)</td>
-<td style="text-align:center"><code>n</code></td>
-</tr>
-<tr>
-<td style="text-align:center">cse</td>
-<td style="text-align:center"><plug>(vimtex-env-change)</td>
-<td style="text-align:center"><code>n</code></td>
-</tr>
-<tr>
-<td style="text-align:center">csc</td>
-<td style="text-align:center"><plug>(vimtex-cmd-change)</td>
-<td style="text-align:center"><code>n</code></td>
-</tr>
-<tr>
-<td style="text-align:center"><kbd>F7</kbd></td>
-<td style="text-align:center"><plug>(vimtex-cmd-create)</td>
-<td style="text-align:center"><code>nxi</code></td>
-</tr>
-<tr>
-<td style="text-align:center">]]</td>
-<td style="text-align:center"><plug>(vimtex-delim-close)</td>
-<td style="text-align:center"><code>i</code></td>
-</tr>
-</tbody>
-</table>
-</div>
-<blockquote>
-<p><code>&lt;leader&gt;</code>键设置为默认的<kbd>\</kbd>键</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/%E5%8D%95%E4%BD%8D%E6%8D%A2%E7%AE%97/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
-      <meta itemprop="name" content="ezhonghu">
-      <meta itemprop="description" content="花开时节|花自开">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ezhonghu's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/12/%E5%8D%95%E4%BD%8D%E6%8D%A2%E7%AE%97/" class="post-title-link" itemprop="url">单位换算</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-02-12 21:57:37 / Modified: 15:31:36" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
+              <time title="Created: 2022-02-22 10:07:47" itemprop="dateCreated datePublished" datetime="2022-02-22T10:07:47+08:00">2022-02-22</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1500,7 +676,7 @@ m_水 &= \rho \times v_水 \\
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/12/%E7%BD%91%E6%98%93%E4%BA%91mp3%E4%B8%8B%E8%BD%BD/">
+    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/22/docker/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
@@ -1514,7 +690,7 @@ m_水 &= \rho \times v_水 \\
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/02/12/%E7%BD%91%E6%98%93%E4%BA%91mp3%E4%B8%8B%E8%BD%BD/" class="post-title-link" itemprop="url">网易云音乐mp3下载</a>
+            <a href="/2022/02/22/docker/" class="post-title-link" itemprop="url">docker使用方法</a>
         </h2>
 
         <div class="post-meta">
@@ -1523,9 +699,8 @@ m_水 &= \rho \times v_水 \\
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-02-12 21:57:37 / Modified: 16:17:17" itemprop="dateCreated datePublished" datetime="2022-02-12T21:57:37+08:00">2022-02-12</time>
+              <time title="Created: 2022-02-22 10:07:47" itemprop="dateCreated datePublished" datetime="2022-02-22T10:07:47+08:00">2022-02-22</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1548,13 +723,456 @@ m_水 &= \rho \times v_水 \\
     <div class="post-body" itemprop="articleBody">
 
       
-          <blockquote>
-<p>前提:非vip音乐    </p>
+          <p>全球最大的docker image中心<a target="_blank" rel="noopener" href="https://registry.hub.docker.com/">Docker Hub</a></p>
+<p>在这里可以找到很多images。</p>
+<blockquote>
+<p>images可以看作模板<br>这些模板可以下载到自己的电脑来运行<br>和从下载可执行程序不同的是,<strong>这些模板可以是环境！或者是已经包括环境的程序！</strong></p>
 </blockquote>
-<h3 id="1-网址模板"><a href="#1-网址模板" class="headerlink" title="1.网址模板"></a>1.网址模板</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://music.163.com/song/media/outer/url?id=863706084.mp3    </span><br></pre></td></tr></table></figure>
-<h3 id="2-在网页找到要下载的音乐ID"><a href="#2-在网页找到要下载的音乐ID" class="headerlink" title="2.在网页找到要下载的音乐ID"></a>2.在网页找到要下载的音乐ID</h3><p><img src="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/image-20220212160555014.png" alt="音乐id"></p>
-<h3 id="3-把想要下载的音乐ID替换上述id-mp3之间"><a href="#3-把想要下载的音乐ID替换上述id-mp3之间" class="headerlink" title="3.把想要下载的音乐ID替换上述id=    .mp3之间"></a>3.把想要下载的音乐ID替换上述id=    .mp3之间</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://music.163.com/song/media/outer/url?id=1901371647.mp3</span><br></pre></td></tr></table></figure>
-<h3 id="4-下载"><a href="#4-下载" class="headerlink" title="4.下载"></a>4.下载</h3><p><img src="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/image-20220212160950599.png" alt="下载"></p>
+<p>docker可以在不同的平台先下载好。可以通过包管理工具或者手动下载安装等方法来进行安装。</p>
+<p>自己在<a target="_blank" rel="noopener" href="https://registry.hub.docker.com/">Docker Hub</a>看上哪个image后就可以下载。</p>
+<p>给个容器(container)来运行这个模板(images)。这个步骤可以认为是实例化。</p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>以安装mysql-server-5.7为例。</p>
+<h4 id="背景"><a href="#背景" class="headerlink" title="背景:"></a>背景:</h4><blockquote>
+<p>主机系统: ubuntu 20 LTS </p>
+</blockquote>
+<p>安装docker服务:<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install docker-compose docker -y</span><br></pre></td></tr></table></figure></p>
+<h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h4><p>1.查找模板image<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker search mysql</span><br></pre></td></tr></table></figure></p>
+<p>2.拉取5.7版本的Mysql<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker pull mysql:5.7</span><br></pre></td></tr></table></figure><br>等待…</p>
+<p>3.查看image是否已经被下载下来<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker images</span><br></pre></td></tr></table></figure><br>4.实例化(给予这个实例一个container并运行mysql)<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 3306:3306 --name mysql_5.7 -e MYSQL_ROOT_PASSWORD=123456 -d mysql:5.7</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>-p 指定端口号(本地暴露的端口3306,容器暴露的端口3306)</p>
+<p>-name 设置容器名称</p>
+<p>-e 设定配置(密码123456)</p>
+<p>-d 设定小名(tag)</p>
+</blockquote>
+<p>5.查看docker所有的容器<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker ps -a</span><br></pre></td></tr></table></figure></p>
+<p>6.进入容器<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker exec -it mysql_5.7 bash</span><br></pre></td></tr></table></figure><br>7.进入数据库<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p123456</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>退出容器用exit命令</li>
+</ul>
+<p>到这里结束。</p>
+<blockquote>
+<p>虚拟容器文件软链接映射实体路径文件先挖个坑,晚些再补上</p>
+</blockquote>
+<hr>
+<h3 id="其他一些特殊操作"><a href="#其他一些特殊操作" class="headerlink" title="其他一些特殊操作"></a>其他一些特殊操作</h3><h4 id="删除容器-container"><a href="#删除容器-container" class="headerlink" title="删除容器(container)"></a>删除容器(container)</h4><p>1.找出要停止container的ID<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker ps</span><br></pre></td></tr></table></figure><br>复制  CONTAINER ID</p>
+<p>2.停下服务<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker stop &lt;CONTAINER ID&gt;</span><br></pre></td></tr></table></figure><br>3.删除容器<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker rm &lt;CONTAINER ID&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="删除模板-image"><a href="#删除模板-image" class="headerlink" title="删除模板(image)"></a>删除模板(image)</h4><p>1.查看要删除模板的<IMAGE ID><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker images</span><br></pre></td></tr></table></figure><br>复制  IMAGE ID</p>
+<p>2.删除image<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker rmi &lt;IMAGE ID&gt;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/22/%E5%B8%B8%E8%A7%81%E7%AD%89%E4%BB%B7%E6%97%A0%E7%A9%B7%E5%B0%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
+      <meta itemprop="name" content="ezhonghu">
+      <meta itemprop="description" content="花开时节|花自开">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ezhonghu's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/22/%E5%B8%B8%E8%A7%81%E7%AD%89%E4%BB%B7%E6%97%A0%E7%A9%B7%E5%B0%8F/" class="post-title-link" itemprop="url">常见等价无穷小</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-02-22 10:07:47" itemprop="dateCreated datePublished" datetime="2022-02-22T10:07:47+08:00">2022-02-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <script type="math/tex; mode=display">x \sim sinx \sim tanx \sim arcsinx \sim arctanx \sim ln(1+x) \sim e^x -1</script><script type="math/tex; mode=display">(1+x)^a - 1 \sim ax</script><script type="math/tex; mode=display">a^x -1 \sim xlna</script><script type="math/tex; mode=display">1 - cosx \sim \frac{1}{2}x^2</script><script type="math/tex; mode=display">tanx - x \sim \frac{1}{3} x^3</script><script type="math/tex; mode=display">x - sinx \sim \frac{1}{6} x^3</script><script type="math/tex; mode=display">x - ln(1+x) \sim \frac{1}{2}x^2</script><script type="math/tex; mode=display">arcsinx - x \sim \frac{1}{6} x^3</script><script type="math/tex; mode=display">x - arctanx \sim \frac{1}{3} x^3</script><script type="math/tex; mode=display">log_a(1+x) \sim \frac{x}{lna}</script>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/22/markdownTex/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
+      <meta itemprop="name" content="ezhonghu">
+      <meta itemprop="description" content="花开时节|花自开">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ezhonghu's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/22/markdownTex/" class="post-title-link" itemprop="url">markdown 公式</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-02-22 10:07:47" itemprop="dateCreated datePublished" datetime="2022-02-22T10:07:47+08:00">2022-02-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="分为行内公式和行间公式"><a href="#分为行内公式和行间公式" class="headerlink" title="分为行内公式和行间公式"></a>分为行内公式和行间公式</h2><h4 id="行内公式-左右一个"><a href="#行内公式-左右一个" class="headerlink" title="行内公式:(左右一个$)"></a>行内公式:(左右一个$)</h4><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$\Gamma(z) = \int<span class="emphasis">_0^\infty t^&#123;z-1&#125;e^&#123;-t&#125;dt\,.$</span></span><br></pre></td></tr></table></figure>
+<p>效果：$\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.$</p>
+<h4 id="行间公式-左右两个"><a href="#行间公式-左右两个" class="headerlink" title="行间公式:(左右两个$$)"></a>行间公式:(左右两个$$)</h4><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$$\Gamma(z) = \int<span class="emphasis">_0^\infty t^&#123;z-1&#125;e^&#123;-t&#125;dt\,.$$</span></span><br></pre></td></tr></table></figure>
+<p>效果：<script type="math/tex">\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.</script></p>
+<h2 id="希腊字母（code写在公式之间）"><a href="#希腊字母（code写在公式之间）" class="headerlink" title="希腊字母（code写在公式之间）"></a>希腊字母（code写在公式之间）</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>大写</th>
+<th>code</th>
+<th>小写</th>
+<th>code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>alpha</td>
+<td>$A$</td>
+<td>A</td>
+<td>$\alpha$</td>
+<td>\alpha</td>
+</tr>
+<tr>
+<td>beta</td>
+<td>$B$</td>
+<td>B</td>
+<td>$\beta$</td>
+<td>\beta</td>
+</tr>
+<tr>
+<td>gamma</td>
+<td>$\Gamma$</td>
+<td>\Gamma</td>
+<td>$\gamma$</td>
+<td>\gamma</td>
+</tr>
+<tr>
+<td>delta</td>
+<td>$\Delta$</td>
+<td>\Delta</td>
+<td>$\delta$</td>
+<td>\delta</td>
+</tr>
+<tr>
+<td>epsilon</td>
+<td>$E$</td>
+<td>E</td>
+<td>$\epsilon$</td>
+<td>\epsilon</td>
+</tr>
+<tr>
+<td>zeta</td>
+<td>$Z$</td>
+<td>Z</td>
+<td>$\zeta$</td>
+<td>\zeta</td>
+</tr>
+<tr>
+<td>eta</td>
+<td>$H$</td>
+<td>H</td>
+<td>$\eta$</td>
+<td>\eta</td>
+</tr>
+<tr>
+<td>theta</td>
+<td>$\Theta$</td>
+<td>\Theta</td>
+<td>$\theta$</td>
+<td>\theta</td>
+</tr>
+<tr>
+<td>iota</td>
+<td>$\iota$</td>
+<td>\l</td>
+<td>$\iota$</td>
+<td>\iota</td>
+</tr>
+<tr>
+<td>kappa</td>
+<td>$K$</td>
+<td>\K</td>
+<td>$\kappa$</td>
+<td>\kappa</td>
+</tr>
+<tr>
+<td>lambda</td>
+<td>$\Lambda$</td>
+<td>\Lambda</td>
+<td>$\lambda$</td>
+<td>\lambda</td>
+</tr>
+<tr>
+<td>mu</td>
+<td>$M$</td>
+<td>M</td>
+<td>$\mu$</td>
+<td>\mu</td>
+</tr>
+<tr>
+<td>nu</td>
+<td>$N$</td>
+<td>N</td>
+<td>$\nu$</td>
+<td>\nu</td>
+</tr>
+<tr>
+<td>xi</td>
+<td>$\Xi$</td>
+<td>\Xi</td>
+<td>$\xi$</td>
+<td>\xi</td>
+</tr>
+<tr>
+<td>omicron</td>
+<td>$O$</td>
+<td>O</td>
+<td>$\omicron$</td>
+<td>\omicron</td>
+</tr>
+<tr>
+<td>pi</td>
+<td>$\Pi$</td>
+<td>\Pi</td>
+<td>$\pi$</td>
+<td>\pi</td>
+</tr>
+<tr>
+<td>rho</td>
+<td>$P$</td>
+<td>P</td>
+<td>$\rho$</td>
+<td>\rho</td>
+</tr>
+<tr>
+<td>sigma</td>
+<td>$\Sigma$</td>
+<td>\Sigma</td>
+<td>$\sigma$</td>
+<td>\sigma</td>
+</tr>
+<tr>
+<td>tau</td>
+<td>$T$</td>
+<td>T</td>
+<td>$\tau$</td>
+<td>\tau</td>
+</tr>
+<tr>
+<td>upsilon</td>
+<td>$\Upsilon$</td>
+<td>\Upsilon</td>
+<td>$\upsilon$</td>
+<td>\upsilons</td>
+</tr>
+<tr>
+<td>phi</td>
+<td>$\Phi$</td>
+<td>\Phi</td>
+<td>$\phi$</td>
+<td>\phi</td>
+</tr>
+<tr>
+<td>chi</td>
+<td>$X$</td>
+<td>X</td>
+<td>$\chi$</td>
+<td>\chi</td>
+</tr>
+<tr>
+<td>psi</td>
+<td>$\Psi$</td>
+<td>\Psi</td>
+<td>$\psi$</td>
+<td>\psi</td>
+</tr>
+<tr>
+<td>omega</td>
+<td>$\Omega$</td>
+<td>\Omega</td>
+<td>$\omega$</td>
+<td>\omega</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="上下标"><a href="#上下标" class="headerlink" title="上下标"></a>上下标</h2><p>上标用^,下标用_</p>
+<p>如:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$x_1^2$ </span><br></pre></td></tr></table></figure>
+<p>效果：$x_1^2$</p>
+<p>也可以用花括号括起来,如:  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$x_&#123;11&#125;^&#123;22&#125;$</span><br></pre></td></tr></table></figure>
+<p>$x_{11}^{22}$</p>
+<h2 id="括号"><a href="#括号" class="headerlink" title="括号"></a>括号</h2><h4 id="带分母的括号："><a href="#带分母的括号：" class="headerlink" title="带分母的括号："></a>带分母的括号：</h4><p>法一：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(\frac&#123;x&#125;&#123;y&#125;)$</span><br></pre></td></tr></table></figure>
+<p>效果：$(\frac{x}{y})$</p>
+<p>法二：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$\left(\frac&#123;x&#125;&#123;y&#125;\right)$</span><br></pre></td></tr></table></figure>
+<p>效果：$\left(\frac{x}{y}\right)$</p>
+<h4 id="上下标-括号"><a href="#上下标-括号" class="headerlink" title="上下标+括号"></a>上下标+括号</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;(\frac&#123;x&#125;&#123;y&#125;&#125;)_&#123;11&#125;^&#123;22&#125;$</span><br></pre></td></tr></table></figure>
+<p>${(\frac{x}{y}})_{11}^{22}$</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/22/%E7%BB%88%E7%AB%AF%E8%B0%83%E6%95%B4%E8%A7%A6%E6%8E%A7%E6%9D%BF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
+      <meta itemprop="name" content="ezhonghu">
+      <meta itemprop="description" content="花开时节|花自开">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ezhonghu's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/22/%E7%BB%88%E7%AB%AF%E8%B0%83%E6%95%B4%E8%A7%A6%E6%8E%A7%E6%9D%BF/" class="post-title-link" itemprop="url">笔记本电脑触控板配置</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-02-22 10:07:47" itemprop="dateCreated datePublished" datetime="2022-02-22T10:07:47+08:00">2022-02-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="1-查看设备的编号-id"><a href="#1-查看设备的编号-id" class="headerlink" title="1.查看设备的编号(id)"></a>1.查看设备的编号(id)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xinput list</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p> 此处以触控板为例</p>
+</blockquote>
+<p><img src="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/image-20220211160511697.png" alt="image-20220211160511697"></p>
+<h3 id="2-查看该设备支持哪些配置"><a href="#2-查看该设备支持哪些配置" class="headerlink" title="2.查看该设备支持哪些配置"></a>2.查看该设备支持哪些配置</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xinput list-props 15</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>触控板的id为15</p>
+</blockquote>
+<p><img src="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/image-20220211160724277.png" alt="image-20220211160724277"></p>
+<h3 id="3-修改"><a href="#3-修改" class="headerlink" title="3.修改"></a>3.修改</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xinput set-prop 15 162 0</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>把触控板禁用</p>
+</blockquote>
 
       
     </div>
@@ -1573,7 +1191,7 @@ m_水 &= \rho \times v_水 \\
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1641,7 +1259,7 @@ m_水 &= \rho \times v_水 \\
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-count">41</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1654,7 +1272,7 @@ m_水 &= \rho \times v_水 \\
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-count">28</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
