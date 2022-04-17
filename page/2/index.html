@@ -141,7 +141,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">43</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">42</span></a>
 
   </li>
   </ul>
@@ -170,168 +170,6 @@
 
           <div class="content index posts-expand">
             
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/22/i3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
-      <meta itemprop="name" content="ezhonghu">
-      <meta itemprop="description" content="花开时节|花自开">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ezhonghu's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/22/i3/" class="post-title-link" itemprop="url">manjaro下i3 wimdows manager使用方法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-02-22 10:07:50" itemprop="dateCreated datePublished" datetime="2022-02-22T10:07:50+08:00">2022-02-22</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S i3</span><br></pre></td></tr></table></figure>
-<p>注销帐号，在dde默认登陆界面的右下角选择i3，然后输入密码登陆。</p>
-<p>选择$mod键：Alt键对我而言更顺手</p>
-<p>如果需要重新配置~/.config/i3/config文件(重新配置$mod键:win或Alt)<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">i3-config-wizard</span><br></pre></td></tr></table></figure></p>
-<h2 id="基本键位"><a href="#基本键位" class="headerlink" title="基本键位:"></a>基本键位:</h2><p>要修改的话在~/.config/i3/config里修改<br>个人觉得比较舒服的键位:</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>键位</th>
-<th>效果</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>$mod+Enter</td>
-<td>打开终端</td>
-</tr>
-<tr>
-<td>$mod+d</td>
-<td>进入dmenu</td>
-</tr>
-<tr>
-<td>$mod+shift+q</td>
-<td>关闭窗口</td>
-</tr>
-<tr>
-<td>$mod+f</td>
-<td>全屏模式</td>
-</tr>
-<tr>
-<td>$mod+r</td>
-<td>调整窗口大小</td>
-</tr>
-<tr>
-<td>$mod+shift+r</td>
-<td>重启i3</td>
-</tr>
-<tr>
-<td>$mod+shift+e</td>
-<td>退出i3</td>
-</tr>
-<tr>
-<td>$mod+shift+space</td>
-<td>使窗口浮动</td>
-</tr>
-<tr>
-<td>$mod+v</td>
-<td>纵模式</td>
-</tr>
-<tr>
-<td>$mod+z</td>
-<td>横模式</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h2 id="调节音量"><a href="#调节音量" class="headerlink" title="调节音量:"></a>调节音量:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacmixer</span><br></pre></td></tr></table></figure>
-<p>操作同vim,k声音高,j声音低</p>
-<h2 id="调节亮度"><a href="#调节亮度" class="headerlink" title="调节亮度:"></a>调节亮度:</h2><h3 id="方法1手动"><a href="#方法1手动" class="headerlink" title="方法1手动"></a>方法1手动</h3><p>先查看支持最大亮度是多少:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /sys/class/backlight/amdgpu_bl0/max_brightness</span><br></pre></td></tr></table></figure><br>此处为255，故选择合适的值修改亮度:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /sys/class/backlight/amdgpu_bl0/brightness</span><br></pre></td></tr></table></figure>
-<p>为了方便调节亮度，在.bashrc配置:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alias brightness=&#x27;/sys/class/backlight/amdgpu_bl0/brightness</span><br></pre></td></tr></table></figure></p>
-<h3 id="方法二脚本"><a href="#方法二脚本" class="headerlink" title="方法二脚本"></a>方法二脚本</h3><p>建立brightnessup.sh和brightnessdown.sh位于~/.config/i3/,写入:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#！/bin/bash</span><br><span class="line">var1=+50 #正数为调高亮度，负数为调低亮度</span><br><span class="line">var1=$(($var1 + $(cat /sys/class/backlight/amdgpu_bl0/brightness)))</span><br><span class="line">echo $var1 &gt; /sys/class/backlight/amdgpu_bl0/brightness</span><br></pre></td></tr></table></figure><br>修改/sys/class/backlight/amdgpu_bl0/brightness的读写权限:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod 666 brightness</span><br></pre></td></tr></table></figure><br>用xev查看要绑定的键位的键码,会返回一个keycode(键位对应的键码)</p>
-<p>在i3的config中写入,并绑定快捷键:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bindcode &lt;键码&gt; exec &lt;脚本路径&gt;</span><br><span class="line">或</span><br><span class="line">bindsym &lt;键名&gt; exec &lt;脚本路径&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="查看电量"><a href="#查看电量" class="headerlink" title="查看电量:"></a>查看电量:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /sys/class/power_supply/BAT0/capacity</span><br></pre></td></tr></table></figure>
-<p>默认已经在窗口栏显示了当前电量。</p>
-<p>节能软件:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S tlp</span><br></pre></td></tr></table></figure><br>查看状态:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo tlp stat </span><br></pre></td></tr></table></figure><br>参数:</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>option</th>
-<th>can</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-b</td>
-<td>battery</td>
-</tr>
-<tr>
-<td>-c</td>
-<td>设备信息</td>
-</tr>
-<tr>
-<td>-r</td>
-<td>无线</td>
-</tr>
-<tr>
-<td>-t</td>
-<td>温度风扇转速</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
       
   
   
@@ -1199,6 +1037,96 @@
   
   
 
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/22/deepin%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
+      <meta itemprop="name" content="ezhonghu">
+      <meta itemprop="description" content="花开时节|花自开">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ezhonghu's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/22/deepin%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/" class="post-title-link" itemprop="url">deepin常用软件推荐</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-02-22 10:07:49" itemprop="dateCreated datePublished" datetime="2022-02-22T10:07:49+08:00">2022-02-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>推荐一些deepin下我个人觉得比较好用的软件</p>
+<p>1、QQ(wine)</p>
+<p>deepin系统的wine qq和wine 微信算是deepin特色,这也是linux这么多发行版选择deepin系统的原因之一。</p>
+<p><img src="https://ezhonghupictures.oss-cn-shenzhen.aliyuncs.com/1.13.png" alt="1.13"></p>
+<p>QQ for linux也还行,只是很有年代感。</p>
+<p>2、微信(wine)</p>
+<p><img src="https://ezhonghupictures.oss-cn-shenzhen.aliyuncs.com/1.14.png" alt="1.14"></p>
+<p>3、坚果云</p>
+<p>文件同步软件,可以在linux、windows、android、ios、mac上同步文件。</p>
+<p><img src="https://ezhonghupictures.oss-cn-shenzhen.aliyuncs.com/1.16.png" alt="1.16"></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianguoyun.com/s/downloads/linux">下载地址</a><br>ubuntu和debian的都可以用。</p>
+<p>4、mindmaster</p>
+<p>思维导图软件,用来清晰思路</p>
+<p><img src="https://ezhonghupictures.oss-cn-shenzhen.aliyuncs.com/1.17.png" alt="1.17"></p>
+<p>5、wps</p>
+<p>linux下编辑word、excel、powerpoint(个人觉得比libreoffice强大)</p>
+<p><img src="https://ezhonghupictures.oss-cn-shenzhen.aliyuncs.com/1.19.png" alt="1.19"></p>
+<p>6、vim</p>
+<p>学习曲线较陡,但学会后爱不释手的文本编辑器</p>
+<p><img src="https://ezhonghupictures.oss-cn-shenzhen.aliyuncs.com/1.15.png" alt="1.15"></p>
+<p>7、网易云音乐</p>
+<p>软件商店里有,网易云和deepin合作开发的(支持国产产品加入到linux当中来)<br><img src="https://ezhonghupictures.oss-cn-shenzhen.aliyuncs.com/1.12.png" alt="1.12"></p>
+<p>8、chromium浏览器<br>浏览器,反应快捷,拓展性高(特殊方式)</p>
+<p><img src="https://ezhonghupictures.oss-cn-shenzhen.aliyuncs.com/1.18.png" alt="1.18"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
 
   
   <nav class="pagination">
@@ -1270,7 +1198,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

@@ -141,7 +141,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">43</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">42</span></a>
 
   </li>
   </ul>
@@ -170,81 +170,6 @@
 
           <div class="content index posts-expand">
             
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/22/use_vimplug/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
-      <meta itemprop="name" content="ezhonghu">
-      <meta itemprop="description" content="花开时节|花自开">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ezhonghu's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/22/use_vimplug/" class="post-title-link" itemprop="url">使用vimplug来安装vim插件：</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-02-22 10:07:48" itemprop="dateCreated datePublished" datetime="2022-02-22T10:07:48+08:00">2022-02-22</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="从github上获取vim-plug："><a href="#从github上获取vim-plug：" class="headerlink" title="从github上获取vim-plug："></a>从github上获取vim-plug：</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/junegunn/vim-plug</span><br></pre></td></tr></table></figure>
-<h2 id="把获取的vim-plug文件里面的plug-vim文件放到-vim-autoload-目录下："><a href="#把获取的vim-plug文件里面的plug-vim文件放到-vim-autoload-目录下：" class="headerlink" title="把获取的vim-plug文件里面的plug.vim文件放到~/.vim/autoload/目录下："></a>把获取的vim-plug文件里面的plug.vim文件放到~/.vim/autoload/目录下：</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv ~/vim-plug/plug.vim ~/.vim/autoload/</span><br></pre></td></tr></table></figure>
-<h2 id="配置-vimrc文件："><a href="#配置-vimrc文件：" class="headerlink" title="配置.vimrc文件："></a>配置.vimrc文件：</h2><h3 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim .vimrc</span><br></pre></td></tr></table></figure>
-<p>需要用什么插件就按这个格式来添加:<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">call plug#begin(&#x27;~/.vim/plugged&#x27;)</span><br><span class="line">plug &#x27;想用的插件(github上的插件名称，README.md有怎么添加)&#x27;</span><br><span class="line">call plug#end()</span><br></pre></td></tr></table></figure></p>
-<h3 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h3><p>保存.vimrc</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:w</span><br></pre></td></tr></table></figure>
-<h3 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h3><p>安装插件：(可以用tab)<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:PlugInstall</span><br></pre></td></tr></table></figure></p>
-<h3 id="4"><a href="#4" class="headerlink" title="4."></a>4.</h3><p>退出<strong>所有</strong>的vim文件(现在打开的是两个vim文件)<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:wqa</span><br></pre></td></tr></table></figure></p>
-<p>结束</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
       
   
   
@@ -994,6 +919,274 @@ m_水 &= \rho \times v_水 \\
   
   
 
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://erzhonghoo.github.io/2022/02/22/markdownTex/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://ezhonghublog.oss-cn-shenzhen.aliyuncs.com/ezhonghuAvatar.JPG">
+      <meta itemprop="name" content="ezhonghu">
+      <meta itemprop="description" content="花开时节|花自开">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ezhonghu's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/22/markdownTex/" class="post-title-link" itemprop="url">markdown 公式</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-02-22 10:07:47" itemprop="dateCreated datePublished" datetime="2022-02-22T10:07:47+08:00">2022-02-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="分为行内公式和行间公式"><a href="#分为行内公式和行间公式" class="headerlink" title="分为行内公式和行间公式"></a>分为行内公式和行间公式</h2><h4 id="行内公式-左右一个"><a href="#行内公式-左右一个" class="headerlink" title="行内公式:(左右一个$)"></a>行内公式:(左右一个$)</h4><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$\Gamma(z) = \int<span class="emphasis">_0^\infty t^&#123;z-1&#125;e^&#123;-t&#125;dt\,.$</span></span><br></pre></td></tr></table></figure>
+<p>效果：$\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.$</p>
+<h4 id="行间公式-左右两个"><a href="#行间公式-左右两个" class="headerlink" title="行间公式:(左右两个$$)"></a>行间公式:(左右两个$$)</h4><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$$\Gamma(z) = \int<span class="emphasis">_0^\infty t^&#123;z-1&#125;e^&#123;-t&#125;dt\,.$$</span></span><br></pre></td></tr></table></figure>
+<p>效果：<script type="math/tex">\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.</script></p>
+<h2 id="希腊字母（code写在公式之间）"><a href="#希腊字母（code写在公式之间）" class="headerlink" title="希腊字母（code写在公式之间）"></a>希腊字母（code写在公式之间）</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>大写</th>
+<th>code</th>
+<th>小写</th>
+<th>code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>alpha</td>
+<td>$A$</td>
+<td>A</td>
+<td>$\alpha$</td>
+<td>\alpha</td>
+</tr>
+<tr>
+<td>beta</td>
+<td>$B$</td>
+<td>B</td>
+<td>$\beta$</td>
+<td>\beta</td>
+</tr>
+<tr>
+<td>gamma</td>
+<td>$\Gamma$</td>
+<td>\Gamma</td>
+<td>$\gamma$</td>
+<td>\gamma</td>
+</tr>
+<tr>
+<td>delta</td>
+<td>$\Delta$</td>
+<td>\Delta</td>
+<td>$\delta$</td>
+<td>\delta</td>
+</tr>
+<tr>
+<td>epsilon</td>
+<td>$E$</td>
+<td>E</td>
+<td>$\epsilon$</td>
+<td>\epsilon</td>
+</tr>
+<tr>
+<td>zeta</td>
+<td>$Z$</td>
+<td>Z</td>
+<td>$\zeta$</td>
+<td>\zeta</td>
+</tr>
+<tr>
+<td>eta</td>
+<td>$H$</td>
+<td>H</td>
+<td>$\eta$</td>
+<td>\eta</td>
+</tr>
+<tr>
+<td>theta</td>
+<td>$\Theta$</td>
+<td>\Theta</td>
+<td>$\theta$</td>
+<td>\theta</td>
+</tr>
+<tr>
+<td>iota</td>
+<td>$\iota$</td>
+<td>\l</td>
+<td>$\iota$</td>
+<td>\iota</td>
+</tr>
+<tr>
+<td>kappa</td>
+<td>$K$</td>
+<td>\K</td>
+<td>$\kappa$</td>
+<td>\kappa</td>
+</tr>
+<tr>
+<td>lambda</td>
+<td>$\Lambda$</td>
+<td>\Lambda</td>
+<td>$\lambda$</td>
+<td>\lambda</td>
+</tr>
+<tr>
+<td>mu</td>
+<td>$M$</td>
+<td>M</td>
+<td>$\mu$</td>
+<td>\mu</td>
+</tr>
+<tr>
+<td>nu</td>
+<td>$N$</td>
+<td>N</td>
+<td>$\nu$</td>
+<td>\nu</td>
+</tr>
+<tr>
+<td>xi</td>
+<td>$\Xi$</td>
+<td>\Xi</td>
+<td>$\xi$</td>
+<td>\xi</td>
+</tr>
+<tr>
+<td>omicron</td>
+<td>$O$</td>
+<td>O</td>
+<td>$\omicron$</td>
+<td>\omicron</td>
+</tr>
+<tr>
+<td>pi</td>
+<td>$\Pi$</td>
+<td>\Pi</td>
+<td>$\pi$</td>
+<td>\pi</td>
+</tr>
+<tr>
+<td>rho</td>
+<td>$P$</td>
+<td>P</td>
+<td>$\rho$</td>
+<td>\rho</td>
+</tr>
+<tr>
+<td>sigma</td>
+<td>$\Sigma$</td>
+<td>\Sigma</td>
+<td>$\sigma$</td>
+<td>\sigma</td>
+</tr>
+<tr>
+<td>tau</td>
+<td>$T$</td>
+<td>T</td>
+<td>$\tau$</td>
+<td>\tau</td>
+</tr>
+<tr>
+<td>upsilon</td>
+<td>$\Upsilon$</td>
+<td>\Upsilon</td>
+<td>$\upsilon$</td>
+<td>\upsilons</td>
+</tr>
+<tr>
+<td>phi</td>
+<td>$\Phi$</td>
+<td>\Phi</td>
+<td>$\phi$</td>
+<td>\phi</td>
+</tr>
+<tr>
+<td>chi</td>
+<td>$X$</td>
+<td>X</td>
+<td>$\chi$</td>
+<td>\chi</td>
+</tr>
+<tr>
+<td>psi</td>
+<td>$\Psi$</td>
+<td>\Psi</td>
+<td>$\psi$</td>
+<td>\psi</td>
+</tr>
+<tr>
+<td>omega</td>
+<td>$\Omega$</td>
+<td>\Omega</td>
+<td>$\omega$</td>
+<td>\omega</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="上下标"><a href="#上下标" class="headerlink" title="上下标"></a>上下标</h2><p>上标用^,下标用_</p>
+<p>如:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$x_1^2$ </span><br></pre></td></tr></table></figure>
+<p>效果：$x_1^2$</p>
+<p>也可以用花括号括起来,如:  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$x_&#123;11&#125;^&#123;22&#125;$</span><br></pre></td></tr></table></figure>
+<p>$x_{11}^{22}$</p>
+<h2 id="括号"><a href="#括号" class="headerlink" title="括号"></a>括号</h2><h4 id="带分母的括号："><a href="#带分母的括号：" class="headerlink" title="带分母的括号："></a>带分母的括号：</h4><p>法一：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(\frac&#123;x&#125;&#123;y&#125;)$</span><br></pre></td></tr></table></figure>
+<p>效果：$(\frac{x}{y})$</p>
+<p>法二：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$\left(\frac&#123;x&#125;&#123;y&#125;\right)$</span><br></pre></td></tr></table></figure>
+<p>效果：$\left(\frac{x}{y}\right)$</p>
+<h4 id="上下标-括号"><a href="#上下标-括号" class="headerlink" title="上下标+括号"></a>上下标+括号</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;(\frac&#123;x&#125;&#123;y&#125;&#125;)_&#123;11&#125;^&#123;22&#125;$</span><br></pre></td></tr></table></figure>
+<p>${(\frac{x}{y}})_{11}^{22}$</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
 
   
   <nav class="pagination">
@@ -1065,7 +1258,7 @@ m_水 &= \rho \times v_水 \\
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
